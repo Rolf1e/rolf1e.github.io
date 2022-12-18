@@ -1,5 +1,3 @@
-Un petit récap sur Java !
-
 # Un peu d'histoire !
 
 Java est un langage orienté objet "class" inventé par [James Gosling](https://en.wikipedia.org/wiki/James_Gosling)
@@ -255,6 +253,11 @@ L'API des Streams est une manière efficace de pouvoir itérer dans des Collecti
 utilisant le fonctionnel.
 
 ```java
+public class AnonymPerson {
+    private int age;
+    private Nationality nationality;
+}
+
 public class PersonHolder {
 
     private final Person[] persons;
@@ -265,6 +268,18 @@ public class PersonHolder {
         return Arrays.stream(persons)
                 .filter(person -> name.equals(person.getName()))
                 .findFirst();
+    }
+
+    public Long countFrenchPerson() {
+        return Arrays.stream(person)
+                .filter(person -> Nationality.FR.equals(person.getNationality()))
+                .count();
+    }
+
+    public Collection<Person> anonymizedPerson() {
+        return Arrays.stream(persons)
+                .map(person -> new AnonymPerson(person.getAge(), person.getNationality()))
+                .collect(Collectors.toList());
     }
 }
 ```
@@ -413,7 +428,7 @@ de java comme constructeurs, getters, builders.
 
 - `@Getter` créer les getters de tous les attributs de la classe. (Le même existe pour les `@Setter`).
 - `@AllAgrsConstructor` un constructeur pour tous les attributs.
-- `@RequiredArgsConstructor` un constructeur pour tous les attributs **requis** (aka `final` champs attributs).
+- `@RequiredArgsConstructor` un constructeur pour tous les attributs **requis** (aka `final` attributs).
 - `@Builder` créer une inner class `Example.ExampleBuilder` permettant d'avoir un pattern builder.
 - `@Slf4j` permet d'instancier un logger pour la classe facilement. (Un logger fait des choses très complexes en java).
 
