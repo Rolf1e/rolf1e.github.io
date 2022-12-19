@@ -165,6 +165,82 @@ public class PersonHolder {
 }
 ```
 
+## Héritage
+
+### Classes abstraites
+
+Java est capable de partager du code via l'abstraction. C'est une fonction puissante des langages objets.
+
+```java
+public class AbstractPerson {
+    private int age;
+
+    public final void grow() {
+        age += 1;
+    }
+
+    public abstract boolean isAdult();
+}
+
+public class AdultPerson extends AbstractClass {
+    @Override
+    public boolean isAdult() {
+        return true;
+    }
+}
+
+public class ChildPerson extends AbstractClass {
+    @Override
+    public boolean isAdult() {
+        return false;
+    }
+}
+```
+
+### Les interfaces
+
+Les interfaces permettent dans les langages objets de définir des contrats. Cela permet de construire un logiciel
+scalable, maintenable.
+
+```java
+public interface IPerson {
+    String sayHello();
+}
+
+public class Person implements IPerson {
+    private String name;
+
+    @Override
+    public String sayHello() {
+        return "Hello, I am " + name;
+    }
+}
+```
+
+### Composition
+
+L'héritage et la composition sont souvent comparés, mais ils servent à résoudre la même problématique: partager un code
+identique entre classes. La différence notable est l'auxiliaire que l'on peut lui appliquer. Soit `est`(être) soit `a`(
+avoir).
+Dans l'exemple suivant, nous allons composer notre classe `Person` d'un chapeau car, une personne _possède_ (a) un
+chapeau.
+
+```java
+public class Hat {
+    private String color;
+}
+
+public class Person {
+    private String name;
+    private Hat hat;
+
+    public Person(String name, Hat hat) {
+        this.name = name;
+        this.hat = hat;
+    }
+}
+```
+
 ### Le JAR
 
 Le [JAR](https://docs.oracle.com/javase/tutorial/deployment/jar/basicsindex.html) est une archive java (un zip)
