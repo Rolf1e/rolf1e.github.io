@@ -4,6 +4,10 @@ Java est un langage orienté objet "class" inventé par [James Gosling](https://
 chez [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems) en 1996. Aujourd'hui c'est Oracle qui détient
 la licence.
 
+Une version majeure de Java est la 1.8. Sortie en mars 2014 (encore aujourd'hui en LTS et jusqu'en 2030 par Oracle !).
+Elle contient de grandes mises à jour comme l'API des `Streams`, [les fonctions lambdas](https://openjdk.org/jeps/126).
+Une refonte de l'API du temps avec `LocalDate`.
+
 Il possède un [garbage collector](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) et tourne sur
 la [Java Virtual Machine](https://en.wikipedia.org/wiki/Java_virtual_machine) via du bytecode.
 
@@ -70,7 +74,7 @@ public class Persons { // Parfois PersonUtils
     private static int A_INTEGER_STATIC_FIELD = 1;
 
     public static Person newFrenchPerson(String name, int age) {
-        new Person(name, age, Nationality.FR);
+        return new Person(name, age, Nationality.FR);
     }
 
     public static void main(String[] args) {
@@ -370,7 +374,7 @@ d'éviter des `if/else`).
 ```java
 public class Examples {
     public static void main(String[] args) {
-        Objects.requireNonNull(args[0], "message optionnel"); // will throw NPE if null, quelques variantes avec default et autre erreur throwing existe.
+        Objects.requireNonNull(args[0], "message optionnel"); // will throw NPE if null, quelques variantes avec default et autre erreur throwing existent.
         Objects.isNull(args[0]);
         Objects.nonNull(args[0]);
         Objects.equals(args[0], args[1]);
