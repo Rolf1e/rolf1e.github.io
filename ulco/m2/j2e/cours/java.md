@@ -529,13 +529,13 @@ de java comme constructeurs, getters, builders.
 
 Lombok génère du code via les annotations de Java. Il va au moment de la compilation les remplacer par du code Java
 répondant à ce qui à été décrit. Vous pouvez faire l'expérience vous-même en créant une classe java avec une
-annotation `@Getter` sur un attribut. Lancer la compilation et remarquer que dans le fichier `.class` (l'ouvrir l'aide
-javap ou bien d'Intellij IDEA qui permet de lire le Java Bytecode) le getter s'y trouve bien.
+annotation `@Getter` sur un attribut. Lancez la compilation et remarquez que dans le fichier `.class` (l'ouvrir à l'aide
+de `javap` ou bien d'Intellij IDEA) le getter s'y trouve bien.
 
 ## Maven
 
 [Apache Maven](https://maven.apache.org/) est un outil de gestion de projet, en particulier pour la gestion des
-dépendances (via le classpath), du build du lancement des tests, versions (JVM, Classes, packages). Un exemple de
+dépendances (via le classpath), du build, du lancement des tests et des versions (JVM, Classes, packages). Un exemple de
 projet maven se trouve dans la partie [spring](./spring.md). Il utilise XML pour décrire les actions à effectuer.
 
 ### How does it work ?
@@ -564,6 +564,6 @@ ajouter le driver JDBC pour postgresql.
 
 ### Pour aller plus loin
 
-[Intellij IDEA à la rescousse](https://www.jetbrains.com/help/idea/maven-support.html)
-[Maven et NodeJS](https://github.com/eirslett/frontend-maven-plugin)
-[Angular application avec Maven](https://medium.com/sparkles-blog/angular-in-the-enterprise-building-angular-apps-through-maven-3ca535152f85)
+- [Intellij IDEA à la rescousse](https://www.jetbrains.com/help/idea/maven-support.html)
+- [Maven et NodeJS](https://github.com/eirslett/frontend-maven-plugin)
+- [Angular application avec Maven](https://medium.com/sparkles-blog/angular-in-the-enterprise-building-angular-apps-through-maven-3ca535152f85)
