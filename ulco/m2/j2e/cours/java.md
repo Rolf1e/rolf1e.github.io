@@ -1,4 +1,4 @@
-# Un peu d'histoire !
+# Java, Un peu d'histoire !
 
 Java est un langage orienté objet "class" inventé par [James Gosling](https://en.wikipedia.org/wiki/James_Gosling)
 chez [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems) en 1996. Aujourd'hui c'est Oracle qui détient
@@ -11,9 +11,8 @@ Une refonte de l'API du temps avec `LocalDate`.
 Il possède un [garbage collector](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) et tourne sur
 la [Java Virtual Machine](https://en.wikipedia.org/wiki/Java_virtual_machine) via du bytecode.
 
-Java existe de deux manières différentes: JDK ou JRE. Le premier contient le compilateur et la JVM, le deuxième
-seulement
-la JVM.
+Java existe de deux manières différentes : JDK ou JRE. Le premier contient le compilateur et la JVM, le deuxième
+seulement la JVM.
 
 # Et beaucoup de code !
 
@@ -86,7 +85,7 @@ public class Persons { // Parfois PersonUtils
 ```
 
 Vers l'immutabilité avec `final`.
-Le mot clé `final` n'est pas suffisant pour faire de l'immutabilité mais il est nécessaire. Dans les faits, `final`
+Le mot clé `final` n'est pas suffisant pour faire de l'immutabilité, mais il est nécessaire. Dans les faits, `final`
 empêche un changement de référence.
 
 ```java
@@ -223,7 +222,7 @@ public class Person implements IPerson {
 
 ### Composition
 
-L'héritage et la composition sont souvent comparés, mais ils servent à résoudre la même problématique: partager un code
+L'héritage et la composition sont souvent comparés, mais ils servent à résoudre la même problématique : partager un code
 identique entre classes. La différence notable est l'auxiliaire que l'on peut lui appliquer. Soit `est`(être) soit `a`(
 avoir).
 Dans l'exemple suivant, nous allons composer notre classe `Person` d'un chapeau car, une personne _possède_ (a) un
@@ -253,7 +252,7 @@ Pour lancer un JAR en ligne de commande `java -jar <archive>.jar`.
 
 ### La JVM
 
-La JVM, le super pouvoir du Java qui nous permet de "Code Once - Run Everywhere !". La JVM execute
+La JVM, le superpouvoir du Java qui nous permet de "Code Once - Run Everywhere !". La JVM execute
 du [Java bytecode](https://en.wikipedia.org/wiki/Java_bytecode). Au runtime depuis java 1.2, Java utilise
 un [JIT](https://en.wikipedia.org/wiki/Just-in-time_compilation). La JVM remplace le développeur pour pouvoir faire du
 cross plateforme. En effet, ceci est délégué à la JVM d'effectuer les instructions avec l'OS. Elle gère également la
@@ -275,7 +274,7 @@ Le classpath // TODO
   avec `add(E e)` et `remove(E e)`.
 - `List<E>` définit une collection d'éléments **ordonnés**. Les implémentations les plus utilisées: `ArrayList<E>`
   et `LinkedList<E>`. La première automatise les tableaux java. La deuxième est une liste chaînée.
-- `Set<E>` définit un set mathématique => une collection d'éléments sans doublons. (Utilisant `equals(Object o)` pour
+- `Set<E>` définit un set mathématique → une collection d'éléments sans doublons. (Utilisant `equals(Object o)` pour
   effectuer la comparaison).
 
 - `Map<K, V>` définit un objet clé/valeur. Avantageux pour trouver une clé rapidement ou avoir une clé différente d'un
@@ -287,7 +286,7 @@ Le classpath // TODO
 Java en 1.8, a rajouté quelques monades comme `Option<T>` et `Function<T, R>` qui permettent d'émuler un peu de
 programmation fonctionnelle en java. (Fonctionne particulièrement bien avec l'API des Streams et Collections).
 
-On peut considérer réécrire notre fonction de recherche de cette façon:
+On peut considérer réécrire notre fonction de recherche de cette façon :
 
 ```java
 public class PersonHolder {
@@ -333,7 +332,7 @@ L'API des Streams est une manière efficace de pouvoir itérer dans des Collecti
 utilisant le fonctionnel.
 
 ```java
-public class AnonymPerson {
+public class AnonymusPerson {
     private int age;
     private Nationality nationality;
 }
@@ -358,7 +357,7 @@ public class PersonHolder {
 
     public Collection<Person> anonymizedPerson() {
         return Arrays.stream(persons)
-                .map(person -> new AnonymPerson(person.getAge(), person.getNationality()))
+                .map(person -> new AnonymusPerson(person.getAge(), person.getNationality()))
                 .collect(Collectors.toList());
     }
 }
@@ -449,7 +448,7 @@ Java possède une implémentation
 des [Threads](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Thread.html) relativement bas
 niveau.
 
-Pour créer, il faut effectuer le code suivant:
+Pour créer, il faut effectuer le code suivant :
 
 ```java
 public class PrimeThread extends Thread {
@@ -494,7 +493,7 @@ exemple [pgsql driver](https://jdbc.postgresql.org/).
 
 - `Statement` envoie des actions SQL à la base de données (une requête par exemple).
 - `PreparedStatement` permet d'effectuer des requêtes préparées (éviter les injections par exemple).
-- `Connection` est la string de connexion à la base de données.
+- `Connection` est le string de connexion à la base de données.
 - La partie metadata est gérée via `DatabaseMetadata`.
 
 Plus de détails [ici](https://www.baeldung.com/java-jdbc).

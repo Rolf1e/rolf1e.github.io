@@ -26,7 +26,7 @@ Spring est composé de plusieurs petites briques appelées modules ou containers
 
 ## Spring Boot 2.7.0
 
-Spring boot est un projet permettant de démarrer facilement une application Spring. Elle s'occupe seule de lancer le
+Spring boot est un projet permettant de démarrer facilement une application Spring. Il s'occupe seule de lancer le
 Contexte, les Beans via l'IoC, initier les connexions aux bases de données, mettre à l'écoute les différents endpoints
 si besoin.
 
