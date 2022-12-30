@@ -1,7 +1,7 @@
 # Projet: Architecture multi tier avec JEE
 
 À la fin du TP, vous serez, si mon job est un succès, capable d'implémenter un 3-Tier à l'aide de Java EE.
-Nous utiliserons Spring comme framework web. Au choix postgresql, sqlite ou bien mysql comme base de données.
+Nous utiliserons Spring comme framework web. Au choix postgresql, SQLite ou bien mysql comme base de données.
 
 ### Rendu
 

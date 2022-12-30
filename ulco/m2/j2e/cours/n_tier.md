@@ -35,7 +35,7 @@ Les couches sont dépendantes de celle sur laquelle elle est construite.
 ## Exercice:
 
 Voici un schéma vierge représentant trois couches (Presentation, Business et Data). Nous souhaitons réaliser
-l'architecture d'un journal (comme Le Monde, La Voix du Nord). Représenter le schéma SQL, les payloads échangés entre
+l'architecture d'un journal (comme Le Monde, La Voix du Nord). Représentez le schéma SQL, les payloads échangés entre
 les couches.
 
 ![Image du schéma n-tier vide](./images/empty_n_tier.png)

@@ -23,7 +23,7 @@ public class Person {
     private String name;
     private int age;
 
-    public MyClass(String name, int age) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -56,7 +56,7 @@ public class Person {
     private int age;
     private Nationality nationality;
 
-    public MyClass(String name, int age, Nationality nationality) {
+    public Person(String name, int age, Nationality nationality) {
         this.name = name;
         this.age = age;
         this.nationality = nationality;
@@ -66,7 +66,7 @@ public class Person {
 
 #### static et final
 
-Static, les variables de "classe".
+##### Static, les variables de "classe".
 
 ```java
 public class Persons { // Parfois PersonUtils
@@ -84,7 +84,8 @@ public class Persons { // Parfois PersonUtils
 }
 ```
 
-Vers l'immutabilité avec `final`.
+##### Vers l'immutabilité avec `final`.
+
 Le mot clé `final` n'est pas suffisant pour faire de l'immutabilité, mais il est nécessaire. Dans les faits, `final`
 empêche un changement de référence.
 
@@ -259,7 +260,14 @@ cross plateforme. En effet, ceci est délégué à la JVM d'effectuer les instru
 gestion de la mémoire pour le développeur via un garbage collecteur. Ce dernier va régulièrement examiner la mémoire
 pour libérer de la mémoire.
 
-Le classpath // TODO
+Le [classpath](https://en.wikipedia.org/wiki/Classpath), c'est une variable donnée à la JVM qui lui dit où regarder pour
+charger les classes utilisées par le programme écrit. Java charge les classes selon l'ordre suivant:
+
+- Boostrap classes, l'API du Java.
+- Extension classes, les fichiers dans `(jre|jdk)/lib/ext`
+- User-defined packages et libraries.
+
+Il est verbeux à utiliser manuellement, ce pourquoi des outils comme Maven, Ant ou bien Gradle ont été créé.
 
 ### L'API [(OpenJDK)](https://openjdk.org/)
 
@@ -325,6 +333,11 @@ public class PersonHolder {
 L'objet contient quelques méthodes de compatibilité pour le gérer de manière fonctionnelle comme `getOrElse(<default>)`
 ou `getOrElseThrows(() -> new PersonNotFound("")`, `map(<predicate>)`, `filter(<predicate>)`, `flatMap(<predicate>)`,
 `count()`, `sum()`
+
+Le type `Function<T, R>` permet à Java (comme à [Scala](https://www.scala-lang.org/api/3.2.1/scala/Function0.html#))
+d'approcher le langage fonctionnel en pouvant écrire des
+instructions simples ([lambdas functions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html))
+qui seront transformées en objet par la JVM !
 
 ##### java.util.Stream<E>
 
@@ -507,15 +520,50 @@ de java comme constructeurs, getters, builders.
 
 - `@Getter` créer les getters de tous les attributs de la classe. (Le même existe pour les `@Setter`).
 - `@AllAgrsConstructor` un constructeur pour tous les attributs.
+- `@NoAgrConstructor` un constructeur sans paramètre.
 - `@RequiredArgsConstructor` un constructeur pour tous les attributs **requis** (aka `final` attributs).
 - `@Builder` créer une inner class `Example.ExampleBuilder` permettant d'avoir un pattern builder.
 - `@Slf4j` permet d'instancier un logger pour la classe facilement. (Un logger fait des choses très complexes en java).
 
-### Comment fonctionne lombok ?
+### Que fait lombok ?
 
-// TODO
+Lombok génère du code via les annotations de Java. Il va au moment de la compilation les remplacer par du code Java
+répondant à ce qui à été décrit. Vous pouvez faire l'expérience vous-même en créant une classe java avec une
+annotation `@Getter` sur un attribut. Lancer la compilation et remarquer que dans le fichier `.class` (l'ouvrir l'aide
+javap ou bien d'Intellij IDEA qui permet de lire le Java Bytecode) le getter s'y trouve bien.
 
 ## Maven
 
 [Apache Maven](https://maven.apache.org/) est un outil de gestion de projet, en particulier pour la gestion des
-dépendances, du build et du classpath. Un exemple de projet maven se trouve dans la partie [spring](./spring.md).
+dépendances (via le classpath), du build du lancement des tests, versions (JVM, Classes, packages). Un exemple de
+projet maven se trouve dans la partie [spring](./spring.md). Il utilise XML pour décrire les actions à effectuer.
+
+### How does it work ?
+
+```shell
+mvn clean         # détruit le dossier /target avec toutes les .class et autres fichiers utiles à la JVM.
+mvn clean install # Install les dépendances listée dans le pom.xml, lance les tests et la compilation.
+mvn clean test    # lance les tests
+mvn package       # Construit le projet
+
+java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App # lance le jar de notre application.
+```
+
+[Maven en 5 minutes](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html)
+
+Pour ajouter une dépendance à votre projet, dans votre `pom.xml` rajoutez ceci dans la balise `<dependencies>` pour
+ajouter le driver JDBC pour postgresql.
+
+```
+<dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.5.1</version>
+</dependency>
+```
+
+### Pour aller plus loin
+
+[Intellij IDEA à la rescousse](https://www.jetbrains.com/help/idea/maven-support.html)
+[Maven et NodeJS](https://github.com/eirslett/frontend-maven-plugin)
+[Angular application avec Maven](https://medium.com/sparkles-blog/angular-in-the-enterprise-building-angular-apps-through-maven-3ca535152f85)
