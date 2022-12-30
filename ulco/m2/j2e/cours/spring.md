@@ -20,9 +20,9 @@ Spring est composé de plusieurs petites briques appelées modules ou containers
 
 - Spring core: IoC, i18n, Data Binding, ...
 - Spring tests: Mocks, TestContext, ...
-- Data access: Transactions,
-- Web Servlet: MVC, WebSockets, STOMP
-- Integration: REST, Scheduling, Caching
+- Data access: Transactions, ORM,
+- Web Servlet: MVC, WebSockets, STOMP, ...
+- Integration: REST, Scheduling, Caching, ...
 
 ## Spring Boot 2.7.0
 
@@ -57,14 +57,6 @@ Afin de mettre en place ces deux patrons, Spring utilise des notions comme le Co
 
 ### @Service
 
-## Spring Security
-
-### CORS
-
-### Basic Authentication
-
-### Filters
-
 ## Spring DATA
 
 ### Hibernate
@@ -78,6 +70,14 @@ Afin de mettre en place ces deux patrons, Spring utilise des notions comme le Co
 #### @Repository - DAO
 
 #### Setup with Drivers
+
+## Spring Security
+
+### CORS
+
+### Basic Authentication
+
+### Filters
 
 ### Tooling
 

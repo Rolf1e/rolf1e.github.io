@@ -11,7 +11,7 @@ Une refonte de l'API du temps avec `LocalDate`.
 Il possède un [garbage collector](https://en.wikipedia.org/wiki/Garbage_collection_(computer_science)) et tourne sur
 la [Java Virtual Machine](https://en.wikipedia.org/wiki/Java_virtual_machine) via du bytecode.
 
-Java existe de deux manières différentes : JDK ou JRE. Le premier contient le compilateur et la JVM, le deuxième
+Java existe de deux manières différentes: JDK ou JRE. Le premier contient le compilateur et la JVM, le deuxième
 seulement la JVM.
 
 # Et beaucoup de code !
@@ -222,7 +222,7 @@ public class Person implements IPerson {
 
 ### Composition
 
-L'héritage et la composition sont souvent comparés, mais ils servent à résoudre la même problématique : partager un code
+L'héritage et la composition sont souvent comparés, mais ils servent à résoudre la même problématique: partager un code
 identique entre classes. La différence notable est l'auxiliaire que l'on peut lui appliquer. Soit `est`(être) soit `a`(
 avoir).
 Dans l'exemple suivant, nous allons composer notre classe `Person` d'un chapeau car, une personne _possède_ (a) un
@@ -286,7 +286,7 @@ Le classpath // TODO
 Java en 1.8, a rajouté quelques monades comme `Option<T>` et `Function<T, R>` qui permettent d'émuler un peu de
 programmation fonctionnelle en java. (Fonctionne particulièrement bien avec l'API des Streams et Collections).
 
-On peut considérer réécrire notre fonction de recherche de cette façon :
+On peut considérer réécrire notre fonction de recherche de cette façon:
 
 ```java
 public class PersonHolder {
@@ -448,7 +448,7 @@ Java possède une implémentation
 des [Threads](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Thread.html) relativement bas
 niveau.
 
-Pour créer, il faut effectuer le code suivant :
+Pour créer, il faut effectuer le code suivant:
 
 ```java
 public class PrimeThread extends Thread {
@@ -510,6 +510,10 @@ de java comme constructeurs, getters, builders.
 - `@RequiredArgsConstructor` un constructeur pour tous les attributs **requis** (aka `final` attributs).
 - `@Builder` créer une inner class `Example.ExampleBuilder` permettant d'avoir un pattern builder.
 - `@Slf4j` permet d'instancier un logger pour la classe facilement. (Un logger fait des choses très complexes en java).
+
+### Comment fonctionne lombok ?
+
+// TODO
 
 ## Maven
 

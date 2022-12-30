@@ -1,7 +1,8 @@
 # Multi-tiers architecture
 
-En ingénieure du logiciel, les développeurs essayent d'utiliser des standards, des patrons et éléments facilement
-reconnaissables. Avec l'essor de la conception objet, beaucoup d'architecture sont couplés à celui-ci. Dans ce cours, on
+En ingénierie du logiciel, les développeurs essayent d'utiliser des standards, des patrons et éléments facilement
+reconnaissables. Avec l'essor de la conception objet, beaucoup d'architectures sont couplées à celui-ci. Dans ce cours,
+on
 s'intéressera seulement à celles-ci.
 
 L'architecture multi-tiers (ou n-tier) est dites client-serveur dans laquelle on sépare physiquement en
@@ -17,14 +18,12 @@ Les couches populaires au sien des systèmes d'informations sont les suivantes:
 Il correspond à l'interface utilisateur (UI). Il peut être l'utilisateur final avec souvent une UI simplifiée
 (applications) ou alors simplement un contrat entre deux entités, souvent le JSON.
 
-#### Application
+#### Application / Business
 
-#### Business
-
-C'est là la couche qui représente un besoin utilisateur. Elle permet la transformation de la donnée brute de la couche
-de données en une version qui nous permet de répondre à une règle métier du monde "réel". Elle est là pour nous rappeler
-que l'informatique reste un outil pour résoudre une problématique.
-On utilise généralement dans cette couche un ORM afin de mapper notre modèle à notre code objet facilement.
+C'est la couche qui représente un besoin utilisateur. Elle transforme la donnée brute de la couche de données en une
+version qui nous répondant à une règle métier du monde "réel". Elle est là pour nous rappeler que l'informatique reste
+un outil pour résoudre une problématique. On utilise généralement dans cette couche un ORM afin de lier, en effectuant
+un mapping, notre modèle à notre code objet facilement.
 
 #### Data
 
@@ -35,9 +34,9 @@ Les couches sont dépendantes de celle sur laquelle elle est construite.
 
 ## Exercice:
 
-Voici un schéma vierge représentant trois couches (Presentation, Business et Data).
-Nous souhaitons réaliser l'architecture d'un journal (comme Le Monde, La Voix du Nord).
-Représenter le schéma SQL, les payloads échangés entre les couches.
+Voici un schéma vierge représentant trois couches (Presentation, Business et Data). Nous souhaitons réaliser
+l'architecture d'un journal (comme Le Monde, La Voix du Nord). Représenter le schéma SQL, les payloads échangés entre
+les couches.
 
 ![Image du schéma n-tier vide](./images/empty_n_tier.png)
 
@@ -55,9 +54,8 @@ Représenter le schéma SQL, les payloads échangés entre les couches.
 ## Inconvénient
 
 Plus il y a de couches, plus il devient difficile de les maintenir, savoir ce qu'il se passe avec du monitoring et du
-logging est une solution, mais cela peut devenir coûteux et complexe à mettre en place.
-La latence s'accentue à chaque nouvelle couche. L'utilisation de "cache" devient nécessaire, mais introduit un état
-supplémentaire dans l'application.
+logging est une solution, mais cela peut devenir coûteux et complexe à mettre en place. La latence s'accentue à chaque
+nouvelle couche. L'utilisation de "cache" devient nécessaire, mais introduit un état supplémentaire dans l'application.
 
 ## Quand l'utiliser ?
 
