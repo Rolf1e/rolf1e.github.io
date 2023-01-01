@@ -111,7 +111,7 @@ public class Persons {
 #### for-loop
 
 La boucle for "améliorée" permet d'itérer de manière efficace au travers d'objet implémentant `Iterable<T>`. (Exception
-pour les tableaux java qui peuvent également l'utiliser).
+pour les tableaux Java qui peuvent également l'utiliser).
 
 ```java
 public class Persons {
@@ -247,14 +247,14 @@ public class Person {
 
 ### Le JAR
 
-Le [JAR](https://docs.oracle.com/javase/tutorial/deployment/jar/basicsindex.html) est une archive java (un zip)
-contenant le bytecode java (java compilé) prêt à être lancé par une JVM.
+Le [JAR](https://docs.oracle.com/javase/tutorial/deployment/jar/basicsindex.html) est une archive Java (un zip)
+contenant le bytecode Java (Java compilé) prêt à être lancé par une JVM.
 Pour lancer un JAR en ligne de commande `java -jar <archive>.jar`.
 
 ### La JVM
 
 La JVM, le superpouvoir du Java qui nous permet de "Code Once - Run Everywhere !". La JVM execute
-du [Java bytecode](https://en.wikipedia.org/wiki/Java_bytecode). Au runtime depuis java 1.2, Java utilise
+du [Java bytecode](https://en.wikipedia.org/wiki/Java_bytecode). Au runtime depuis Java 1.2, Java utilise
 un [JIT](https://en.wikipedia.org/wiki/Just-in-time_compilation). La JVM remplace le développeur pour pouvoir faire du
 cross plateforme. En effet, ceci est délégué à la JVM d'effectuer les instructions avec l'OS. Elle gère également la
 gestion de la mémoire pour le développeur via un garbage collecteur. Ce dernier va régulièrement examiner la mémoire
@@ -281,7 +281,7 @@ Il est verbeux à utiliser manuellement, ce pourquoi des outils comme Maven, Ant
 - `Collection<E>` définit une collection d'éléments. Elle possède une taille `int size()` et permet la modification
   avec `add(E e)` et `remove(E e)`.
 - `List<E>` définit une collection d'éléments **ordonnés**. Les implémentations les plus utilisées: `ArrayList<E>`
-  et `LinkedList<E>`. La première automatise les tableaux java. La deuxième est une liste chaînée.
+  et `LinkedList<E>`. La première automatise les tableaux Java. La deuxième est une liste chaînée.
 - `Set<E>` définit un set mathématique → une collection d'éléments sans doublons. (Utilisant `equals(Object o)` pour
   effectuer la comparaison).
 
@@ -292,7 +292,7 @@ Il est verbeux à utiliser manuellement, ce pourquoi des outils comme Maven, Ant
 ##### java.util.Optional<T>
 
 Java en 1.8, a rajouté quelques monades comme `Option<T>` et `Function<T, R>` qui permettent d'émuler un peu de
-programmation fonctionnelle en java. (Fonctionne particulièrement bien avec l'API des Streams et Collections).
+programmation fonctionnelle en Java. (Fonctionne particulièrement bien avec l'API des Streams et Collections).
 
 On peut considérer réécrire notre fonction de recherche de cette façon:
 
@@ -397,7 +397,7 @@ public class Examples {
 
 ##### java.util.Arrays
 
-`Arrays` nous donne des fonctions pour travailler avec les tableaux java de manière plus aisée.
+`Arrays` nous donne des fonctions pour travailler avec les tableaux Java de manière plus aisée.
 
 ```java
 public class Examples {
@@ -433,7 +433,7 @@ public class Examples {
 
 ##### java.time.LocalDate et java.time.LocalDateTime
 
-Depuis java 1.8, les dates en Java sont immuables.
+Depuis Java 1.8, les dates en Java sont immuables.
 
 ```java
 public class Examples {
@@ -452,8 +452,8 @@ public class Examples {
 
 ### Concurrence (Multi-threading)
 
-Java comme tous les autres langages, est utilisé pour construire des applications hautes performances. Sa gestion de
-threads et de processus concurrentiels à beaucoup évoluer au cours du temps.
+Java comme tout autre langage, est utilisé pour construire des applications hautes performances. Sa gestion de
+threads et de processus concurrentiels a beaucoup évolué au cours du temps.
 
 #### Threads
 
@@ -484,7 +484,7 @@ public class PrimeThread extends Thread {
 
 Ce code fait ce qu'on lui demande, mais devient peu maintenable dans de grosses applications.
 
-#### Le package java.util.concurrent depuis java 1.5
+#### Le package java.util.concurrent depuis Java 1.5
 
 Dans
 ce [package](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/package-summary.html),
@@ -500,9 +500,8 @@ manière [d'interagir avec SQL](https://docs.oracle.com/en/java/javase/11/docs/a
 
 #### JDBC
 
-Via JDBC, Java peut exécuter toute sorte de tâches SQL.
-Le driver est l'implémentation dans un langage SQL précis utilisé pour communiquer avec la base de données par
-exemple [pgsql driver](https://jdbc.postgresql.org/).
+Via JDBC, Java peut exécuter toutes sortes de tâches SQL. Le driver est l'implémentation dans un langage SQL précis
+utilisé pour communiquer avec la base de données par exemple [pgsql driver](https://jdbc.postgresql.org/).
 
 - `Statement` envoie des actions SQL à la base de données (une requête par exemple).
 - `PreparedStatement` permet d'effectuer des requêtes préparées (éviter les injections par exemple).
@@ -513,26 +512,35 @@ Plus de détails [ici](https://www.baeldung.com/java-jdbc).
 
 ## Java Entreprise Edition (Jakarta EE)
 
-// TODO
+[Jakarta EE](https://en.wikipedia.org/wiki/Jakarta_EE) est un [set spécifications](https://jakarta.ee/specifications/)
+de ce à quoi doit répondre l'expérience de Java pour les entreprises. Ces specs touchent à des features comme le calcul
+distribué ou bien les services web. Cela forme une forme de certifications pour les produits, projets implémentant ces
+specs. Une [liste des produits](https://jakarta.ee/compatibility/) compatible est disponible. Cela se traduit par
+l'utilisation de contrats (Les interfaces :)).
+
+Nous verrons dans le [premier tp](../tp/tp_servlet.md) comment utiliser la spec native de JEE pour effectuer un endpoint
+REST.
+
+Par la suite nous utiliserons [Spring](./spring.md) comme implémentation principale de JEE.
 
 # Quelques outils
 
 ## Lombok
 
-Le projet [Lombok](https://projectlombok.org/) est une librairie java qui permet de réduire un peu de code boilerplate
-de java comme constructeurs, getters, builders.
+Le projet [Lombok](https://projectlombok.org/) est une librairie Java qui aide à rendre le code moins lourd et verbeux
+de Java comme les constructeurs, getters, builders.
 
-- `@Getter` créer les getters de tous les attributs de la classe. (Le même existe pour les `@Setter`).
+- `@Getter` crée les getters de tous les attributs de la classe. (Le même existe pour les `@Setter`).
 - `@AllAgrsConstructor` un constructeur pour tous les attributs.
 - `@NoAgrConstructor` un constructeur sans paramètre.
 - `@RequiredArgsConstructor` un constructeur pour tous les attributs **requis** (aka `final` attributs).
-- `@Builder` créer une inner class `Example.ExampleBuilder` permettant d'avoir un "pattern builder".
-- `@Slf4j` permet d'instancier un logger pour la classe facilement. (Un logger fait des choses très complexes en java).
+- `@Builder` crée une inner class `Example.ExampleBuilder` permettant d'avoir un "pattern builder".
+- `@Slf4j` permet d'instancier un logger pour la classe facilement. (Un logger fait des choses très complexes en Java).
 
 ### Que fait lombok ?
 
 Lombok génère du code via les annotations de Java. Il va au moment de la compilation les remplacer par du code Java
-répondant à ce qui à été décrit. Vous pouvez faire l'expérience vous-même en créant une classe java avec une
+répondant à ce qui a été décrit. Vous pouvez faire l'expérience vous-même en créant une classe Java avec une
 annotation `@Getter` sur un attribut. Lancez la compilation et remarquez que dans le fichier `.class` (l'ouvrir à l'aide
 de `javap` ou bien d'Intellij IDEA) le getter s'y trouve bien.
 
@@ -540,7 +548,7 @@ de `javap` ou bien d'Intellij IDEA) le getter s'y trouve bien.
 
 [Apache Maven](https://maven.apache.org/) est un outil de gestion de projet, en particulier pour la gestion des
 dépendances (via le classpath), du build, du lancement des tests et des versions (JVM, Classes, packages). Un exemple de
-projet maven se trouve dans la partie [spring](./spring.md). Il utilise XML pour décrire les actions à effectuer.
+projet Maven se trouve dans la partie [spring](./spring.md). Il utilise XML pour décrire les actions à effectuer.
 
 ### How does it work ?
 

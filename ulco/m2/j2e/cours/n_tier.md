@@ -2,10 +2,10 @@
 
 En ingénierie du logiciel, les développeurs essayent d'utiliser des standards, des patrons et éléments facilement
 reconnaissables. Avec l'essor de la conception objet, beaucoup d'architectures sont couplées à celui-ci. Dans ce cours,
-nous nous s'intéresserons seulement aux architectures liées aux objets.
+nous nous intéresserons seulement aux architectures liées aux objets.
 
 L'architecture multi-tiers (ou n-tier) est dites client-serveur. On sépare physiquement en plusieurs couches
-l'application. Le terme de 3-Tier est souvent utilisé car les architectures autour du web sont souvent composées de
+l'application. Le terme de 3-Tier est souvent utilisé, car les architectures autour du web sont souvent composées de
 trois couches.
 
 ### Les couches populaires
@@ -52,7 +52,7 @@ les couches.
 
 ## Inconvénients
 
-- Maintenance et la latence s'accroissent avec le nombre de couches.
+- Maintenance et latence s'accroissent avec le nombre de couches.
 - Monitoring et logging peuvent être coûteux et complexe à mettre en place.
 - Ajouter un cache, pour réduire la latence, introduit un état supplémentaire dans l'application.
 
@@ -66,6 +66,6 @@ Il convient également à des applications de bureaux en adaptant les différent
 
 ## Sources:
 
-https://en.wikipedia.org/wiki/Multitier_architecture
-https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/n-tier
-https://dataintensive.net/
+- [Wikipédia](https://en.wikipedia.org/wiki/Multitier_architecture)
+- [Microsoft Azure guide lines](https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/n-tier)
+- Le livre [Designing Data Intensive Application](https://dataintensive.net/)

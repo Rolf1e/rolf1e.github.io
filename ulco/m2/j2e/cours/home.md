@@ -12,3 +12,8 @@
 - JEE implémentation: [Spring](spring.md)
 - ORM: [Hibernate](hibernate.md)
 - Intégration continue avec [Jenkins](jenkins.md)
+
+## TPs et Projet
+
+- [Les servlets](../tp/tp_servlet.md), l'ossature de Spring Rest
+- Projet: votre [n-tier en JEE](../tp/projet.md) !
