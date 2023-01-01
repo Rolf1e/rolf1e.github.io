@@ -2,26 +2,25 @@
 
 En ingénierie du logiciel, les développeurs essayent d'utiliser des standards, des patrons et éléments facilement
 reconnaissables. Avec l'essor de la conception objet, beaucoup d'architectures sont couplées à celui-ci. Dans ce cours,
-on
-s'intéressera seulement à celles-ci.
+nous nous s'intéresserons seulement aux architectures liées aux objets.
 
-L'architecture multi-tiers (ou n-tier) est dites client-serveur dans laquelle on sépare physiquement en
-plusieurs couches la présentation, la transformation et le stockage de la donnée. Le plus couramment on utilise le
-3-tier.
+L'architecture multi-tiers (ou n-tier) est dites client-serveur. On sépare physiquement en plusieurs couches
+l'application. Le terme de 3-Tier est souvent utilisé car les architectures autour du web sont souvent composées de
+trois couches.
 
 ### Les couches populaires
 
-Les couches populaires au sien des systèmes d'informations sont les suivantes:
+Les couches populaires au sein des systèmes d'informations sont les suivantes:
 
-#### Presentation
+#### Présentation
 
-Il correspond à l'interface utilisateur (UI). Il peut être l'utilisateur final avec souvent une UI simplifiée
-(applications) ou alors simplement un contrat entre deux entités, souvent le JSON.
+Cette couche correspond à l'interface utilisateur (UI). Elle peut être l'utilisateur final avec souvent une UI
+simplifiée (applications) ou alors simplement un contrat entre deux entités, souvent le JSON.
 
 #### Application / Business
 
 C'est la couche qui représente un besoin utilisateur. Elle transforme la donnée brute de la couche de données en une
-version qui nous répondant à une règle métier du monde "réel". Elle est là pour nous rappeler que l'informatique reste
+version répondant à une règle métier du monde "réel". Elle est là pour nous rappeler que l'informatique reste
 un outil pour résoudre une problématique. On utilise généralement dans cette couche un ORM afin de lier, en effectuant
 un mapping, notre modèle à notre code objet facilement.
 
@@ -45,23 +44,23 @@ les couches.
 <img src="./images/full_n_tier.png" alt="Schéma n tier"/>
 </details>
 
-## Avantage
+## Avantages
 
-- Mise à l'échelle (caching, changement de modèle)
-- La résilience (un seul composant est impacté en cas de panne)
+- Mise à l'échelle (caching, changement de modèle).
+- La résilience (un seul composant est impacté en cas de panne).
 - La sécurité (authorization, authentication, logging) dans le cas d'applications web.
 
-## Inconvénient
+## Inconvénients
 
-Plus il y a de couches, plus il devient difficile de les maintenir, savoir ce qu'il se passe avec du monitoring et du
-logging est une solution, mais cela peut devenir coûteux et complexe à mettre en place. La latence s'accentue à chaque
-nouvelle couche. L'utilisation de "cache" devient nécessaire, mais introduit un état supplémentaire dans l'application.
+- Maintenance et la latence s'accroissent avec le nombre de couches.
+- Monitoring et logging peuvent être coûteux et complexe à mettre en place.
+- Ajouter un cache, pour réduire la latence, introduit un état supplémentaire dans l'application.
 
 ## Quand l'utiliser ?
 
-Si votre application va être appelée à s'agrandir et changer régulièrement de specs. Il est utilisé sur le web avec des
-applications web. Le front joue le rôle de présentation, l'API REST est la partie business et la source de
-donnée (SGBD ou autre API REST).
+Si votre application est appelée à s'agrandir et changer régulièrement de specs. L'architecture n-tier est utilisée
+sur le web avec des applications web. Le front joue le rôle de présentation, l'API REST est la partie business et la
+source de donnée (SGBD ou autre API REST).
 
 Il convient également à des applications de bureaux en adaptant les différentes couches.
 

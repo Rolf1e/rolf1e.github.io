@@ -1,10 +1,10 @@
 # Java, Un peu d'histoire !
 
 Java est un langage orienté objet "class" inventé par [James Gosling](https://en.wikipedia.org/wiki/James_Gosling)
-chez [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems) en 1996. Aujourd'hui c'est Oracle qui détient
-la licence.
+chez [Sun Microsystems](https://en.wikipedia.org/wiki/Sun_Microsystems) en 1996. La licence est rachetée par Oracle qui
+continue aujourd'hui à maintenir et faire évoluer le langage.
 
-Une version majeure de Java est la 1.8. Sortie en mars 2014 (encore aujourd'hui en LTS et jusqu'en 2030 par Oracle !).
+Une version majeure de Java est la 1.8, sorti en mars 2014 (encore aujourd'hui en LTS et jusqu'en 2030 par Oracle !).
 Elle contient de grandes mises à jour comme l'API des `Streams`, [les fonctions lambdas](https://openjdk.org/jeps/126).
 Une refonte de l'API du temps avec `LocalDate`.
 
@@ -204,7 +204,7 @@ public class ChildPerson extends AbstractClass {
 ### Les interfaces
 
 Les interfaces permettent dans les langages objets de définir des contrats. Cela permet de construire un logiciel
-scalable, maintenable.
+scalable et maintenable.
 
 ```java
 public interface IPerson {
@@ -511,6 +511,10 @@ exemple [pgsql driver](https://jdbc.postgresql.org/).
 
 Plus de détails [ici](https://www.baeldung.com/java-jdbc).
 
+## Java Entreprise Edition (Jakarta EE)
+
+// TODO
+
 # Quelques outils
 
 ## Lombok
@@ -522,7 +526,7 @@ de java comme constructeurs, getters, builders.
 - `@AllAgrsConstructor` un constructeur pour tous les attributs.
 - `@NoAgrConstructor` un constructeur sans paramètre.
 - `@RequiredArgsConstructor` un constructeur pour tous les attributs **requis** (aka `final` attributs).
-- `@Builder` créer une inner class `Example.ExampleBuilder` permettant d'avoir un pattern builder.
+- `@Builder` créer une inner class `Example.ExampleBuilder` permettant d'avoir un "pattern builder".
 - `@Slf4j` permet d'instancier un logger pour la classe facilement. (Un logger fait des choses très complexes en java).
 
 ### Que fait lombok ?
@@ -542,9 +546,9 @@ projet maven se trouve dans la partie [spring](./spring.md). Il utilise XML pour
 
 ```shell
 mvn clean         # détruit le dossier /target avec toutes les .class et autres fichiers utiles à la JVM.
-mvn clean install # Install les dépendances listée dans le pom.xml, lance les tests et la compilation.
-mvn clean test    # lance les tests
-mvn package       # Construit le projet
+mvn clean install # Install les dépendances listée dans le pom.xml, lance la compilation et les tests.
+mvn test          # lance les tests
+mvn package       # Construit le projet pour le release
 
 java -cp target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App # lance le jar de notre application.
 ```
