@@ -10,7 +10,7 @@
 - [Maven, gérant de projet](java.md#maven)
 - [Java EE / Jakarta EE](java.md#java-entreprise-edition--jakarta-ee-)
 - JEE implémentation: [Spring](spring.md)
-- ORM: [Hibernate](hibernate.md)
+- ORM: [Hibernate](spring.md#hibernate)
 - Intégration continue avec [Jenkins](jenkins.md)
 
 ## TPs et Projet
