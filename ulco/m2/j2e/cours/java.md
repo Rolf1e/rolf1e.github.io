@@ -14,6 +14,32 @@ la [Java Virtual Machine](https://en.wikipedia.org/wiki/Java_virtual_machine) vi
 Java existe de deux manières différentes: JDK ou JRE. Le premier contient le compilateur et la JVM, le deuxième
 seulement la JVM.
 
+# Sommaire
+
+- [Les objets](java.md#les-objets--class-)
+- [Enums](java.md#enum)
+- [Static et final](java.md#static-et-final)
+- [Enhanced for-loop](java.md#for-loop)
+- [Gestion d'erreur](java.md#gestion-derreur)
+- [Classe abstraite](java.md#classes-abstraites)
+- [Interface](java.md#les-interfaces)
+- [Composition](java.md#composition)
+- [Le JAR](java.md#le-jar)
+- [La JVM](java.md#la-jvm)
+- [`Collection<E>`](java.md#javautilcollection-e)
+- [`Optional<T>`](java.md#javautiloptional-t)
+- [`Stream<T>`](java.md#javautilstream-e)
+- [`Objects`](java.md#javautilobjects)
+- [`Arrays`](java.md#javautilarrays)
+- [`Collections`](java.md#javautilcollections)
+- [Date and Time](java.md#javatimelocaldate-et-javatimelocaldatetime)
+- [Java IO](java.md#java-inputoutput)
+- [Concurrence](java.md#concurrence--multi-threading-)
+- [JDBC](java.md#jdbc)
+- [JEE](java.md#java-entreprise-edition--jakarta-ee-)
+- [Lombok](java.md#lombok)
+- [Maven](java.md#maven)
+
 # Et beaucoup de code !
 
 #### Les objets (class)
@@ -450,6 +476,61 @@ public class Examples {
 }
 ```
 
+### Java Input/Output
+
+Java possède un système de classes très robustes afin d'accéder à des resources. Nous pouvons
+citer `InputStream`, `OutputStream` (à ne pas confondre avec `Stream`) ou bien `java.sql.Connection`.
+
+Afin de ne pas avoir des fuites de performances il faut gérer ces resources manuellement.
+
+Par exemple, ici pour lire la première ligne d'un fichier.
+
+```java
+public class IOPlayGround {
+
+    static String firstLineOfFile(String path) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(path));
+        try {
+            return br.readLine();
+        } finally {
+            br.close();
+        }
+    }
+}
+```
+
+Il faut appeler la méthode `close()` pour éviter une fuite mémoire. Le soucis est qu'il faut le faire correctement et
+ne pas l'oublier. Pour cela, depuis java 7 il est possible d'utiliser un `try-with-resources`.
+La classe qui doit être managée par Java doit implémenter `AutoCloseable`.
+
+Ici `BufferedReader` rempli le contrat, on peut donc écrire:
+
+```java
+public class IOPlayGround {
+
+    static String firstLineOfFile(String path) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            return br.readLine();
+        }
+    }
+}
+```
+
+Rien ne nous empêche de gérer l'erreur dans ce `try`
+
+```java
+public class IOPlayGround {
+
+    static String firstLineOfFile(String path) {
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            return br.readLine();
+        } catch (IOException e) {
+            // handle 
+        }
+    }
+}
+```
+
 ### Concurrence (Multi-threading)
 
 Java comme tout autre langage, est utilisé pour construire des applications hautes performances. Sa gestion de
@@ -579,3 +660,8 @@ ajouter le driver JDBC pour postgresql.
 - [Intellij IDEA à la rescousse](https://www.jetbrains.com/help/idea/maven-support.html)
 - [Maven et NodeJS](https://github.com/eirslett/frontend-maven-plugin)
 - [Angular application avec Maven](https://medium.com/sparkles-blog/angular-in-the-enterprise-building-angular-apps-through-maven-3ca535152f85)
+
+## Source
+
+- La Java doc
+- Effective Java 3rd Edition de J. Bloch
