@@ -103,11 +103,11 @@ public class HelloWorldConfig {
 @Component
 public class PersonFactory {
     private HatDealer hatDealer;
-    
+
     public PersonFactory(HatDealer hatDealer) {
         this.hatDealer = hatDealer;
     }
-    
+
     public Person newPerson(String name) {
         return new Person(name, hatDealer.dealAHat());
     }
@@ -155,13 +155,108 @@ objets pour pouvoir serializer (ou bien deserializer). Il propose ensuite tout u
 
 ### Hibernate
 
-### Transactions
+[Hibernate](https://hibernate.org/) est un ORM mais aussi une suite d'outils interagissant avec la donnée.
+
+Un Object Relational Mapping est une technique de programmation convertissant le système de type d'un langage en
+utilisant la programmation orientée objet. Cela évite de devoir maintenir la transformation SQL -> Java, de maintenir
+des requêtes avec des `String` magiques. Certain vont plus loin avec des fonctionnalités pour la gestion du modèle de
+données (schéma, migration).
+
+Hibernate est aussi implémentation de l'API Java de persistance (JEE).
 
 ### Spring DATA API, l'ORM
 
+#### Setup with Drivers
+
+#### @Entity - POJO / DO
+
+D'abord, il nous faut une classe (POJO / DO) représentant notre schéma SQL.
+
+```java
+
+@Entity
+@Table(name = "Person")
+@Setter
+@Getter
+@NoArgConstructor
+public class PersonEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "age")
+    private Integer age;
+
+    // Modification fields
+    @Basic
+    @Column(name = "created_at", updatable = false, columnDefinition = "timestamp default current_timestamp")
+    private LocalDateTime createdAt;
+
+    @Basic
+    @Column(name = "updated_at", columnDefinition = "timestamp default current_timestamp on update current_timestamp")
+    private LocalDateTime updatedAt;
+}
+```
+
 #### @Repository - DAO
 
-#### Setup with Drivers
+Il faut maintenant un moyen d'accéder à notre donnée, cela s'appel un DAO.
+
+Avec Spring, il faut faire créer une interface implémentant
+soit [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
+ou
+bien  [`CrudRepository`](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html)
+ces interfaces acceptent deux paramètres
+`T` et `ID`. Le premier est notre entité, le deuxième est le type de la clé primaire.
+
+```java
+
+@Repository
+public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
+}
+```
+
+Notre DAO peut maintenant accéder des méthodes comme `count()`, `save(S entity)`, `find*()`.
+
+Il est possible de définir ces propres méthodes pour accéder notre donnée. Ces méthodes doivent cela dit respecter
+certains critères dans leur signature.
+
+- Le nommage
+- Le type de retour
+- Les paramètres
+
+Cela permet de construire des queries en ne codant que du Java !
+
+```java
+
+@Repository
+public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
+    Optional<PersonEntity> findByName(String name);
+}
+```
+
+[La spécification des repositories](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#repositories)
+
+[Liste de tous les mots clés possible](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#appendix.query.method.subject)
+
+Il est également possible d'utiliser l'annotation `@Query` afin de gérer les queries avec des `String`.
+
+```java
+
+@Repository
+public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
+    @Query("SELECT p FROM Person p WHERE p.age = :age")
+    Optional<Collection<PersonEntity>> findAllByAge(Integer age);
+}
+```
+
+[Tutoriel pour @Query](https://www.baeldung.com/spring-data-jpa-query)
+
+### SQL Relations
 
 ## Spring Security
 

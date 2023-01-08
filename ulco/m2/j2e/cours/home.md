@@ -15,5 +15,5 @@
 
 ## TPs et Projet
 
-- [Les servlets](../tp/tp_servlet.md), l'ossature de Spring Rest
+- [Les servlets](../tp/tp_servlet.md)
 - Projet: votre [n-tier en JEE](../tp/projet.md) !
