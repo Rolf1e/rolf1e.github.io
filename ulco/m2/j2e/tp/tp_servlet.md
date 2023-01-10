@@ -26,7 +26,7 @@ Lancer le server tomcat, ouvrez le lien suivant dans votre
 navigateur `http://localhost:8080/TpServlet_war_exploded/api/hello-world`.
 Vous y trouverez une page blanche avec `Hello World !`.
 
-Note: Si vous obtenez `permission deined` en lançant le serveur. Executer `chmod a+x *.sh` dans le dossier `bin` du
+Note: Si vous obtenez `permission denied` en lançant le serveur. Executer `chmod a+x *.sh` dans le dossier `bin` du
 server tomcat.
 
 Ci-dessous une manière ancienne de créer une servlet.
@@ -57,7 +57,7 @@ devriez voir une page blanche avec `Hello World !`.
 
 ### 4.
 
-Pour la suite du tp nous allons réaliser un petit scaper de reddit.
+Pour la suite du tp nous allons réaliser un petit scraper de reddit.
 Pour le moment nous n'utiliserons pas de base de données. Simplement dans la couche DAO, nous renverrons des listes
 hardcodées de notre donnée.
 
