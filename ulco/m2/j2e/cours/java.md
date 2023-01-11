@@ -317,7 +317,7 @@ Il est verbeux à utiliser manuellement, ce pourquoi des outils comme Maven, Ant
 
 ##### java.util.Optional<T>
 
-Java en 1.8, a rajouté quelques monades comme `Option<T>` et `Function<T, R>` qui permettent d'émuler un peu de
+Java en 1.8, a rajouté quelques monades comme `Optional<T>` et `Function<T, R>` qui permettent d'émuler un peu de
 programmation fonctionnelle en Java. (Fonctionne particulièrement bien avec l'API des Streams et Collections).
 
 On peut considérer réécrire notre fonction de recherche de cette façon:
@@ -329,7 +329,7 @@ public class PersonHolder {
 
     // Constructeur
 
-    public Option<Person> findPerson(final String name) {
+    public Optional<Person> findPerson(final String name) {
         for (var person : persons) {
             if (name.equals(person.getName())) {
                 return Optional.of(person);
@@ -382,7 +382,7 @@ public class PersonHolder {
 
     // Constructeur
 
-    public Option<Person> findPerson(final String name) {
+    public Optional<Person> findPerson(final String name) {
         return Arrays.stream(persons)
                 .filter(person -> name.equals(person.getName()))
                 .findFirst();
