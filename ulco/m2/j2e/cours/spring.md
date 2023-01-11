@@ -144,11 +144,16 @@ public class HelloWorldController {
 }
 ```
 
-Bien qu'il soit possible de retourner directement un type sans passer par [`ResponseEntity`](), il est bonne pratique
-d'utiliser ce dernier. En effet, pour la gestion d'erreur, il possède en API gérant les [codes HTTP]().
+Bien qu'il soit possible de retourner directement un type sans passer
+par [`ResponseEntity`](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html),
+il est bonne pratique
+d'utiliser ce dernier. En effet, pour la gestion d'erreur, il possède en API gérant
+les [codes HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
 
 Java étant un langage avec un typage fort à la compilation, il nous permet de construire une API avec des messages
-typés ! Un projet très connu de parsing en Java s'appelle [Jackson](). Il utilise les constructeurs et accesseurs des
+typés ! Un projet très connu de parsing en Java
+s'appelle [Jackson](https://www.baeldung.com/jackson-object-mapper-tutorial). Il utilise les constructeurs et accesseurs
+des
 objets pour pouvoir serializer (ou bien deserializer). Il propose ensuite tout un panel d'adaptateurs (JSON, XML, ...).
 
 ## Spring DATA
@@ -166,7 +171,74 @@ Hibernate est aussi implémentation de l'API Java de persistance (JEE).
 
 ### Spring DATA API, l'ORM
 
-#### Setup with Drivers
+#### Setup une connexion à une base de données
+
+#### Driver
+
+Nous allons réaliser l'installation et la configuration d'Hibernate à travers Spring.
+Rajouter dans votre `pom.xml` les dépendances suivantes:
+
+```xml
+
+<dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-jpa</artifactId>
+        <version>${spring.version}</version>
+    </dependency>
+
+    <!-- SQL DRIVER -->
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.5.1</version>
+    </dependency>
+</dependencies>
+```
+
+#### Data Source
+
+Configurons maintenant la data source (connexion à la base de données)
+
+##### Avec Yaml
+
+```yaml
+spring:
+  datasource:
+    url: // url de connexion jdbc
+    username: ${USER}
+    password: ${PASSWORD}
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: none
+      naming-startegy: org.hibernate.cfg.ImprovedNamingStrategy
+      dialect: // Dialect lié à notre base de données
+```
+
+##### Avec du Java
+
+Dans une classe de configuration par exemple `DataSourceConfig`, ajouter le `@Bean`. Cette méthode est pratique car,
+elle permet de gérer plusieurs data source en même temps facilement avec un bon nommage de `@Bean`s.
+
+```java
+
+@Configuration
+public class DataSourceConfig {
+    @Bean
+    public DataSource getDataSource() {
+        return DataSourceBuilder.create()
+                .driverClassName("// driver")
+                .url("// jdbc url")
+                .username("")
+                .password("")
+                .build();
+    }
+}
+```
+
+- [Configurer une data source avec Java](https://www.baeldung.com/spring-boot-configure-data-source-programmatic)
+- [Multiple DataSource configuration](https://www.baeldung.com/spring-boot-configure-multiple-datasources)
 
 #### @Entity - POJO / DO
 
@@ -204,14 +276,14 @@ public class PersonEntity {
 
 #### @Repository - DAO
 
-Il faut maintenant un moyen d'accéder à notre donnée, cela s'appel un DAO.
+Il faut maintenant un moyen d'accéder à notre donnée, cela s'appelle un DAO.
 
 Avec Spring, il faut faire créer une interface implémentant
 soit [`JpaRepository`](https://docs.spring.io/spring-data/jpa/docs/current/api/org/springframework/data/jpa/repository/JpaRepository.html)
 ou
 bien  [`CrudRepository`](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/repository/CrudRepository.html)
-ces interfaces acceptent deux paramètres
-`T` et `ID`. Le premier est notre entité, le deuxième est le type de la clé primaire.
+ces interfaces acceptent deux paramètres `T` et `ID`. Le premier est notre entité, le deuxième est le type de la clé
+primaire.
 
 ```java
 
