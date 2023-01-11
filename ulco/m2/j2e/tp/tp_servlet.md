@@ -135,7 +135,8 @@ Si vous êtes en avance et **motivé**, vous pouvez automatiser la manière dont
 sur les liens donnés plus haut !
 
 Pour cela vous pouvez utiliser les [fonctions natives de Java](https://www.baeldung.com/java-http-request) pour faire un
-appel HTTP.
+appel HTTP. Vous pouvez utiliser [Jackson](https://www.baeldung.com/jackson-object-mapper-tutorial) pour effectuer la
+serialization/deserialization.
 
 ## Sources
 
