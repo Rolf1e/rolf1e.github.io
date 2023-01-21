@@ -11,7 +11,7 @@
 [Spring](https://spring.io/projects/spring-framework) est un framework Java pour construire des applications variées.
 Spring est une implémentation de [Jakarta EE](https://jakarta.ee/). Des alternatives comme Jetty, Tomcat.
 
-Il facilite des tâches en java comme le support pour le web, l'accès à la donnée via son ORM, l'envoie d'emails, de SMS,
+Il facilite des tâches en Java comme le support pour le web, l'accès à la donnée via son ORM, l'envoie d'emails, de SMS,
 le scheduling, le caching en
 [s'intégrant](https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html) facilement.
 Il possède également un support pour le langage Kotlin.
@@ -29,6 +29,18 @@ Spring est composé de plusieurs petites briques appelées modules ou "container
 Spring boot est un projet permettant de démarrer facilement une application Spring. Il s'occupe seule de lancer le
 Contexte, les Beans via l'IoC, initier les connexions aux bases de données, mettre à l'écoute les différents endpoints
 si besoin.
+
+Ce morceau de code est à placé à la racine de votre projet, c'est notre super application utilisant Spring Boot !
+
+```java
+
+@SpringBootApplication
+class MySpringApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MySpringApplication.class, args);
+    }
+}
+```
 
 ### Dependency Injection (DI)
 
@@ -117,44 +129,16 @@ public class PersonFactory {
 Par défaut Spring utilise le typage pour résoudre l'injection. Mais il est possible de rencontrer des cas ambigus où
 deux `@Bean`s de même type doivent vivre ensemble. On peut alors utiliser `@Qualifier` pour nommer notre `@Bean`.
 
-## Spring REST
-
-[//]: # (### Servlet, la porte vers le web !)
-
 ### Structurer notre application avec @Service
 
-### @Controller, notre endpoint
+Afin de ranger notre code et ici notre code métier, Spring nous donne une annotation supplémentaire `@Service`. Elle
+désigne un composant, dans lequel la DI est possible (être injecté et/ou recevoir ses attributs par injection).
 
-L'annotation `Controller` permet d'enregistrer en controller auprès de Spring. Il existe une spécification
-`@RestController` qui déclarant un controller REST. L'annotation hérite de `@Component`. Elle accepte en paramètre une
-chaîne de caractères qui définie une racine commune pour les routes que le controller contiendra.
+### Les paramètres
 
-Afin de définir un endpoint dans notre application, il faut utiliser les annotations suivantes.
-`@Mapping`, `@GetMapping`, `@PostMapping`.
-
-```java
-
-@RestController("hello")
-public class HelloWorldController {
-
-    @GetMapping(value = "/world")
-    public ResponseEntity<String> sayHello() {
-        return ResponseEntity.ok("Hello World !");
-    }
-}
-```
-
-Bien qu'il soit possible de retourner directement un type sans passer
-par [`ResponseEntity`](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html),
-il est bonne pratique
-d'utiliser ce dernier. En effet, pour la gestion d'erreur, il possède en API gérant
-les [codes HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
-
-Java étant un langage avec un typage fort à la compilation, il nous permet de construire une API avec des messages
-typés ! Un projet très connu de parsing en Java
-s'appelle [Jackson](https://www.baeldung.com/jackson-object-mapper-tutorial). Il utilise les constructeurs et accesseurs
-des
-objets pour pouvoir serializer (ou bien deserializer). Il propose ensuite tout un panel d'adaptateurs (JSON, XML, ...).
+Vous êtes peut-être habitué à avoir un fichier `.env` ou bien une config `.json`. Java, spécifiquement Maven, a pris une
+autre route avec `.properties` ou plus récemment `.yml`. Dans les dernières versions de Spring, il est possible de
+rajouter un fichier `application.yml` dans le dossier `resources`.
 
 ## Spring DATA
 
@@ -173,7 +157,7 @@ Hibernate est aussi implémentation de l'API Java de persistance (JEE).
 
 #### Setup une connexion à une base de données
 
-#### Driver
+##### Driver
 
 Nous allons réaliser l'installation et la configuration d'Hibernate à travers Spring.
 Rajouter dans votre `pom.xml` les dépendances suivantes:
@@ -196,11 +180,13 @@ Rajouter dans votre `pom.xml` les dépendances suivantes:
 </dependencies>
 ```
 
-#### Data Source
+##### Data Source
 
-Configurons maintenant la data source (connexion à la base de données)
+Configurons maintenant la data source (connexion à la base de données).
 
-##### Avec Yaml
+###### Avec Yaml
+
+Dans notre fichier `application.yml`
 
 ```yaml
 spring:
@@ -216,7 +202,7 @@ spring:
       dialect: // Dialect lié à notre base de données
 ```
 
-##### Avec du Java
+###### Avec du Java
 
 Dans une classe de configuration par exemple `DataSourceConfig`, ajouter le `@Bean`. Cette méthode est pratique car,
 elle permet de gérer plusieurs data source en même temps facilement avec un bon nommage de `@Bean`s.
@@ -330,6 +316,44 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
 
 ### SQL Relations
 
+#### Le mapping
+
+Spring est également capable de gérer les relations SQL entre nos entités !!
+
+## Spring REST
+
+### @Controller, notre endpoint
+
+L'annotation `Controller` permet d'enregistrer en controller auprès de Spring. Il existe une spécification
+`@RestController` qui déclarant un controller REST. L'annotation hérite de `@Component`. Elle accepte en paramètre une
+chaîne de caractères qui définie une racine commune pour les routes que le controller contiendra.
+
+Afin de définir un endpoint dans notre application, il faut utiliser les annotations suivantes.
+`@Mapping`, `@GetMapping`, `@PostMapping`.
+
+```java
+
+@RestController("hello")
+public class HelloWorldController {
+
+    @GetMapping(value = "/world")
+    public ResponseEntity<String> sayHello() {
+        return ResponseEntity.ok("Hello World !");
+    }
+}
+```
+
+Bien qu'il soit possible de retourner directement un type sans passer
+par [`ResponseEntity`](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/ResponseEntity.html),
+il est bonne pratique d'utiliser ce dernier. En effet, pour la gestion d'erreur, il possède en API gérant
+les [codes HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status).
+
+Java étant un langage avec un typage fort à la compilation, il nous permet de construire une API avec des messages
+typés ! Un projet très connu de parsing en Java
+s'appelle [Jackson](https://www.baeldung.com/jackson-object-mapper-tutorial). Il utilise les constructeurs et accesseurs
+des objets pour pouvoir serializer (ou bien deserializer). Il propose ensuite tout un panel d'adaptateurs (JSON,
+XML, ...). Il possède également une manière plus manuelle en utilisant un `ObjetMapper`.
+
 ## Spring Security
 
 ### CORS
@@ -342,7 +366,26 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
 
 [Spring Initilizr](https://start.spring.io/) est un outil permettant de générer des projets spring.
 
+Cet outil est inclus dans intellij à la création de votre projet :) .
+
 Ce qui vient après est bonus :)
+
+### Mettre un peu d'ordre dans tout ça
+
+Il est bon vivre que de ranger correctement ses affaires pour les retrouver. Spring n'échappe pas à cette règle.
+
+Je vous propose l'organisation suivante pour vos futures applications Spring !
+
+```
+fr.ulco.demo
+    - .controllers // Nos points d'entrée - sortie
+    - .services // Notre code métier
+    - .configurations // Pour nos @Configuration, @Bean
+    - .model 
+        - .dto 
+        - .entities 
+        - .dao // Nos @Repository
+```
 
 ### Spring tests
 
