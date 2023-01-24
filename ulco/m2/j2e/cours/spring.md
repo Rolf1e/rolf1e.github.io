@@ -255,7 +255,7 @@ public class PersonEntity {
     private LocalDateTime createdAt;
 
     @Basic
-    @Column(name = "updated_at", columnDefinition = "timestamp default current_timestamp on update current_timestamp")
+    @Column(name = "updated_at", columnDefinition = "timestamp default current_timestamp")
     private LocalDateTime updatedAt;
 }
 ```
