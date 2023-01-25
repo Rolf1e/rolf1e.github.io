@@ -24,24 +24,6 @@ Spring est composé de plusieurs petites briques appelées modules ou "container
 - Web Servlet: MVC, WebSockets, STOMP, ...
 - Integration: REST, Scheduling, Caching, ...
 
-## Spring Boot 2.7.0
-
-Spring boot est un projet permettant de démarrer facilement une application Spring. Il s'occupe seule de lancer le
-Contexte, les Beans via l'IoC, initier les connexions aux bases de données, mettre à l'écoute les différents endpoints
-si besoin.
-
-Ce morceau de code est à placé à la racine de votre projet, c'est notre super application utilisant Spring Boot !
-
-```java
-
-@SpringBootApplication
-class MySpringApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(MySpringApplication.class, args);
-    }
-}
-```
-
 ### Dependency Injection (DI)
 
 [L'Injection de Dépendance](https://en.wikipedia.org/wiki/Dependency_injection) est un patron de conception dans lequel
@@ -89,6 +71,32 @@ effet, même si l'DI est efficace pour réduire les effets de bords, en java sp�
 particulièrement lourd avec beaucoup code boilerplate à rédiger afin de passer et construire les différentes
 dépendances.
 
+## Spring Boot 2.7.0
+
+Spring boot est un projet permettant de démarrer facilement une application Spring. Il s'occupe seule de lancer le
+Contexte, les Beans via l'IoC, initier les connexions aux bases de données, mettre à l'écoute les différents endpoints
+si besoin.
+
+Ce morceau de code est a placé à la racine de votre projet, c'est notre super application utilisant Spring Boot !
+
+```java
+
+@SpringBootApplication
+class MySpringApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(MySpringApplication.class, args);
+    }
+}
+```
+
+Cette annotation `@SpringBootApplication` fait les choses suivantes:
+
+- `@Configuration`: Tag la classe comme source de définition pour les `@Bean`s pour le Context.
+- `@EnableAutoConfiguration`: Dis à Spring Boot de commencer à ajouter les `Bean`s en fonctions des paramètres du
+  classpath, d'autres `@Bean`s et des `properties`.
+- `@ComponentScan`: Dis à Spring de chercher les `@Component`s, `@Configuration`s, `@Service`s, `@Controller`s
+  et `@Repository`s dans le package courant.
+
 ### Le Context et ses @Configuration et ses @Bean
 
 Afin de mettre en place ces deux patrons, Spring utilise des notions comme le Context. Le Context de Spring pour se
@@ -128,11 +136,6 @@ public class PersonFactory {
 
 Par défaut Spring utilise le typage pour résoudre l'injection. Mais il est possible de rencontrer des cas ambigus où
 deux `@Bean`s de même type doivent vivre ensemble. On peut alors utiliser `@Qualifier` pour nommer notre `@Bean`.
-
-### Structurer notre application avec @Service
-
-Afin de ranger notre code et ici notre code métier, Spring nous donne une annotation supplémentaire `@Service`. Elle
-désigne un composant, dans lequel la DI est possible (être injecté et/ou recevoir ses attributs par injection).
 
 ### Les paramètres
 
@@ -233,7 +236,7 @@ D'abord, il nous faut une classe (POJO / DO) représentant notre schéma SQL.
 ```java
 
 @Entity
-@Table(name = "Person")
+@Table(name = "person")
 @Setter
 @Getter
 @NoArgConstructor
@@ -319,6 +322,86 @@ public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
 #### Le mapping
 
 Spring est également capable de gérer les relations SQL entre nos entités !!
+
+Pour cela, il existe encore des supers annotations ! (Oui, encore !).
+
+- `@OneToOne`
+- `@OneToMany` et `@ManyToOne`
+- `@ManyToMany`
+
+On peut par exemple rajouter une adresse à notre personne.
+
+![Relation SQL](./images/sql_relations.png)
+
+```java
+
+@Entity
+@Table(name = "person")
+@Setter
+@Getter
+@NoArgConstructor
+public class AddressEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(nullable = false)
+    private String location;
+
+    @OneToMany(mappedBy = "address")
+    private Collection<PersonEntity> persons;
+
+}
+
+@Entity
+@Table(name = "person")
+@Setter
+@Getter
+@NoArgConstructor
+public class PersonEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @ManyToOne
+    @Column(name = "address_id")
+    private AddressEntity address;
+
+}
+```
+
+L'avantage est que par la suite, nous sommes capable d'écrire du code comme suit
+
+```java
+
+public class AddressService {
+    private AddressRepository addressRepository;
+    private PersonRepository personRepository;
+
+    public Collection<String> findPersonAtAddress(String address) {
+        return this.addressRepository.findByName(address)
+                .getPersons() // Collection<PersonEntity>
+                .stream()
+                .map(PersonEntity::getName)
+                .collect(Collectors.toList());
+    }
+
+    public String findAddressOfPerson(String person) {
+        return this.personRepository.findByName(person)
+                .getAddress() // AddressEntity
+                .getName();
+    }
+}
+```
+
+Nous effectuons des requêtes SQL en écrivant que du Java !
+
+[Petit tutoriel](https://www.baeldung.com/spring-data-rest-relationships)
 
 ## Spring REST
 
