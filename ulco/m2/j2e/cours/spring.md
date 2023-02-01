@@ -311,11 +311,48 @@ Il est également possible d'utiliser l'annotation `@Query` afin de gérer les q
 @Repository
 public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
     @Query("SELECT p FROM Person p WHERE p.age = :age")
-    Optional<Collection<PersonEntity>> findAllByAge(Integer age);
+    Collection<PersonEntity> findAllByAge(@Param("age") Integer age);
 }
 ```
 
 [Tutoriel pour @Query](https://www.baeldung.com/spring-data-jpa-query)
+
+### Persistence
+
+L'API nous permet également de persister notre données facilement. Nous pouvons utiliser notre repository pour cela.
+
+```java
+
+@Repository
+public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
+}
+
+public class PersonService {
+    private final PersonRepository personRepository;
+
+    public void registerNewPerson(PeronEntity person) {
+        personRepository.save(person);
+    }
+
+}
+```
+
+Ce morceau de code peut faire des choses très poussées car, en fonction des attributs de l'objet entité donné, l'API
+effectuera soit un `INSERT` ou alors un `UPDATE`.
+
+Ou alors en utilisant `@Query` et `@Modifying`, nous pouvons controller ce comportement.
+
+```java
+
+@Repository
+public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
+
+    @Modifying
+    @Query("update Person p set p.age = :age where p.name = :name")
+    int updateUserSetStatusForName(@Param("name") String name, @Param("age") Integer age);
+
+}
+```
 
 ### SQL Relations
 
