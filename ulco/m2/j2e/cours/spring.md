@@ -201,7 +201,7 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: none
-      naming-startegy: org.hibernate.cfg.ImprovedNamingStrategy
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
       dialect: // Dialect lié à notre base de données
 ```
 
