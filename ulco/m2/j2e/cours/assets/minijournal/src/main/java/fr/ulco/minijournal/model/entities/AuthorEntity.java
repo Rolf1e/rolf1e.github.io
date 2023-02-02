@@ -22,7 +22,12 @@ public class AuthorEntity {
     private String name;
 
     // Relations
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany()
+    @JoinTable(
+            name = "authors_articles",
+            joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "article_id", referencedColumnName = "id")
+    )
     private Collection<ArticleEntity> articles;
 
 }

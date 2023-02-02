@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DataBaseConfig {
+public class ServicesConfig {
 
     @Bean
     public AuthorService authorService(final AuthorRepository authorRepository) {

@@ -1,6 +1,6 @@
 package fr.ulco.minijournal;
 
-import fr.ulco.minijournal.configurations.DataBaseConfig;
+import fr.ulco.minijournal.configurations.ServicesConfig;
 import fr.ulco.minijournal.services.AuthorService;
 import fr.ulco.minijournal.utils.TestUnitJpaConfig;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@ContextConfiguration(classes = {TestUnitJpaConfig.class})
+@ContextConfiguration(classes = {TestUnitJpaConfig.class, ServicesConfig.class})
 public class AuthorServiceIntegrationTest {
 
     @Autowired

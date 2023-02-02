@@ -25,6 +25,7 @@ public class TestUnitJpaConfig {
     static final String BASE_PACKAGE_DAO = "fr.ulco.minijournal.model.dao";
 
     static final String BASE_PACKAGE_ENTITIES = "fr.ulco.minijournal.model.entities";
+
     @Autowired
     private Environment env;
 
@@ -47,10 +48,8 @@ public class TestUnitJpaConfig {
     }
 
     @Bean
-    JpaTransactionManager transactionManager(final EntityManagerFactory entityManagerFactory) {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory);
-        return transactionManager;
+    public JpaTransactionManager transactionManager(final EntityManagerFactory entityManagerFactory) {
+        return new JpaTransactionManager(entityManagerFactory);
     }
 
 }

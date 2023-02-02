@@ -26,12 +26,7 @@ public class ArticleEntity {
     private String content;
 
     // Relations
-    @ManyToMany
-    @JoinTable(
-            name = "authors_articles",
-            joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "article_id", referencedColumnName = "id")
-    )
+    @ManyToMany(mappedBy = "articles")
     private Collection<AuthorEntity> authors;
 
     // Modification fields

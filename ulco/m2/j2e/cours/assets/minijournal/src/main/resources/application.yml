@@ -4,8 +4,11 @@ spring:
     username: username
     password: password
   jpa:
-    show-sql: true # Pour afficher les requêtes SQL dans la console
+    show-sql: true # Pour afficher les requï¿½tes SQL dans la console
     hibernate:
-      ddl-auto: none # Pour que Spring créer le schéma en lançant les migrations
-      naming-startegy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: none # Pour que Spring crï¿½er le schï¿½ma en lanï¿½ant les migrations
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
       dialect: org.hibernate.dialect.PostgreSQLDialect
+
+springdoc:
+  swagger-ui.path: /swagger-ui.html

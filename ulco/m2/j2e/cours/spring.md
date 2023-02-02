@@ -474,6 +474,31 @@ s'appelle [Jackson](https://www.baeldung.com/jackson-object-mapper-tutorial). Il
 des objets pour pouvoir serializer (ou bien deserializer). Il propose ensuite tout un panel d'adaptateurs (JSON,
 XML, ...). Il possède également une manière plus manuelle en utilisant un `ObjetMapper`.
 
+### Open API (Swagger)
+
+Il est possible de générer un swagger avec Open API. Cela permet de facilement partager les specs de l'API avec d'autres
+équipes.
+
+```xml
+
+<dependency>
+    <groupId>org.springdoc</groupId>
+    <artifactId>springdoc-openapi-ui</artifactId>
+    <version>${spring.openapi.version}</version>
+</dependency>
+```
+
+Vous pouvez configurer l'endroit où sera exposé le swagger avec ce paramètres.
+
+```yml
+springdoc:
+  swagger-ui.path: /swagger-ui.html
+```
+
+- [La documenetation officiel](https://springdoc.org/v2/) il faut utiliser la version `/v2` pour une version `3.x.x` de
+  Spring Boot.
+- [Tutoriel Baeldung](https://www.baeldung.com/spring-rest-openapi-documentation)
+
 ## Spring Security
 
 ### CORS
