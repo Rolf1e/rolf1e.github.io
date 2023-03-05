@@ -510,8 +510,10 @@ Vous pouvez configurer l'endroit où sera exposé le swagger avec ce paramètres
 
 ```yml
 springdoc:
-  swagger-ui.path: /swagger-ui.html
+  swagger-ui.path: /docs
 ```
+
+En occurrence, ici : http://localhost:8080/docs
 
 - [La documenetation officiel](https://springdoc.org/v2/) il faut utiliser la version `/v2` pour une version `3.x.x` de
   Spring Boot.
