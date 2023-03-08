@@ -515,7 +515,7 @@ springdoc:
 
 En occurrence, ici : http://localhost:8080/docs
 
-- [La documenetation officiel](https://springdoc.org/v2/) il faut utiliser la version `/v2` pour une version `3.x.x` de
+- [La documentation officielle](https://springdoc.org/v2/) il faut utiliser la version `/v2` pour une version `3.x.x` de
   Spring Boot.
 - [Tutoriel Baeldung](https://www.baeldung.com/spring-rest-openapi-documentation)
 

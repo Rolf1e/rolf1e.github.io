@@ -19,6 +19,9 @@ public class MinijournalApplication {
         return (String[] args) -> {
             authorService.findNames()
                     .forEach(System.out::println);
+
+            authorService.findArticlesByName("Tigran")
+                    .forEach(article -> System.out.println(article.getTitle()));
         };
     }
 

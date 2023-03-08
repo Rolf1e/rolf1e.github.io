@@ -22,7 +22,7 @@ public class AuthorEntity {
     private String name;
 
     // Relations
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "authors_articles",
             joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
