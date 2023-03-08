@@ -696,6 +696,99 @@ fr.ulco.demo
 
 ### Spring tests
 
+Pour effectuer des tests d'intégration, Spring propose une suite d'outils permettant de manipuler le `Context`.
+
+Il nous faut ces dépendances:
+
+```xml
+
+<dependencies>
+    <!-- SPRING TEST -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-test</artifactId>
+    </dependency>
+
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>2.1.214</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+L'annotation `@TestConfiguration` permet de définir une configuration disponible seulement dans les tests.
+
+Ci-dessous un exemple pour effectuer un appel REST sur notre endpoint `/authors`. Ici, est utilisé la classe `MockMvc`,
+qui permet d'interagir avec les endpoints.
+
+Pour rendre le test plus facile, la couche de la base de données est `mocked` (émulée) via une librairie Mockito.
+
+Il est possible d'avoir une base de données en mémoire pour effectuer des tests e2e. La base H2 est un bon candidat pour
+ce genre de besoins !
+
+```java
+
+@SpringBootTest
+@AutoConfigureMockMvc
+@RunWith(SpringRunner.class)
+public class AuthorsControllerTest {
+
+    @Autowired
+    private MockMvc mvc;
+
+    @Mock
+    private AuthorRepository authorRepository;
+
+    @InjectMocks
+    private AuthorController controller;
+
+
+    @Test
+    public void shouldFindAuthors() throws Exception {
+        final var tigran = new AuthorEntity();
+        tigran.setName("Tigran");
+
+        final var arthur = new AuthorEntity();
+        arthur.setName("Arthur");
+        when(authorRepository.findAll())
+                .thenReturn(Arrays.asList(tigran, arthur));
+
+
+        final var basicPayload = Base64.getEncoder()
+                .encodeToString("admin:admin".getBytes(StandardCharsets.UTF_8));
+        final var request = MockMvcRequestBuilders.get("/authors")
+                .header("Authorization", "Basic " + basicPayload);
+        mvc.perform(request)
+                .andExpect(status().is2xxSuccessful())
+                .andExpect(content().json("[\"Tigran\", \"Arthur\"]"));
+
+    }
+}
+```
+
+Notez l'utilisation de l'annotation `@SpringBootTest`. Celle-ci démarre une application entière. Mais il est possible de
+lancer seulement certains modules en fonction des besoins. Avec par exemple `@DataJpaTest` pour la couche de
+données. `@WebMvcTest` pour les controllers et services.
+
+Les assertions sont faites avec `Junit` via l'API `jupiter.Assertions` ou alors Spring dans le cas du mvc (
+MockMvcRequestBuilders API).
+
+[Baeldung tutorial](https://www.baeldung.com/spring-boot-testing)
+
 ### Caching avec Guava
 
 ### QueryBuilder, le dessous de la mécanique
