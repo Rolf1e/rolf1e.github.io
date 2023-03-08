@@ -499,14 +499,21 @@ Il est possible de générer un swagger avec Open API. Cela permet de facilement
 
 ```xml
 
-<dependency>
-    <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-ui</artifactId>
-    <version>${spring.openapi.version}</version>
-</dependency>
+<dependencies>
+    <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-ui</artifactId>
+        <version>2.0.2</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+</dependencies>
 ```
 
-Vous pouvez configurer l'endroit où sera exposé le swagger avec ce paramètres.
+Vous pouvez configurer l'endroit où sera exposé le swagger avec ce paramètre.
 
 ```yml
 springdoc:
@@ -528,15 +535,18 @@ Spring possède une couche d'authentification. Grâce à SpringBoot, il n'y a qu
 Il faut ajouter cette dépendance à notre pom.xml.
 
 ```xml
-        <!-- SPRING SECURITY (REST) -->
-<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-web</artifactId>
-</dependency>
-<dependency>
-<groupId>org.springframework.security</groupId>
-<artifactId>spring-security-config</artifactId>
-</dependency>
+
+<dependencies>
+    <!-- SPRING SECURITY (REST) -->
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-web</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.security</groupId>
+        <artifactId>spring-security-config</artifactId>
+    </dependency>
+</dependencies>
 ```
 
 En ajoutant ces deux lignes, si on relance l'application Spring, elle démarre avec le message suivant.
