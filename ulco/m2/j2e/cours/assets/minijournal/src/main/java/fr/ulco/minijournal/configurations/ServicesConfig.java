@@ -10,6 +10,6 @@ public class ServicesConfig {
 
     @Bean
     public AuthorService authorService(final AuthorRepository authorRepository) {
-        return AuthorService.create(authorRepository);
+        return new AuthorService(authorRepository);
     }
 }
