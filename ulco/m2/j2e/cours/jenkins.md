@@ -13,3 +13,6 @@ En modifiant le chemin de jenkins_home vers un chemin aproprié, vous devriez po
 Remplissez ensuite les champs nécessaires à la création d'un utilisateur jenkins.
 
 Vous obtenez ensuite ![jenkins main page](./images/jenkins_hub.png)
+
+Vous devez pouvoir maintenant créer un job qui compile votre projet depuis votre repo
+git. [Jenkins maven app](https://www.jenkins.io/doc/tutorials/build-a-java-app-with-maven/)
