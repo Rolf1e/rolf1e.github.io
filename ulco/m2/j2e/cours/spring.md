@@ -833,4 +833,103 @@ Cache<Key, Value> cache=CacheBuilder.newBuilder()
 
 Cela s'utilise comme une `Map<K,V>` Java par la suite !
 
-### QueryBuilder, le dessous de la mécanique
+#### Clean e2e tests with h2 database
+
+D'abord les configurations, il nous faut d'abord configurer la `DataSource` pour que Spring puisse l'instancier.
+
+```yaml
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+  hibernate:
+    ddl-auto: none
+  sql:
+    init:
+      mode: embedded
+```
+
+Nous sommes également capable de gérer le schéma de notre base de données et de l'initialiser avec des données.
+
+![h2 test set up](./images/h2_test.png)
+
+Ensuite, il faut créer les `Bean`s nécessaires:
+
+```java
+
+@TestConfiguration
+@EnableJpaRepositories(basePackages = "fr.ulco.minijournal.model.dao")
+// packages where Spring is looking for our Repositories
+@TestPropertySource(locations = "classpath:./application-test.yml") // Config of the data source
+@EnableTransactionManagement
+public class DatabaseConfig {
+
+    @Autowired
+    private Environment env;
+
+    @Bean
+    public DataSource dataSource() {
+        final var dataSource = new DriverManagerDataSource();
+
+        dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
+        dataSource.setUrl(env.getProperty("spring.datasource.url"));
+        dataSource.setUsername(env.getProperty("spring.datasource.username"));
+        dataSource.setPassword(env.getProperty("spring.datasource.password"));
+
+        return dataSource;
+    }
+}
+```
+
+Enfin, nous pouvons attaquer notre test. Il faut bien veiller à indiquer à Spring notre classe de configurations. Ainsi
+que lui demander d'utiliser le profil "test", sinon il va se lancer avec le profil par défaut et n'utilisera pas le
+fichier `application-test.yml`.
+
+```java
+
+@ActiveProfiles("test")
+@SpringBootTest
+@AutoConfigureMockMvc
+@ContextConfiguration(classes = {DatabaseConfig.class})
+@RunWith(SpringRunner.class)
+public class InMemoryDBTest {
+
+    @Autowired
+    private MockMvc mvc;
+
+    private final ObjectMapper mapper = new ObjectMapper();
+
+    @Order(1)
+    @Test
+    public void shouldCreateNewAuthor() throws Exception {
+        final var content = new NewAuthorDTO("Michel");
+
+        final var request = MockMvcRequestBuilders.post(Routes.CREATE_AUTHOR)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(mapper.writeValueAsString(content))
+                .header("Authorization", "Basic " + AuthUtils.basicPayload);
+
+        mvc.perform(request)
+                .andExpect(status().isCreated())
+                .andExpect(header().exists("Location"));
+    }
+
+    @Order(2)
+    @Test
+    public void shouldFindNewCreatedUser() throws Exception {
+        final var request = MockMvcRequestBuilders.get(Routes.GET_AUTHORS_DETAILS.replace("{id}", "3"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .header("Authorization", "Basic " + AuthUtils.basicPayload);
+
+        mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(content().json("{\"name\": \"Michel\"}"));
+    }
+
+}
+
+```

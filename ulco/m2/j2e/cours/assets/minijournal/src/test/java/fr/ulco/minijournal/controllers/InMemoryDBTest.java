@@ -1,9 +1,7 @@
 package fr.ulco.minijournal.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.ulco.minijournal.DatabaseConfig;
-import fr.ulco.minijournal.model.dto.in.AuthorSearchDTO;
 import fr.ulco.minijournal.model.dto.in.NewAuthorDTO;
 import org.junit.Test;
 import org.junit.jupiter.api.Order;
