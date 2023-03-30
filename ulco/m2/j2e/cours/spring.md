@@ -502,7 +502,7 @@ Il est possible de générer un swagger avec Open API. Cela permet de facilement
 <dependencies>
     <dependency>
         <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-ui</artifactId>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
         <version>2.0.2</version>
     </dependency>
 
