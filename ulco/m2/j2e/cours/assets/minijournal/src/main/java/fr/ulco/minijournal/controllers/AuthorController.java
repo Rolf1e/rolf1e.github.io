@@ -3,7 +3,7 @@ package fr.ulco.minijournal.controllers;
 import fr.ulco.minijournal.model.dto.in.AuthorSearchDTO;
 import fr.ulco.minijournal.model.dto.in.NewAuthorDTO;
 import fr.ulco.minijournal.model.dto.out.AuthorDTO;
-import fr.ulco.minijournal.services.AuthorService;
+import fr.ulco.minijournal.services.SQLAuthorService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import java.util.Collection;
 @RestController
 @RequiredArgsConstructor
 public class AuthorController {
-    private final AuthorService authorService;
+    private final SQLAuthorService authorService;
 
     @GetMapping(Routes.GET_AUTHORS)
     public ResponseEntity<Collection<String>> getAuthors() {
@@ -37,8 +37,7 @@ public class AuthorController {
     @PostMapping(Routes.POST_AUTHORS)
     public ResponseEntity<AuthorDTO> postAuthorDetails(@RequestBody final AuthorSearchDTO search) {
         return authorService.findByName(search.getName())
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .fold(e -> ResponseEntity.notFound().build(), ResponseEntity::ok);
     }
 
     @PostMapping(Routes.CREATE_AUTHOR)
