@@ -7,7 +7,7 @@ Seul ou par groupe de deux.
 
 ### Rendu
 
-Le minimum:
+Le minimum: (12 points)
 
 - Le schéma de votre infrastructure n-tier
 - Une base de données avec au moins deux tables (On ne compte pas les tables de jointures). Avec une ou des relations.
@@ -18,7 +18,7 @@ Le minimum:
 - Une API utilisant JSON et Spring REST.
 - La partie front qui appelle l'API.
 
-Ce qui peut être ajouté:
+Ce qui peut être ajouté: (8 points)
 
 - Une suite de tests Spring.
 - Une web socket.

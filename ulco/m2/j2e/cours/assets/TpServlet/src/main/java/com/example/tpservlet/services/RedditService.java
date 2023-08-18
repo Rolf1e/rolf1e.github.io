@@ -1,8 +1,10 @@
 package com.example.tpservlet.services;
 
+import com.example.tpservlet.model.dao.HttpRedditDAO;
+import com.example.tpservlet.model.dao.RedditDAO;
 import com.example.tpservlet.model.dto.PostDTO;
 import com.example.tpservlet.model.dto.RedditDTO;
-import com.example.tpservlet.model.dao.RedditRepo;
+import com.example.tpservlet.model.dao.MockedRedditDAO;
 import com.example.tpservlet.model.entity.PostEntity;
 import com.example.tpservlet.model.entity.SubRedditEntity;
 
@@ -13,10 +15,11 @@ import java.util.stream.Collectors;
 
 public class RedditService {
 
-    private final RedditRepo redditRepo;
+    private final RedditDAO redditRepo;
 
     public RedditService() {
-        this.redditRepo = new RedditRepo();
+//        this.redditRepo = new MockedRedditDAO();
+        this.redditRepo = new HttpRedditDAO();
     }
 
     public Collection<RedditDTO> getSubReddits() {

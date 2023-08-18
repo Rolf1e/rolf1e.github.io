@@ -29,29 +29,6 @@ Vous y trouverez une page blanche avec `Hello World !`.
 Note: Si vous obtenez `permission denied` en lançant le serveur. Executer `chmod a+x *.sh` dans le dossier `bin` du
 server tomcat.
 
-Ci-dessous une manière ancienne de créer une servlet.
-
-```java
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
-
-import java.io.IOException;
-
-@WebServlet(name = "HelloWorld", value = "/HelloWorld")
-public class HelloWorld extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().append("Hello World !");
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-}
-```
-
 Démarrer le serveur tomcat et se rendre sur ce lien `http://localhost:8080/tp_servlet_war_exploded/HelloWorld`. Vous
 devriez voir une page blanche avec `Hello World !`.
 
@@ -134,7 +111,7 @@ public class Example {
 Si vous êtes en avance et **motivé**, vous pouvez automatiser la manière dont la donnée est entrée avec un appel HTTP
 sur les liens donnés plus haut !
 
-Pour cela vous pouvez utiliser les [fonctions natives de Java](https://www.baeldung.com/java-http-request) pour faire un
+Pour cela vous pouvez utiliser les [fonctions natives de Java](https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html) pour faire un
 appel HTTP. Vous pouvez utiliser [Jackson](https://www.baeldung.com/jackson-object-mapper-tutorial) pour effectuer la
 serialization/deserialization.
 
@@ -142,3 +119,27 @@ serialization/deserialization.
 
 [Jetbrains tutorial](https://www.jetbrains.com/idea/guide/tutorials/working-with-apache-tomcat/)
 [Le TP de Max Devulder](https://gitlab.com/ulco-jee/javaquarium/-/wikis/sujet%20TP)
+
+Ci-dessous une manière ancienne de créer une servlet.
+
+```java
+import jakarta.servlet.*;
+import jakarta.servlet.http.*;
+import jakarta.servlet.annotation.*;
+
+import java.io.IOException;
+
+@WebServlet(name = "HelloWorld", value = "/HelloWorld")
+public class HelloWorld extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.getWriter().append("Hello World !");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+}
+```
+

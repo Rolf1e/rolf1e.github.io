@@ -591,6 +591,57 @@ utilisé pour communiquer avec la base de données par exemple [pgsql driver](ht
 
 Plus de détails [ici](https://www.baeldung.com/java-jdbc).
 
+#### Java net
+
+Java possède la capacité de pouvoir faire des appels HTTP nativement dans son API. En voici un exemple ! On utilise ici
+Jackson pour simplfier la désérialisation dans un objet Java.
+
+```java
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class JavaNet {
+
+    @JsonSerialize
+    record GithubProfile(
+            String login,
+            Long id,
+            String name,
+            String company,
+            String location,
+            String bio,
+            Integer followers,
+            Integer following) {
+    }
+
+
+    public static void main(String[] args) throws Exception {
+        final var request = HttpRequest.newBuilder(URI.create("https://api.github.com/users/rolf1e"))
+                .GET()
+                .build();
+
+        final var response = HttpClient.newHttpClient()
+                .send(request, HttpResponse.BodyHandlers.ofString());
+        final var mapper = new ObjectMapper()
+                .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+
+        if (200 == response.statusCode()) {
+            final var profile = mapper.readValue(response.body(), GithubProfile.class);
+            System.out.println(profile);
+        } else {
+            throw new Exception("Failed to fetch github profile with status " + response.statusCode() + " " + response.body());
+        }
+    }
+}
+```
+
 ## Java Entreprise Edition (Jakarta EE)
 
 [Jakarta EE](https://en.wikipedia.org/wiki/Jakarta_EE) est un [set spécifications](https://jakarta.ee/specifications/)
@@ -599,7 +650,7 @@ distribué ou bien les services web. Cela forme une forme de certifications pour
 specs. Une [liste des produits](https://jakarta.ee/compatibility/) compatible est disponible. Cela se traduit par
 l'utilisation de contrats (Les interfaces :)).
 
-Nous verrons dans le [premier tp](../tp/tp_servlet.md) comment utiliser la spec native de JEE pour effectuer un endpoint
+Nous verrons dans le [premier tp](../tp/tp_1.md) comment utiliser la spec native de JEE pour effectuer un endpoint
 REST.
 
 Par la suite nous utiliserons [Spring](./spring.md) comme implémentation principale de JEE.
