@@ -116,7 +116,7 @@ class PlayGround {
 
 <details> 
 
-<summary> 4. Groupez ces livres par noms d'auteur.<summary>
+<summary> 4. Groupez ces livres par noms d'auteur.</summary>
 
 ### Réponse
 
