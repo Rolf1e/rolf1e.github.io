@@ -22,7 +22,8 @@ simplifiée (applications) ou alors simplement un contrat entre deux entités, s
 C'est la couche qui représente un besoin utilisateur. Elle transforme la donnée brute de la couche de données en une
 version répondant à une règle métier du monde "réel". Elle est là pour nous rappeler que l'informatique reste
 un outil pour résoudre une problématique. On utilise généralement dans cette couche un ORM afin de lier, en effectuant
-un mapping, notre modèle à notre code objet facilement.
+un mapping, notre modèle à notre code objet facilement. Cette couche s'occupe également de gérer les erreurs, elle est
+capable d'appliquer la règle métier et donc d'infirmer certaine requêtes.
 
 #### Data
 
