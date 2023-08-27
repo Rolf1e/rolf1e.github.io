@@ -15,5 +15,6 @@
 
 ## TPs et Projet
 
+- [TP Java](../tp/tp_java.md)
 - [Les servlets](../tp/tp_1.md)
 - Projet: votre [n-tier en JEE](../tp/projet.md) !
