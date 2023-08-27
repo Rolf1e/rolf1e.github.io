@@ -195,6 +195,13 @@ public class PersonHolder {
 }
 ```
 
+Il existe deux classes d'erreurs, les `checked` et `unchecked` exceptions. La première se construit en héritant
+de `Exception`, la seconde `RuntimeException`. La différence fondamentale est qu'il est obligatoire de gérer
+une `checked` exception (soit avec `throws` soit `try {} catch {}`). Sémantiquement elles ont une différence, d'après J.
+Bosh dans Effective Jave 3rd edition, une exception `checked` est faite pour les erreurs dès quelles on peut "recover" (
+ex:  l'ouverture d'un fichier). Les `unchecked` exceptions sont là pour gérer les erreurs de programmation, le client
+qui utilise mal l'API. (ex: accéder un index invalid dans une `List<T>` java).
+
 ## Héritage
 
 ### Classes abstraites
@@ -401,6 +408,10 @@ public class PersonHolder {
     }
 }
 ```
+
+Cela dit, les streams limitent l'utilisation des `checked exceptions` de Java. Vous ne pourrez utiliser que des
+exceptions héritant de `RuntimeExcpetion`. Pour avoir des `checked exceptions`, il vaut mieux utiliser complétement le
+functional en utilisant une monade comme `Either[L, R]`.
 
 #### Some utilities classes
 

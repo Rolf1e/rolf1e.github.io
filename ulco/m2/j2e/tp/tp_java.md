@@ -1,20 +1,19 @@
-# TP Java  
+# TP Java
 
 Le but de ce tp de Java est de se familiariser avec l'API de Java par l'exemple.
 
 Vous allez pour cela écrire plusieurs snippets de code répondant à des cas d'utilisations. Vous pouvez utiliser JShell
 ou bien une simple classe Java avec une méthode `main`.
 
-
 ## Cas d'utilisations:
 
 ### Avec l'api des streams java
 
+1. Construire la liste des nombres entre 0 et 15
+
 <details> 
 
-<summary> 1. Construire la liste des nombres entre 0 et 15 </summary>
-
-### Réponse
+<summary> Réponse </summary>
 
 ```java
 
@@ -26,8 +25,8 @@ class PlayGround {
 
     static List<Integer> withAdvanceStreamApi() {
         return Stream.iterate(0, n -> n + 1)
-            .limit(16)
-            .toList();
+                .limit(16)
+                .toList();
     }
 }
 
@@ -35,11 +34,10 @@ class PlayGround {
 
 </details> 
 
+2. A partir de la liste précédente, multiplier tous ses éléments par deux puis diviser les par trois
+
 <details> 
-
-<summary> 2. A partir de la liste précédente, multiplier tous ses éléments par deux puis diviser les par trois </summary>
-
-### Réponse
+<summary> Réponse </summary>
 
 ```java
 
@@ -47,19 +45,19 @@ class PlayGround {
 
     static List<Integer> withTwoSteps() {
         return Stream.iterate(0, n -> n + 1)
-            .limit(16)
-            .map(n -> n * 2) 
-            .map(n -> n / 3)
-            .toList();
+                .limit(16)
+                .map(n -> n * 2)
+                .map(n -> n / 3)
+                .toList();
     }
 
     // Little trick here, it does not change performance wise, since streams are lazy
 
     static List<Integer> withOneStep() {
         return Stream.iterate(0, n -> n + 1)
-            .limit(16)
-            .map(PlayGround::computation) 
-            .toList();
+                .limit(16)
+                .map(PlayGround::computation)
+                .toList();
     }
 
 
@@ -72,31 +70,31 @@ class PlayGround {
 
 </details> 
 
+3. Vous avez en entrée une liste de personnes, nous cherchons à filtrer les adultes avec un chapeau.
+
 <details> 
-
-<summary> 3. Vous avez en entrée une liste de personnes, nous cherchons à filtrer les adultes avec un chapeau. </summary>
-
-### Réponse
+<summary> Réponse </summary>
 
 ```java
 
 class PlayGround {
 
     static record Person(
-        String name,
-        Integer age,
-        Boolean hat
-    ) {}
+            String name,
+            Integer age,
+            Boolean hat
+    ) {
+    }
 
     static final int LEGAL_ADULT_AGE = 18;
 
     static Collection<String> filterAdultsWithHat(Collection<Person> persons, int legalAdultAge) {
         return persons
-        .stream()
-        .filter(person -> person.age >= legalAdultAge)
-        .filter(person -> person.hat)
-        .map(Person::name)
-        .toList();
+                .stream()
+                .filter(person -> person.age >= legalAdultAge)
+                .filter(person -> person.hat)
+                .map(Person::name)
+                .toList();
 
     }
 
@@ -114,28 +112,28 @@ class PlayGround {
 
 </details> 
 
+4. Groupez ces livres par noms d'auteur
+
 <details> 
-
-<summary> 4. Groupez ces livres par noms d'auteur.</summary>
-
-### Réponse
+<summary> Réponse </summary>
 
 ```java
 
 class PlayGround {
-    static record Book(String name, String author) {}
+    static record Book(String name, String author) {
+    }
 
     static groupByAuthor(Collection<Book> books) {
         return books.stream()
-        .collect(Collectors.groupingBy(Book::author));
+                .collect(Collectors.groupingBy(Book::author));
     }
 
     Collection<Book> books = List.of(
-        new Book("Livre 1", "Author 1"),
-        new Book("Livre 2", "Author 1"),
-        new Book("Livre 3", "Author 2"),
-        new Book("Livre 4", "Author 1"),
-        new Book("Livre 5", "Author 3")
+            new Book("Livre 1", "Author 1"),
+            new Book("Livre 2", "Author 1"),
+            new Book("Livre 3", "Author 2"),
+            new Book("Livre 4", "Author 1"),
+            new Book("Livre 5", "Author 3")
     );
 
     // Map<String, Collection<Book>> groupedByAuthors = groupByAuthor(books);
@@ -146,7 +144,182 @@ class PlayGround {
 
 </details> 
 
+5. Decks de cartes ! Dans cette exemple, nous souhaitons initialiser un deck de cartes. Pour cela vous disposez:
+
+```java
+enum Rank {KING, QUEEN, TWO, ACE}
+
+enum Suit {DIAMOND, CLUB, SPADE, HEART}
+
+record Card(Rank rank, Suit suit) {
+}
+```
+
+Il nous faut pour réaliser cette tâche calculer toutes les paires possibles. Utiliser une combinaison de `flatMap`
+et `map` opérators.
+
+<details> 
+
+
+<summary> Réponse </summary>
+
+### Réponse
+
+```java
+
+import java.util.Collection;
+import java.util.stream.Stream;
+
+class PlayGround {
+
+    enum Rank {KING, QUEEN, TWO, ACE}
+
+    enum Suit {DIAMOND, CLUB, SPADE, HEART}
+
+    record Card(Rank rank, Suit suit) {
+    }
+
+    static Collection<Card> newDeck() {
+        return Stream.of(Suit.values())
+                .flatMap(suit -> Stream.of(Rank.values())
+                        .map(rank -> new Card(rank, suit))
+                )
+                .toList();
+    }
+}
+
+```
+
+</details> 
+
+6. Unchecked exceptions et Streams. Un des inconvénients des Streams et qu'il est impossible d'utiliser les `checked`.
+
+```java
+
+import java.util.stream.Stream;
+
+class PlayGround {
+
+    static Integer methodThrowingCheckedException(int i) throws Exception {
+        throw new Exception("checked");
+    }
+
+    static void run() {
+        var numbers = Stream.iterate(0, n -> n + 1)
+                .limit(15)
+                .map(PlayGround::methodThrowingCheckedException) // ici le code ne compile pas
+                .toList();
+    }
+}
+
+```
+
+Essayez de trouver des hacks pour faire compiler ce code sans trop perdre d'informations !
+
+<details> 
+
+
+<summary> Réponse </summary>
+
+### Réponse
+
+```java
+
+import java.util.Collection;
+import java.util.Optional;
+import java.util.stream.Stream;
+
+class PlayGround {
+
+    static Integer methodThrowingCheckedException(int i) throws Exception {
+        throw new Exception("checked");
+    }
+
+    static void run() {
+        // Solution 1
+        var numbers = Stream.iterate(0, n -> n + 1)
+                .limit(15)
+                .map(i -> {
+                    try {
+                        return PlayGround.methodThrowingCheckedException(i);
+                    } catch (Exception e) {
+                        // handle here, but the issue is, what to return :/ 
+                        // we could transform into a Runtime but meeh
+                    }
+                })
+                .toList();
+
+        // Solution 2 
+        var numbers = Stream.iterate(0, n -> n + 1)
+                .limit(15)
+                .map(i -> {
+                    try {
+                        return Optional.of(PlayGround.methodThrowingCheckedException(i));
+                    } catch (Exception e) {
+                        return Optional.empty(); // Not bad, but we loose some information, logging could be enough tho
+                    }
+                })
+                .filter(Optional::isPresent)
+                .toList();
+
+
+        // Solution 3 using FP
+        var numbers = Stream.iterate(0, n -> n + 1)
+                .limit(15)
+                .map(PlayGround::methodWrapped) // Here it compiles ! And we do not loose information, FP is wonderful :-)
+                .toList();
+
+
+    }
+
+    // For the example to be a Monad, we would need to add function like `flatMap`, `map`, `filter` 
+    // and verify the three lows, but well you got what we want to do :p
+    interface Either<L, R> extends Iterable<R> {
+
+        static <L, R> Either<L, R> right(R right) {
+            return new Right<>(right);
+        }
+
+        static <L, R> Either<L, R> left(L left) {
+            return new Left<>(left);
+        }
+
+        boolean isLeft();
+
+        L getLeft();
+
+        boolean isRight();
+
+        R getRight();
+
+        final class Right<L, R> implements Either<L, R> {
+            private final R value;
+
+            private Right(R right) {
+                this.value = right;
+            }
+            // complete implementation
+        }
+
+        final class Left<L, R> implements Either<L, R> {
+            private final L value;
+
+            private Left(L left) {
+                this.value = left;
+            }
+            // complete implementation
+        }
+
+    }
+
+
+}
+
+```
+
+Un peu plus de lecture pour une solution plus javaesque : https://stackoverflow.com/a/27644392
+</details> 
 
 ## documentation
 
- - https://www.baeldung.com/java-8-streams
+- https://www.baeldung.com/java-8-streams
