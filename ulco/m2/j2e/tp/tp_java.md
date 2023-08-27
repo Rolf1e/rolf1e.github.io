@@ -72,11 +72,7 @@ class PlayGround {
 
 3. Vous avez en entrée une liste de personnes, nous cherchons à filtrer les adultes avec un chapeau.
 
-<details> 
-<summary> Réponse </summary>
-
 ```java
-
 class PlayGround {
 
     static record Person(
@@ -84,6 +80,27 @@ class PlayGround {
             Integer age,
             Boolean hat
     ) {
+    }
+
+    static final int LEGAL_ADULT_AGE = 18;
+
+     val adultsWithHat = PlayGround.filterAdultsWithHat(
+         Arrays.asList(
+         new PlayGround.Person("Tigran", 24, true),
+         new PlayGround.Person("Antoine", 20, false),
+         new PlayGround.Person("Chloé", 11, true)
+         ),
+     18);
+}
+```
+<details> 
+<summary> Réponse </summary>
+
+```java
+
+class PlayGround {
+
+    record Person( String name, Integer age, Boolean hat ) {
     }
 
     static final int LEGAL_ADULT_AGE = 18;
@@ -98,13 +115,6 @@ class PlayGround {
 
     }
 
-    // PlayGround.filterAdultsWithHat(
-    //     Arrays.asList(
-    //     new PlayGround.Person("Tigran", 24, true),
-    //     new PlayGround.Person("Antoine", 20, false),
-    //     new PlayGround.Person("Chloé", 11, true)
-    //     ),
-    // 18)
 
 }
 
@@ -113,21 +123,12 @@ class PlayGround {
 </details> 
 
 4. Groupez ces livres par noms d'auteur
-
-<details> 
-<summary> Réponse </summary>
-
 ```java
-
 class PlayGround {
-    static record Book(String name, String author) {
-    }
 
-    static groupByAuthor(Collection<Book> books) {
-        return books.stream()
-                .collect(Collectors.groupingBy(Book::author));
+    record Book(String name, String author) {
     }
-
+    
     Collection<Book> books = List.of(
             new Book("Livre 1", "Author 1"),
             new Book("Livre 2", "Author 1"),
@@ -136,7 +137,21 @@ class PlayGround {
             new Book("Livre 5", "Author 3")
     );
 
-    // Map<String, Collection<Book>> groupedByAuthors = groupByAuthor(books);
+    Map<String, Collection<Book>> groupedByAuthors = groupByAuthor(books);
+}
+```
+
+<details> 
+<summary> Réponse </summary>
+
+```java
+
+class PlayGround {
+
+    static groupByAuthor(Collection<Book> books) {
+        return books.stream()
+                .collect(Collectors.groupingBy(Book::author));
+    }
 
 }
 
