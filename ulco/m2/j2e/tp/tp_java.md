@@ -9,7 +9,7 @@ ou bien une simple classe Java avec une méthode `main`.
 
 ### Avec l'api des streams java
 
-1. Construire la liste des nombres entre 0 et 15
+#### 1. Construire la liste des nombres entre 0 et 15
 
 <details> 
 
@@ -34,7 +34,7 @@ class PlayGround {
 
 </details> 
 
-2. A partir de la liste précédente, multiplier tous ses éléments par deux puis diviser les par trois
+#### 2. A partir de la liste précédente, multiplier tous ses éléments par deux puis diviser les par trois
 
 <details> 
 
@@ -71,7 +71,7 @@ class PlayGround {
 
 </details> 
 
-3. Vous avez en entrée une liste de personnes, nous cherchons à filtrer les adultes avec un chapeau.
+#### 3. Vous avez en entrée une liste de personnes, nous cherchons à filtrer les adultes avec un chapeau.
 
 ```java
 class PlayGround {
@@ -125,7 +125,7 @@ class PlayGround {
 
 </details> 
 
-4. Groupez ces livres par noms d'auteur
+#### 4. Groupez ces livres par noms d'auteur
 
 ```java
 class PlayGround {
@@ -164,7 +164,7 @@ class PlayGround {
 
 </details> 
 
-5. Decks de cartes ! Dans cette exemple, nous souhaitons initialiser un deck de cartes. Pour cela vous disposez:
+#### 5. Decks de cartes ! Dans cette exemple, nous souhaitons initialiser un deck de cartes. Pour cela vous disposez:
 
 ```java
 enum Rank {KING, QUEEN, TWO, ACE}
@@ -209,7 +209,7 @@ class PlayGround {
 
 </details> 
 
-6. Unchecked exceptions et Streams. Un des inconvénients des Streams et qu'il est impossible d'utiliser les `checked`.
+#### 6. Unchecked exceptions et Streams. Un des inconvénients des Streams et qu'il est impossible d'utiliser les `checked`.
 
 ```java
 
