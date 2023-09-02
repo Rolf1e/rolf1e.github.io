@@ -37,6 +37,7 @@ class PlayGround {
 2. A partir de la liste précédente, multiplier tous ses éléments par deux puis diviser les par trois
 
 <details> 
+
 <summary> Réponse </summary>
 
 ```java
@@ -95,6 +96,7 @@ class PlayGround {
 ```
 
 <details> 
+
 <summary> Réponse </summary>
 
 ```java
@@ -144,6 +146,7 @@ class PlayGround {
 ```
 
 <details> 
+
 <summary> Réponse </summary>
 
 ```java
@@ -177,10 +180,7 @@ et `map` opérators.
 
 <details> 
 
-
 <summary> Réponse </summary>
-
-### Réponse
 
 ```java
 
@@ -235,10 +235,7 @@ Essayez de trouver des hacks pour faire compiler ce code sans trop perdre d'info
 
 <details> 
 
-
 <summary> Réponse </summary>
-
-### Réponse
 
 ```java
 
@@ -407,6 +404,7 @@ public class JVMPlayGround {
 ```
 
 <details>
+
 <summary>Réponse</summary>
 
 <h4>Predication of the outcome</h4>

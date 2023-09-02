@@ -1,11 +1,3 @@
-## Sommaire
-
-- Spring
-- Spring Boot
-- REST
-- Security
-- DATA
-
 ## Spring
 
 [Spring](https://spring.io/projects/spring-framework) est un framework Java pour construire des applications variées.

@@ -14,32 +14,6 @@ la [Java Virtual Machine](https://en.wikipedia.org/wiki/Java_virtual_machine) vi
 Java existe de deux manières différentes: JDK ou JRE. Le premier contient le compilateur et la JVM, le deuxième
 seulement la JVM.
 
-# Sommaire
-
-- [Les objets](java.md#les-objets--class-)
-- [Enums](java.md#enum)
-- [Static et final](java.md#static-et-final)
-- [Enhanced for-loop](java.md#for-loop)
-- [Gestion d'erreur](java.md#gestion-derreur)
-- [Classe abstraite](java.md#classes-abstraites)
-- [Interface](java.md#les-interfaces)
-- [Composition](java.md#composition)
-- [Le JAR](java.md#le-jar)
-- [La JVM](java.md#la-jvm)
-- [`Collection<E>`](java.md#javautilcollection-e)
-- [`Optional<T>`](java.md#javautiloptional-t)
-- [`Stream<T>`](java.md#javautilstream-e)
-- [`Objects`](java.md#javautilobjects)
-- [`Arrays`](java.md#javautilarrays)
-- [`Collections`](java.md#javautilcollections)
-- [Date and Time](java.md#javatimelocaldate-et-javatimelocaldatetime)
-- [Java IO](java.md#java-inputoutput)
-- [Concurrence](java.md#concurrence--multi-threading-)
-- [JDBC](java.md#jdbc)
-- [JEE](java.md#java-entreprise-edition--jakarta-ee-)
-- [Lombok](java.md#lombok)
-- [Maven](java.md#maven)
-
 # Et beaucoup de code !
 
 #### Les objets (class)
