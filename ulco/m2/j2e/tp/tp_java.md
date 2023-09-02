@@ -84,15 +84,16 @@ class PlayGround {
 
     static final int LEGAL_ADULT_AGE = 18;
 
-     val adultsWithHat = PlayGround.filterAdultsWithHat(
-         Arrays.asList(
-         new PlayGround.Person("Tigran", 24, true),
-         new PlayGround.Person("Antoine", 20, false),
-         new PlayGround.Person("Chloé", 11, true)
-         ),
-     18);
+    val adultsWithHat = PlayGround.filterAdultsWithHat(
+            Arrays.asList(
+                    new PlayGround.Person("Tigran", 24, true),
+                    new PlayGround.Person("Antoine", 20, false),
+                    new PlayGround.Person("Chloé", 11, true)
+            ),
+            18);
 }
 ```
+
 <details> 
 <summary> Réponse </summary>
 
@@ -100,7 +101,7 @@ class PlayGround {
 
 class PlayGround {
 
-    record Person( String name, Integer age, Boolean hat ) {
+    record Person(String name, Integer age, Boolean hat) {
     }
 
     static final int LEGAL_ADULT_AGE = 18;
@@ -123,12 +124,13 @@ class PlayGround {
 </details> 
 
 4. Groupez ces livres par noms d'auteur
+
 ```java
 class PlayGround {
 
     record Book(String name, String author) {
     }
-    
+
     Collection<Book> books = List.of(
             new Book("Livre 1", "Author 1"),
             new Book("Livre 2", "Author 1"),
@@ -335,6 +337,102 @@ class PlayGround {
 Un peu plus de lecture pour une solution plus javaesque : https://stackoverflow.com/a/27644392
 </details> 
 
+### Jouons un peu avec le bytecode !
+
+Créer un fichier `ByteCodePlayGround.java`.
+
+```java
+
+public class ByteCodePlayGround {
+
+    Integer a;
+    private String b;
+    private final String c;
+
+    public ByteCodePlayGround(String c) {
+        this.c = c;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+Compiler le code à l'aide de `javac ByteCodePlayGround`. Puis nous allons maintenant examiner le bytecode à l'aide
+de `javap -v ByteCodePlayGround.class`.
+
+### Exercice de mémoire
+
+À l'aide du schéma de le mémoire vu dans le cours, donner la sortie du programme suivant.
+
+```java
+public class JVMPlayGround {
+    static class Container {
+        private String initial = "A";
+
+        public String getInitial() {
+            return this.initial;
+        }
+
+        public void setInitial(String initial) {
+            this.initial = initial;
+        }
+    }
+
+    public static void main(String[] args) {
+        JVMPlayGround main = new JVMPlayGround();
+        main.start();
+    }
+
+    private void start() {
+        String last = "Z";
+        Container container = new Container();
+        container.setInitial("C");
+        another(container, last);
+        System.out.print(container.getInitial());
+    }
+
+    private void another(Container initialHolder, String newInitial) {
+        newInitial.toLowerCase();
+        initialHolder.setInitial("B");
+        Container initial2 = new Container();
+        initialHolder = initial2;
+        System.out.print(initialHolder.getInitial());
+        System.out.print(newInitial);
+
+    }
+}
+
+```
+
+<details>
+<summary>Réponse</summary>
+
+<h4>Predication of the outcome</h4>
+
+Le tableau se lit du bas vers le haut pour garder le "stack".
+
+```
+scope      | stack          | heap                   
+-----------|----------------|------------------------
+(another)> | initial2      -|-> Container() -> "A"   
+           |                |   ^
+(another)> | newInitial    -|---|------------------| 
+(another)> | initialHolder -|---|                  | 
+(another)> | container     -|-> Container() -> "B" | 
+(start)>   | last          -|-> "Z" <------------- | 
+(main)>    | main          -|-> Main()               
+```
+
+First print: "A"
+
+2nd print: "Z"
+
+3rd print: "B"
+</details>
+
 ## documentation
 
 - https://www.baeldung.com/java-8-streams
+- https://docs.oracle.com/javase/8/docs/technotes/tools/windows/javap.html

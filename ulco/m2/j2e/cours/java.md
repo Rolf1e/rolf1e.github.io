@@ -302,6 +302,30 @@ charger les classes utilisées par le programme écrit. Java charge les classes 
 
 Il est verbeux à utiliser manuellement, ce pourquoi des outils comme Maven, Ant ou bien Gradle ont été créé.
 
+#### Java gestion de la mémoire et Garbage Collector (GC)
+
+Le GC est l'outil de la JVM qui nous permet de ne pas avoir à trop se soucier de la mémoire. Plus besoin de `malloc`
+ou `free` !
+
+```java
+public class JVMPlayGround {
+
+    public static void main(String[] args) {
+        var aString = "Hello World";
+    }
+}
+```
+
+Le code suivant se réprésente de la sorte sur en mémoire. Un pointeur `aString` est créé sur le stack, qui pointe sur le
+String `Hello World` stocké dans la heap.
+
+![jvm stack heap](./images/jvm_stack_heap.png)
+Les objets seront toujours stockés sur la heap. Il faut savoir que le stack fonctione avec un système de scopes. Il est
+impossible d'accèder une variable en dehors de son scope via le stack. Le stack est vidé des pointeurs dans le scope
+quand on sort de celui-ci.
+
+https://www.jetbrains.com/help/idea/analyze-objects-in-the-jvm-heap.html
+
 ### L'API [(OpenJDK)](https://openjdk.org/)
 
 #### Quelques interfaces / objects
