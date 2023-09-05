@@ -457,13 +457,14 @@ public class PlayGround {
 }
 
 ```
+
 Comment peut-on le rendre safe ? 
 
 <details>
     
-    <summary>Réponse</summary>
+<summary>Réponse</summary>
 
-    ```java
+```java
 public class PlayGround {
     static class Wheel {
         private Integer size;
@@ -488,7 +489,6 @@ public class PlayGround {
         System.out.println(bicycle);
     }
 }
-
 ```
 </details>
 
