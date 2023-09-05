@@ -430,6 +430,68 @@ First print: "A"
 3rd print: "B"
 </details>
 
+### Escaping references !
+
+Pouvez vous trouver le problème de ce code ?
+
+```java
+public class PlayGround {
+    static class Wheel {
+        private Integer size;
+
+        // Constructor, setter and toString
+    }
+
+    static class Bicycle {
+        private final Wheel front;
+        // Constructor and toString
+    }
+
+    public static void main(String[] args) {
+        var front = new Wheel(11);
+        var bicycle = new Bicycle(front);
+        System.out.println(bicycle);
+        front.setSize(20);
+        System.out.println(bicycle);
+    }
+}
+
+```
+Comment peut-on le rendre safe ? 
+
+<details>
+    
+    <summary>Réponse</summary>
+
+    ```java
+public class PlayGround {
+    static class Wheel {
+        private Integer size;
+
+        // Constructor, setter and toString
+    }
+
+    static class Bicycle {
+        private final Wheel front;
+        
+        Bicycle(Wheel front) {
+            this.front = new Wheel(front.size);
+        }
+        // Constructor and toString
+    }
+
+    public static void main(String[] args) {
+        var front = new Wheel(11);
+        var bicycle = new Bicycle(front);
+        System.out.println(bicycle);
+        front.setSize(20);
+        System.out.println(bicycle);
+    }
+}
+
+```
+</details>
+
 ## documentation
 
 - https://www.baeldung.com/java-8-streams
