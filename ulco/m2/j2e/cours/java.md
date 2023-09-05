@@ -108,6 +108,8 @@ public class Persons {
 }
 ```
 
+Espacing References, est un soucis de référence qui échappe au contrôle d'un objet. En effet, cette fuite permet de changer l'état d'un objet depuis l'extérieur. :( Nous étudierons un exemple dans le TP !
+
 #### for-loop
 
 La boucle for "améliorée" permet d'itérer de manière efficace au travers d'objet implémentant `Iterable<T>`. (Exception
