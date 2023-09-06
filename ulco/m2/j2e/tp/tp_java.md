@@ -22,13 +22,23 @@ public class ByteCodePlayGround {
     }
 
     public static void main(String[] args) {
-
+        System.out.println("Hello world");
     }
 }
 ```
 
 Compiler le code à l'aide de `javac ByteCodePlayGround`. Puis nous allons maintenant examiner le bytecode à l'aide
 de `javap -v ByteCodePlayGround.class`.
+
+Transformons maintenant ce code en une archive executable, le `JAR`.
+Pour cela créer un un fichier `manifest.mf` à coté de votre `.class`. Placez-y le contenu 
+
+```
+Manifest-version: 1.0
+Main-Class: ByteCodePlayGround
+```
+Puis executer `jar cfm playground.jar manifest.mf ByteCodePlayGround.class` pour créer le `JAR`.
+Vous pouvez ensuite `java -jar playground.jar` pour voir le code s'executer !
 
 
 ### Exercice de mémoire
