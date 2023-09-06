@@ -2,12 +2,169 @@
 
 Le but de ce tp de Java est de se familiariser avec l'API de Java par l'exemple.
 
-Vous allez pour cela écrire plusieurs snippets de code répondant à des cas d'utilisations. Vous pouvez utiliser JShell
+Vous allez pour cela écrire plusieurs snippets de code répondant aux questions. Vous pouvez utiliser JShell
 ou bien une simple classe Java avec une méthode `main`.
 
-## Cas d'utilisations:
+### Jouons un peu avec le bytecode !
 
-### Avec l'api des streams java
+Créer un fichier `ByteCodePlayGround.java`.
+
+```java
+
+public class ByteCodePlayGround {
+
+    Integer a;
+    private String b;
+    private final String c;
+
+    public ByteCodePlayGround(String c) {
+        this.c = c;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+Compiler le code à l'aide de `javac ByteCodePlayGround`. Puis nous allons maintenant examiner le bytecode à l'aide
+de `javap -v ByteCodePlayGround.class`.
+
+
+### Exercice de mémoire
+
+À l'aide du schéma de le mémoire vu dans le cours, donner la sortie du programme suivant.
+
+```java
+public class JVMPlayGround {
+    static class Container {
+        private String initial = "A";
+
+        public String getInitial() {
+            return this.initial;
+        }
+
+        public void setInitial(String initial) {
+            this.initial = initial;
+        }
+    }
+
+    public static void main(String[] args) {
+        JVMPlayGround main = new JVMPlayGround();
+        main.start();
+    }
+
+    private void start() {
+        String last = "Z";
+        Container container = new Container();
+        container.setInitial("C");
+        another(container, last);
+        System.out.print(container.getInitial());
+    }
+
+    private void another(Container initialHolder, String newInitial) {
+        newInitial.toLowerCase();
+        initialHolder.setInitial("B");
+        Container initial2 = new Container();
+        initialHolder = initial2;
+        System.out.print(initialHolder.getInitial());
+        System.out.print(newInitial);
+
+    }
+}
+
+```
+
+<details>
+
+<summary>Réponse</summary>
+
+<h4>Predication of the outcome</h4>
+
+Le tableau se lit du bas vers le haut pour garder le "stack".
+
+```
+scope      | stack          | heap                   
+-----------|----------------|------------------------
+(another)> | initial2      -|-> Container() -> "A"   
+           |                |   ^
+(another)> | newInitial    -|---|------------------| 
+(another)> | initialHolder -|---|                  | 
+(another)> | container     -|-> Container() -> "B" | 
+(start)>   | last          -|-> "Z" <------------- | 
+(main)>    | main          -|-> Main()               
+```
+
+First print: "A"
+
+2nd print: "Z"
+
+3rd print: "B"
+</details>
+
+### Escaping references !
+
+Pouvez vous trouver le problème de ce code ?
+
+```java
+public class PlayGround {
+    static class Wheel {
+        private Integer size;
+
+        // Constructor, setter and toString
+    }
+
+    static class Bicycle {
+        private final Wheel front;
+        // Constructor and toString
+    }
+
+    public static void main(String[] args) {
+        var front = new Wheel(11);
+        var bicycle = new Bicycle(front);
+        System.out.println(bicycle);
+        front.setSize(20);
+        System.out.println(bicycle);
+    }
+}
+
+```
+
+Comment peut-on le rendre safe ? 
+
+<details>
+    
+<summary>Réponse</summary>
+
+```java
+public class PlayGround {
+    static class Wheel {
+        private Integer size;
+
+        // Constructor, setter and toString
+    }
+
+    static class Bicycle {
+        private final Wheel front;
+        
+        Bicycle(Wheel front) {
+            this.front = new Wheel(front.size);
+        }
+        // Constructor and toString
+    }
+
+    public static void main(String[] args) {
+        var front = new Wheel(11);
+        var bicycle = new Bicycle(front);
+        System.out.println(bicycle);
+        front.setSize(20);
+        System.out.println(bicycle);
+    }
+}
+```
+</details>
+
+### L'API de Java
 
 #### 1. Construire la liste des nombres entre 0 et 15
 
@@ -333,164 +490,6 @@ class PlayGround {
 
 Un peu plus de lecture pour une solution plus javaesque : https://stackoverflow.com/a/27644392
 </details> 
-
-### Jouons un peu avec le bytecode !
-
-Créer un fichier `ByteCodePlayGround.java`.
-
-```java
-
-public class ByteCodePlayGround {
-
-    Integer a;
-    private String b;
-    private final String c;
-
-    public ByteCodePlayGround(String c) {
-        this.c = c;
-    }
-
-    public static void main(String[] args) {
-
-    }
-}
-```
-
-Compiler le code à l'aide de `javac ByteCodePlayGround`. Puis nous allons maintenant examiner le bytecode à l'aide
-de `javap -v ByteCodePlayGround.class`.
-
-### Exercice de mémoire
-
-À l'aide du schéma de le mémoire vu dans le cours, donner la sortie du programme suivant.
-
-```java
-public class JVMPlayGround {
-    static class Container {
-        private String initial = "A";
-
-        public String getInitial() {
-            return this.initial;
-        }
-
-        public void setInitial(String initial) {
-            this.initial = initial;
-        }
-    }
-
-    public static void main(String[] args) {
-        JVMPlayGround main = new JVMPlayGround();
-        main.start();
-    }
-
-    private void start() {
-        String last = "Z";
-        Container container = new Container();
-        container.setInitial("C");
-        another(container, last);
-        System.out.print(container.getInitial());
-    }
-
-    private void another(Container initialHolder, String newInitial) {
-        newInitial.toLowerCase();
-        initialHolder.setInitial("B");
-        Container initial2 = new Container();
-        initialHolder = initial2;
-        System.out.print(initialHolder.getInitial());
-        System.out.print(newInitial);
-
-    }
-}
-
-```
-
-<details>
-
-<summary>Réponse</summary>
-
-<h4>Predication of the outcome</h4>
-
-Le tableau se lit du bas vers le haut pour garder le "stack".
-
-```
-scope      | stack          | heap                   
------------|----------------|------------------------
-(another)> | initial2      -|-> Container() -> "A"   
-           |                |   ^
-(another)> | newInitial    -|---|------------------| 
-(another)> | initialHolder -|---|                  | 
-(another)> | container     -|-> Container() -> "B" | 
-(start)>   | last          -|-> "Z" <------------- | 
-(main)>    | main          -|-> Main()               
-```
-
-First print: "A"
-
-2nd print: "Z"
-
-3rd print: "B"
-</details>
-
-### Escaping references !
-
-Pouvez vous trouver le problème de ce code ?
-
-```java
-public class PlayGround {
-    static class Wheel {
-        private Integer size;
-
-        // Constructor, setter and toString
-    }
-
-    static class Bicycle {
-        private final Wheel front;
-        // Constructor and toString
-    }
-
-    public static void main(String[] args) {
-        var front = new Wheel(11);
-        var bicycle = new Bicycle(front);
-        System.out.println(bicycle);
-        front.setSize(20);
-        System.out.println(bicycle);
-    }
-}
-
-```
-
-Comment peut-on le rendre safe ? 
-
-<details>
-    
-<summary>Réponse</summary>
-
-```java
-public class PlayGround {
-    static class Wheel {
-        private Integer size;
-
-        // Constructor, setter and toString
-    }
-
-    static class Bicycle {
-        private final Wheel front;
-        
-        Bicycle(Wheel front) {
-            this.front = new Wheel(front.size);
-        }
-        // Constructor and toString
-    }
-
-    public static void main(String[] args) {
-        var front = new Wheel(11);
-        var bicycle = new Bicycle(front);
-        System.out.println(bicycle);
-        front.setSize(20);
-        System.out.println(bicycle);
-    }
-}
-```
-</details>
 
 ## documentation
 
