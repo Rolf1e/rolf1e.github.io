@@ -5,6 +5,7 @@
 - Intellij IDEA
 - JDK 11+
 - [Serveur tomcat 10](https://tomcat.apache.org/download-10.cgi)
+- Version 10.0.27 est celle utilisée dans le tp https://archive.apache.org/dist/tomcat/tomcat-10/v10.0.27/bin/ 
 
 ## Étapes
 
