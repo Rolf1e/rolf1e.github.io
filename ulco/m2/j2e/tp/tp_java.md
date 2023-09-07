@@ -493,6 +493,13 @@ class PlayGround {
 
     }
 
+   static Either<Exception, Integer> methodWrapped(int i) {
+        try {
+            return Either.right(PlayGround.methodThrowingCheckedException(i));
+        } catch (Exception e) {
+            return Either.left(e);
+        }
+    }
 
 }
 
