@@ -108,8 +108,6 @@ public class Persons {
 }
 ```
 
-Espacing References, est un soucis de référence qui échappe au contrôle d'un objet. En effet, cette fuite permet de changer l'état d'un objet depuis l'extérieur. :( Nous étudierons un exemple dans le TP !
-
 #### for-loop
 
 La boucle for "améliorée" permet d'itérer de manière efficace au travers d'objet implémentant `Iterable<T>`. (Exception
@@ -299,6 +297,9 @@ String `Hello World` stocké dans la heap.
 Les objets seront toujours stockés sur la heap. Il faut savoir que le stack fonctione avec un système de scopes. Il est
 impossible d'accèder une variable en dehors de son scope via le stack. Le stack est vidé des pointeurs dans le scope
 quand on sort de celui-ci.
+
+Espacing References, est un soucis de référence qui échappe au contrôle d'un objet. En effet, cette fuite permet de changer l'état d'un objet depuis l'extérieur. :( Nous étudierons un exemple dans le TP !
+
 
 https://www.jetbrains.com/help/idea/analyze-objects-in-the-jvm-heap.html
 
