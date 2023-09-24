@@ -6,7 +6,7 @@ Executer `docker compose up` pour lancer celui-ci. Attention par défaut, il n'y
 de données. (Si le docker est détruit, la donnée également). J'ai utilisé
 ce [projet](https://github.com/felipewom/docker-compose-postgres) pour mettre en place facilement ce genre d'outil.
 
-Lancer `psql postgresql://username:password@localhost:5432/postgres` pour se connecter.
+Lancer `psql postgresql://username:password@localhost:5432/default_database` pour se connecter.
 
 ### Dialect postgresql
 

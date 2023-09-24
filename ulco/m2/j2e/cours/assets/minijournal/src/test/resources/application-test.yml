@@ -9,8 +9,8 @@ spring:
     url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
     username: sa
     password: sa
-  hibernate:
-    ddl-auto: none # Pour que Spring cr?er le sch?ma en lan?ant les migrations
+    hibernate:
+      ddl-auto: none # Pour que Spring cr?er le sch?ma en lan?ant les migrations
   sql:
     init:
       mode: embedded
