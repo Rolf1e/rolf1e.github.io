@@ -591,6 +591,39 @@ public class SecurityConfig {
 Ce code déclare un store en mémoire contre lequel, on peut venir identifier nos requêtes HTTP. (à ne pas utiliser en
 production bien évidement !).
 
+Voici
+la [documentation](https://docs.spring.io/spring-security/site/docs/current/api/org/springframework/security/provisioning/JdbcUserDetailsManager.html)
+officielle de l'implémentation à utiliser en production et un exemple d'
+utilisation https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/jdbc.html#servlet-authentication-jdbc-bean
+
+```java
+class Config {
+    @Bean
+    UserDetailsManager users(DataSource dataSource) {
+        return new JdbcUserDetailsManager(dataSource);
+    }
+}
+
+class UserService {
+    private UserDetailsManager userDetailsManager;
+    
+    void createUser(UserDTO user) {
+      UserDetails jdbcUser = User.builder()
+              .username(user.username())
+              .password(user.password()) // method should transform password to bcrypt maybe with a Password Manager
+              .roles(user.roles())
+              .build();
+      userDetailsManager.createUser(jdbcUser);
+    }
+}
+
+```
+
+Cette deuxième méthode permet de modifier la sécurité de nos routes. JEE, et donc Spring, utilisent
+une [chaîne de responsabilités](https://refactoring.guru/design-patterns/chain-of-responsibility)
+appelée [Filter](https://jakarta.ee/specifications/servlet/5.0/apidocs/jakarta/servlet/filter)
+et [SecurityFilterChain](https://docs.spring.io/spring-security/site/docs/3.1.4.RELEASE/reference/security-filter-chain.html).
+
 ```java
 
 public class SecurityConfig {
@@ -607,11 +640,6 @@ public class SecurityConfig {
     }
 }
 ```
-
-Cette deuxième méthode permet de modifier la sécurité de nos routes. JEE, et donc Spring, utilisent
-une [chaîne de responsabilités](https://refactoring.guru/design-patterns/chain-of-responsibility)
-appelée [Filter](https://jakarta.ee/specifications/servlet/5.0/apidocs/jakarta/servlet/filter)
-et [SecurityFilterChain](https://docs.spring.io/spring-security/site/docs/3.1.4.RELEASE/reference/security-filter-chain.html).
 
 Il ne faut pas oublier de désactiver la configuration
 automatique `@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })`.
