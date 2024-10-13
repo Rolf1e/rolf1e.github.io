@@ -34,9 +34,10 @@ faut qu'il soit capable de tolérer une incompréhension ou de mal utiliser le
 logiciel. L'application gère les accès illégaux et les abus (bots, cyber
 attaques).
 
-// hardware -> vie d'un disque, machines virtuelles
-// software -> failles logicielles, hanging process, dépendences
-// humans -> documentation d'api, avoir des sandbox, mises en place de tests,
+Exemple d'échecs possibles:
+- hardware: vie d'un disque, machines virtuelles
+- software: failles logicielles, hanging process, dépendences
+- humans:  documentation d'api, avoir des sandbox, mises en place de tests,
 quick recovery (cicd), monitoring, onboarding
 
 ## Mise à l'échelle (Scalability)
@@ -61,8 +62,10 @@ l'application est ralentie par le réseau ? Le cpu ? Les disques ? L'écriture
 dans la base de données ? Le but est de garder la performance de l'application
 en changeant les paramètres de charge.
 
-// Throughput pour les batchs processing
-// Server response time pour les systèmes en ligne
+Par exemple, pour du batch processing, mesurer le "Throughput" est un bon indicateur.
+Throughput: output ou production d'un logiciel sur une période de temps.
+
+Pour les systèmes en ligne, mesurer le temps de réponse est un indicateur commun.
 
 Maintenant que mesurer les changements de charge est fait, il devient possible
 de l'adapter. Il existe deux possibilités:
