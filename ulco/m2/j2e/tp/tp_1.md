@@ -52,6 +52,26 @@ Pour trois sub reddit afficher:
 - La description
 - Trois articles de ce sub
 
+Petit d'exemple en JSON
+```json
+[
+  {
+    "name": "r/Scala",
+    "description": "Welcome to Scala",
+    "posts": [
+      {"author": "Redditor1", "content": "i, I am new to scala. I have bui..."}
+    ]
+  },
+  {
+    "name": "r/Java",
+    "description": "Java News/Tech/Discussi",
+    "posts": [
+      {"author": "Redditor1", "content": "My attempt to understand…erceiv..."}
+    ]
+  }
+]
+```
+
 Un petit dump de la source de données:
 
 #### Table des Subs Reddit
