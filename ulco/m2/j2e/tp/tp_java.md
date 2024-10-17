@@ -178,6 +178,8 @@ public class PlayGround {
 
 ### L'API de Java
 
+Pour les exemples suivant, on abstrait les methodes `main` pour simplifier la 
+
 #### 1. Construire la liste des nombres entre 0 et 15
 
 <details> 
@@ -254,7 +256,7 @@ class PlayGround {
 
     static final int LEGAL_ADULT_AGE = 18;
 
-    var adultsWithHat = PlayGround.filterAdultsWithHat(
+    List<String> adultsWithHat = PlayGround.filterAdultsWithHat(
             Arrays.asList(
                     new PlayGround.Person("Tigran", 24, true),
                     new PlayGround.Person("Antoine", 20, false),
@@ -310,7 +312,7 @@ class PlayGround {
             new Book("Livre 5", "Author 3")
     );
 
-    Map<String, Collection<Book>> groupedByAuthors = groupByAuthor(books);
+    Map<String, List<Book>> groupedByAuthors = groupByAuthor(books);
 }
 ```
 
