@@ -254,7 +254,7 @@ class PlayGround {
 
     static final int LEGAL_ADULT_AGE = 18;
 
-    val adultsWithHat = PlayGround.filterAdultsWithHat(
+    var adultsWithHat = PlayGround.filterAdultsWithHat(
             Arrays.asList(
                     new PlayGround.Person("Tigran", 24, true),
                     new PlayGround.Person("Antoine", 20, false),
