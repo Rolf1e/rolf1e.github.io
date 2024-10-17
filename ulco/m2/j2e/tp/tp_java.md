@@ -27,8 +27,10 @@ public class ByteCodePlayGround {
 }
 ```
 
-Compiler le code à l'aide de `javac ByteCodePlayGround`. Puis nous allons maintenant examiner le bytecode à l'aide
+Compiler le code à l'aide de `javac ByteCodePlayGround.java`. Puis nous allons maintenant examiner le bytecode à l'aide
 de `javap -v ByteCodePlayGround.class`.
+
+C'est aussi possible de le voir dans [Intellij](https://www.jetbrains.com/help/idea/decompiler.html#show-bytecode)
 
 Transformons maintenant ce code en une archive executable, le `JAR`.
 Pour cela créer un un fichier `manifest.mf` à coté de votre `.class`. Placez-y le contenu 
