@@ -1,0 +1,5 @@
+message Article {
+  string title = 1;
+  string date = 2;
+  repeated string content = 3;
+}
