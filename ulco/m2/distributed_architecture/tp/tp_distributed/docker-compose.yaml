@@ -34,6 +34,7 @@ services:
       - "-c"
       - "wal_level=logical" #required for MaterializedPostgreSQL
 
+  # This builds and runs the local go app. Look at Dockerfile for more information
   web:
     build: .
     ports:

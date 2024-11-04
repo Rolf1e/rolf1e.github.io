@@ -4,7 +4,8 @@ FROM golang:latest
 # Set the Current Working Directory inside the container
 WORKDIR /app
 
-# Copy go.mod file
+# Copy go.mod go.sum file
+# Care, if you have no dependency in your app you'll have no go.sum
 COPY go.mod go.sum ./
 
 # Copy the source from the current directory to the Working Directory inside the container
