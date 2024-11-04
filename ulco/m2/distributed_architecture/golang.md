@@ -14,6 +14,7 @@
     } else { 
         // do something
     }
+
     sum := 0
 	for i := 0; i < 10; i++ {
 		sum += i
@@ -27,6 +28,7 @@
     import "time"
 
     today := time.Now().Weekday()
+
 	switch time.Saturday {
 	case today + 0:
 		fmt.Println("Today.")
@@ -64,7 +66,7 @@ func (a Article) GetTitle() string { // Method example
 ```
 
 Les interfaces en Go, fonctione comme en Java, sauf qu'il n'y a pas de mot clé
-`implements` à ajouter, mais ce fait sur le nom des fonctions.
+`implements` à ajouter, mais se fait sur le nom des fonctions.
 
 ```golang
 type Texte interface {

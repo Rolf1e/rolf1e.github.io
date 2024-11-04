@@ -90,14 +90,18 @@ L'exemple précédent serait stocké comme ceci.
 ]
 ```
 
-
-
-
 ## Conclusion
-Row oriented -> transaction
-Column oriented -> analytics
+
+Par leur manière de stocker la donnée, une base en ligne et en colonne sont
+fait pour des cas d'utilisation différents. Un système transactionnel, où les
+faut travailler sur quelques lignes précises, un base en ligne sera plus adpaté
+grâce à sa capacité à pouvoir mettre en place des transactions. S'il faut faire
+des analyses sur un grand nombre de ligne et sortir une tendance, un graphe etc
+une base de donnée en colonne est requise. Dans un dernier cas, où il faut
+stocker des dures difficilements structurables, et dont il faut exploiter des
+champs dans un scope précis, NoSQL to the rescue.
 
 ### Sources
 
 Wikipedia: https://en.wikipedia.org/wiki/Data_orientation 
-Book: Design Data Intensive Applications - Chapter ???
+Book: Design Data Intensive Applications - Chapter 3

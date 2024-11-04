@@ -15,7 +15,7 @@ après un blue screen, cela pourraît prendre trop de temps, ou perdre voir mêm
 corrompre de la donnée. 
 
 Le système peut entrer dans un état avec des erreurs partielles. En effet, si
-la donnée provient de deux sources différenetes, peut être que l'une est K.O.
+la donnée provient de deux sources différentes, peut être que l'une est K.O.
 mais pas l'autre. Il faut alors se poser la question de quoi faire. Un résultat
 partiel peut-il être renvoyé ? Faut-il prévenir l'admin sys ou bien
 l'utilisateur final ? Un résultat peut être delayé par le réseau, si une

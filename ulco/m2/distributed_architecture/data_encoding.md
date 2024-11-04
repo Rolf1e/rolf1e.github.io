@@ -48,4 +48,8 @@ Le cas du JSON est intéressant. La donnée en elle même est le schéma, il est
 facile pour un humain de lire est comprendre la donnée qui est transférée. Cela
 dit, il est complexe de compresser, encoder. 
 
-// TODO Rajouter une partie sur l'évolution
+Dans le cycle de vie d'une application, les besoins vont évoluer et entraîner
+des changements dans les messages échangés. Dans le cas du JSON, il est très
+facile de rajouter un champ. Il suffit de mettre à jour l'écrivain et le lecteur.
+Dans le cas du protobuf, le message 
+

@@ -25,6 +25,7 @@ système.
 
 
 ## Fiabilité (Reliability)
+
 Dans ce premier point, il faut que le système puisse être tolérant aux erreurs.
 Aussi bien matérielles (hardware), logicielles (software) mais aussi et surtout
 aux erreurs humaines (human errors). 
@@ -119,6 +120,7 @@ Dans cet optique, voici trois points importants pour assurer une maintenance pla
 - Évolution
 
 ### Opérabilité
+
 Il doit être facile pour les équipes infras de continuer de faire tourner
 l'application. Le monitoring, afin de pouvoir surveiller et restorer
 l'application si besoin. Les logs doivent être claire pour comprendre le
@@ -127,6 +129,7 @@ opérationelle, pour deploy et rollback efficacement. Documenter l'application,
 surtout le dataflow et les interactions entre systèmes.
 
 ### Simplicité
+
 L'onboarding doit être facile, en essayant d'avoir un flux de données logique.
 Trouver une abstraction cohérente et compréhensible au dessus de l'application.
 Il est souvent plus facilement de comprendre une fonctionalité si elle est
@@ -135,6 +138,7 @@ est une abstraction simple sur tout un système de fichiers et de gestion de
 mémoire.
 
 ### Évolution
+
 Les développeurs qui vont venir dans le futur doivent pouvoir facilement faire
 des changements. On peut penser aux patrons de conceptions. Des pratiques comme
 le TDD, BDD et autres venant de l'Agile peuvent aider à passer le savoir et

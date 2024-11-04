@@ -2,6 +2,7 @@ package fr.ulco.minijournal.controllers;
 
 import fr.ulco.minijournal.model.dto.in.AuthorSearchDTO;
 import fr.ulco.minijournal.model.dto.in.NewAuthorDTO;
+import fr.ulco.minijournal.model.dto.out.ArticleDTO;
 import fr.ulco.minijournal.model.dto.out.AuthorDTO;
 import fr.ulco.minijournal.services.AuthorService;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,15 @@ import java.util.Collection;
 @RestController
 @RequiredArgsConstructor
 public class AuthorController {
+    
     private final AuthorService authorService;
+    
+    @GetMapping()
+    public ResponseEntity<Collection<ArticleDTO>> getArticles() {
+        return ResponseEntity.ok(authorService.findArticles());
+    }
 
+    
     @GetMapping(Routes.GET_AUTHORS)
     public ResponseEntity<Collection<String>> getAuthors() {
         return ResponseEntity.ok(authorService.findNames());
