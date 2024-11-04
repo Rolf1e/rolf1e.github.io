@@ -131,6 +131,8 @@ func articleHandler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
+Vous pouvez regarder ce [projet](https://github.com/julienschmidt/httprouter) pour avoir un router simple
+
 // TODO: concurrency https://go.dev/tour/concurrency/1
 
 ## Resources
