@@ -53,6 +53,15 @@ complexe car elle demande l'accès à plusieurs fichiers différents en écritur
 Cela dit, il existe aujourd'hui différents moyens pour réduire l'impact.
 Notamment chez ClickHouse avec leur notion d'engine pour gérer les tables.
 
+### Aggrégation: Data Cube et Materialized Views
+
+https://en.wikipedia.org/wiki/Materialized_view
+
+https://clickhouse.com/docs/en/materialized-view
+
+p101
+
+
 ## Document Databases (NoSQL - MongoDB)
 
 Dans un model document, la flexbilité du schéma est totale. En effet, les
@@ -103,5 +112,6 @@ champs dans un scope précis, NoSQL to the rescue.
 
 ### Sources
 
+Clickhouse docs: https://clickhouse.com/docs/knowledgebase/columnar-database
 Wikipedia: https://en.wikipedia.org/wiki/Data_orientation 
 Book: Design Data Intensive Applications - Chapter 3
