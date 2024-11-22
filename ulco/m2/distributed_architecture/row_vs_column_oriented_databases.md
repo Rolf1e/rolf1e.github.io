@@ -55,11 +55,25 @@ Notamment chez ClickHouse avec leur notion d'engine pour gérer les tables.
 
 ### Aggrégation: Data Cube et Materialized Views
 
-https://en.wikipedia.org/wiki/Materialized_view
+Afin de gagner du temps de calcul au moment de la requête, les bases de données
+proposent un outil s'appelant des vues matérialisées (Materialized Views).
+Cette dernière est simplement le résultat d'une requête stockée dans une table.
+Cela permet, de ramener de la donnée plus proche physiquement (si la base est
+en remote), de calculer une jointure coûteuse au moment de l'insertion plutôt
+que la lecture ou bien encore l'utilisation des fonctions d'aggrégations afin
+par exemple de partager le résultat avec plusieurs consommateurs. Cela permet
+aussi de pouvoir avoir des indexes differents de celle de la table d'origine.
 
-https://clickhouse.com/docs/en/materialized-view
+Un cas d'usage peut être de conserver la donnée du jour dans une vue séparée
+afin d'accéler les requêtes sur la donnée fraîche. Cela peut être également de
+partager des calculs de métriques avec plusieurs équipes dans le cadre de data
+wharehouse.
 
-p101
+Plus d'informations concrètes ici:
+
+- https://en.wikipedia.org/wiki/Materialized_view
+- https://clickhouse.com/docs/en/materialized-view
+- Book: Design Data Intensive Applications - p101
 
 
 ## Document Databases (NoSQL - MongoDB)

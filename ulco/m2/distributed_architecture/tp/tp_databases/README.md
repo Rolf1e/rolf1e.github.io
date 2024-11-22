@@ -78,7 +78,8 @@ SELECT
     toYear(Date_de_creation_de_la_notice) as year,
     length(groupArray(Reference)) as numberOfLocation
 FROM buildings
-GROUP BY year;
+GROUP BY year
+;
 
 
 ┌─year─┬─numberOfLocation─┐
@@ -125,7 +126,8 @@ SELECT
     arrayDistinct(groupArray(toYear(Date_de_creation_de_la_notice))) as year,
     length(groupArray(Reference)) as numberOfLocation
 FROM buildings
-GROUP BY region ORDER BY region;
+GROUP BY region ORDER BY region
+;
 
 ┌─region───────────────────────────────────────┬─year────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┬─numberOfLocation─┐
 │ Auvergne-Rhône-Alpes                         │ [2017,2018,2020,2013,2014,2015,2012,2008,2001,2002,2023,2019,2007,1993,2021,2006,1999,1970,2024,1996,2022,1998,2009,2010,2011,2005,2003,2004,1995]      │             4959 │
@@ -193,9 +195,43 @@ GROUP BY region
 └────────────────────────────┴──────────────────────┴─────────┘
 ```
 
+## Materialized views 
+
+Now, for the sake of argument, we will say that this query is quite expensive
+to compute. We decide then to put this into a materialized view so that the
+results will be computed at insert time ! For better reuse, we will choose to
+compute the field age for each building.
+
+
+```sql
+CREATE TABLE age_of_buildings
+(
+  reference String,
+  region String,
+  age Int16
+)
+ENGINE = MergeTree
+ORDER BY reference
+;
+
+CREATE MATERIALIZED VIEW age_of_buildings_mv TO age_of_buildings AS
+SELECT
+    Reference as reference,
+    `Région` as region,
+    toYear(now()) - toInt16(Datation_de_l_edifice) as age
+FROM buildings
+WHERE
+  length(Datation_de_l_edifice) == 4
+;
+
+```
+Now insert some data. Et voilà, see what is populated in `age_of_buildings` and
+`age_of_buildings_mv`.
+
 
 ## Resources
 
-arrays doc: https://clickhouse.com/docs/en/sql-reference/functions/array-functions
+Clickhouse arrays: https://clickhouse.com/docs/en/sql-reference/functions/array-functions
+Clickhouse materialized view: https://clickhouse.com/docs/en/materialized-view
 
 https://clickhouse.com/docs/knowledgebase/parquet-to-csv-json
