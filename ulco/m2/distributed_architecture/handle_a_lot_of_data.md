@@ -10,8 +10,6 @@ Dans ce cours, j'essayerai de vous sensibiliser, vous faire découvrir et vous
 donner des outils afin d'être prêt à pouvoir comprendre et participer à
 l'informatique d'aujourd'hui. 
 
-// TODO: rajouter quelques chiffres pour l'intro
-
 Dans le but de créer et maintenir des systèmes d'informations complexes, voici
 trois points importants:
 
@@ -86,14 +84,14 @@ améliorer les performances d'une machine avant de décider de la répartir sur
 plusieurs noeuds. Là où une API Rest peut facilement être distribuées sur
 plusieurs machines (surtout via un load balancer).
 
-Une chose importante à savoir sur les architectures qui opére à grande échelle
-est quelles deviennent spécifiques. En effet, générifier à grande échelle est
-virtuellement impossible, principalement à du dilemme de lecture et d'écriture
+Une chose importante à savoir sur les architectures qui opérent à grande échelle
+est qu'elles deviennent spécifiques. En effet, générifier à grande échelle est
+virtuellement impossible, principalement à cause du dilemme de lecture et d'écriture
 [(reads and writes)](https://www.johnnunemaker.com/database-performance-simplified/).
 
 Pourquoi un tel dilemme ? Simplement par la nature de comment les rendre plus
 performants. Pour écrire de manière performante, il faut éviter les mise à jour
-(updates), ne pas supprimer (deltes), ne pas avoir d'index. Il est généralement
+(updates), ne pas supprimer (deletes), ne pas avoir d'index. Il est généralement
 préférable d'insérer en batch pour éviter de surchager l'IO et le réseau. Lire
 rapidement est plus difficile, il faut se souvenir d'où sont rangées nos
 lignes. Cela passe principalement par des index. Pour des charges plus
