@@ -27,10 +27,13 @@ auteurs. Dans un deuxième temps, on fera des graphes sur cette même donnée à
 l'aide de clickhouse !
 
 
-- [ ] n tier (minimum 3Tier)
 - [ ] schéma n tier
-- [ ] une gestion d'utilisateur (basic)
-- [ ] postgres
-- [ ] clickhouse
-- [ ] un chart d'analyses (trend, histogram, ...)
+- [ ] n tier (minimum 3Tier)
+  - [ ] Vos bases de données
+    - [ ] postgres
+      - [ ] une gestion d'utilisateur (basic)
+    - [ ] clickhouse
+      - [ ] un chart d'analyses (trend, histogram, ...)
+  - [ ] Une API en Java Spring ou en Golang, qui requête le tier de donnée et sert le front
+  - [ ] Un front minimaliste pour visualiser la donnée via l'API
 
