@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/default_database
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    show-sql: true # Pour afficher les requ�tes SQL dans la console
+    hibernate:
+      ddl-auto: none # Pour que Spring cr�er le sch�ma en lan�ant les migrations
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+
+springdoc:
+  swagger-ui.path: /docs
