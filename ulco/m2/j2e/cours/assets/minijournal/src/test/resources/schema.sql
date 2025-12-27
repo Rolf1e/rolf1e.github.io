@@ -28,3 +28,9 @@ CREATE TABLE authors_articles
     CONSTRAINT fk_author FOREIGN KEY (author_id) REFERENCES authors (id),
     CONSTRAINT fk_articles FOREIGN KEY (article_id) REFERENCES articles (id)
 );
+
+SELECT * FROM articles
+JOIN authors_articles aa on articles.id = aa.article_id
+JOIN authors a on aa.author_id = a.id
+WHERE a.name = 'Tigran'
+;

@@ -1,0 +1,12 @@
+### Find authors
+GET http://localhost:8080/api/authors
+
+### Find an article 
+GET http://localhost:8080/api/articles?authorName=Tigran
+
+### Empty result
+GET http://localhost:8080/api/articles?authorName=Arthur
+
+### 404 user not found
+GET http://localhost:8080/api/articles?authorName=JohnDoe
+

@@ -10,3 +10,5 @@ INSERT INTO authors_articles(author_id, article_id)
 VALUES (1, 1);
     
 SELECT * FROM authors;
+
+CREATE DATABASE default_database;
