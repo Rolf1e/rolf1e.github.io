@@ -3,6 +3,7 @@ package fr.ulco.minijournal.domain.services;
 import fr.ulco.minijournal.controllers.api.dto.out.AuthorDTO;
 import fr.ulco.minijournal.domain.mappers.AuthorMapper;
 import fr.ulco.minijournal.infra.sql.dao.AuthorRepository;
+import fr.ulco.minijournal.infra.sql.entities.AuthorEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,5 +21,9 @@ public class AuthorService {
                 .stream()
                 .map(AuthorMapper::toDTO)
                 .toList();
+    }
+    
+    public Collection<AuthorEntity> findAuthorsByNames(Collection<String> names) {
+        return authorRepository.findByNameIn(names);
     }
 }

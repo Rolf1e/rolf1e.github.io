@@ -2,11 +2,10 @@ package fr.ulco.minijournal.controllers.api.dto.out;
 
 import java.time.LocalDateTime;
 
-public record ArticleDTO(
+public record ArticleSummaryDTO(
+        Long id,
         String title,
-        String content,
         String authorName,
-        LocalDateTime publishedAt,
-        LocalDateTime updatedAt
+        LocalDateTime publishedAt
 ) {
 }

@@ -34,3 +34,15 @@ JOIN authors_articles aa on articles.id = aa.article_id
 JOIN authors a on aa.author_id = a.id
 WHERE a.name = 'Tigran'
 ;
+
+SELECT ar.id,
+       ar.title,
+       ar.content,
+       ar.created_at,
+       ar.updated_at,
+       ah.id,
+       ah.name
+FROM articles ar
+         JOIN authors_articles aa on ar.id = aa.article_id
+         JOIN authors ah on aa.author_id = ah.id
+WHERE ah.name IN ('Tigran', 'Arthur')

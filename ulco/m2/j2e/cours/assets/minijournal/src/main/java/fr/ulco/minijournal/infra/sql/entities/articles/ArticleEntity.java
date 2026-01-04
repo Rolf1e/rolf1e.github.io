@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "articles")
@@ -24,7 +24,7 @@ public class ArticleEntity {
 
     // Relations
     @ManyToMany(mappedBy = "articles")
-    private Collection<AuthorEntity> authors;
+    private List<AuthorEntity> authors;
 
     // Modification fields
     @Basic

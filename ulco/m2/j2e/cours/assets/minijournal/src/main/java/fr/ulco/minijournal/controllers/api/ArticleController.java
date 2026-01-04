@@ -1,15 +1,13 @@
 package fr.ulco.minijournal.controllers.api;
 
+import fr.ulco.minijournal.controllers.api.dto.out.ArticleDTO;
 import fr.ulco.minijournal.domain.mappers.ArticleMapper;
 import fr.ulco.minijournal.domain.models.bo.in.ArticleSearchBO;
-import fr.ulco.minijournal.controllers.api.dto.out.ArticleDTO;
+import fr.ulco.minijournal.controllers.api.dto.out.ArticleSummaryDTO;
 import fr.ulco.minijournal.domain.services.articles.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.List;
@@ -22,15 +20,23 @@ public class ArticleController {
     private final ArticleService articleService;
 
     @GetMapping("")
-    public ResponseEntity<Collection<ArticleDTO>> getArticles(
-            @RequestParam(required = false) String authorName
+    public ResponseEntity<Collection<ArticleSummaryDTO>> getArticles(
+            @RequestParam(required = false) Collection<String> authorNames
     ) {
-        final ArticleSearchBO searchCriteria = new ArticleSearchBO(authorName);
-        final List<ArticleDTO> articles = articleService.findArticles(searchCriteria)
+        final ArticleSearchBO searchCriteria = new ArticleSearchBO(authorNames);
+        final List<ArticleSummaryDTO> articles = articleService.findArticles(searchCriteria)
                 .stream()
-                .map(ArticleMapper::toDTO)
+                .map(ArticleMapper::toSummaryDTO)
                 .toList();
         return ResponseEntity.ok(articles);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ArticleDTO> getArticleById(@PathVariable String id) {
+        return articleService.findArticleById(id)
+                .map(ArticleMapper::toDTO)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
 }

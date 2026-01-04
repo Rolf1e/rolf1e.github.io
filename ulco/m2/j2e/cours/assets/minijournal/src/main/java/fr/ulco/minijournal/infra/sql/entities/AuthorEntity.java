@@ -4,7 +4,7 @@ import fr.ulco.minijournal.infra.sql.entities.articles.ArticleEntity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "authors")
@@ -25,6 +25,6 @@ public class AuthorEntity {
             joinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "article_id", referencedColumnName = "id")
     )
-    private Collection<ArticleEntity> articles;
+    private List<ArticleEntity> articles;
 
 }
