@@ -35,7 +35,7 @@ BONUS:
 - Diviser correctement les différentes couches de votre projet.
 - Pensez à utiliser l'API des `Collection`s et des `Stream`s de Java pour rendre vos transformations facilement
   lisibles !
-- Utiliser une [convention de rangement](../cours/spring.md#mettre-un-peu-dordre-dans-tout-ça) dans votre projet Spring.
+- Utiliser une [convention de rangement](../cours/spring/spring.md#mettre-un-peu-dordre-dans-tout-ça) dans votre projet Spring.
 
 ### Idée de sujets
 

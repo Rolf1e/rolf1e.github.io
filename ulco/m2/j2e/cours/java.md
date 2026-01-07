@@ -665,7 +665,7 @@ l'utilisation de contrats (Les interfaces :)).
 Nous verrons dans le [premier tp](../tp/tp_1.md) comment utiliser la spec native de JEE pour effectuer un endpoint
 REST.
 
-Par la suite nous utiliserons [Spring](./spring.md) comme implémentation principale de JEE.
+Par la suite nous utiliserons [Spring](spring/spring.md) comme implémentation principale de JEE.
 
 # Quelques outils
 
@@ -692,7 +692,7 @@ de `javap` ou bien d'Intellij IDEA) le getter s'y trouve bien.
 
 [Apache Maven](https://maven.apache.org/) est un outil de gestion de projet, en particulier pour la gestion des
 dépendances (via le classpath), du build, du lancement des tests et des versions (JVM, Classes, packages). Un exemple de
-projet Maven se trouve dans la partie [spring](./spring.md). Il utilise XML pour décrire les actions à effectuer.
+projet Maven se trouve dans la partie [spring](spring/spring.md). Il utilise XML pour décrire les actions à effectuer.
 
 ### How does it work ?
 

@@ -9,8 +9,8 @@
 - Récap express de [Java](java.md)
 - [Maven, gérant de projet](java.md#maven)
 - [Java EE / Jakarta EE](java.md#java-entreprise-edition--jakarta-ee-)
-- JEE implémentation: [Spring](spring.md)
-- ORM: [Hibernate](spring.md#hibernate)
+- JEE implémentation: [Spring](spring/spring.md)
+- ORM: [Hibernate](spring/spring.md#hibernate)
 - Intégration continue avec [Jenkins](jenkins.md)
 
 ## TPs et Projet
