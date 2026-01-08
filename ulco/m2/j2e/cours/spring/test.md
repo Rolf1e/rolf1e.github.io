@@ -4,7 +4,14 @@ Pour effectuer des tests d'intégration, Spring propose une suite d'outils perme
 
 Il nous faut ces dépendances:
 
-```xml
+```groovy
+testImplementation 'org.springframework.boot:spring-boot-starter-restclient-test'
+testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+```
+
+// TODO
+```xml 
 
 <dependencies>
     <!-- SPRING TEST -->

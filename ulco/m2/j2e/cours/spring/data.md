@@ -20,22 +20,10 @@ Hibernate est aussi implémentation de l'API Java de persistance (JEE).
 Nous allons réaliser l'installation et la configuration d'Hibernate à travers Spring.
 Rajouter dans votre `pom.xml` les dépendances suivantes:
 
-```xml
+```groovy
+implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-data-jpa</artifactId>
-        <version>${spring.version}</version>
-    </dependency>
-
-    <!-- SQL DRIVER -->
-    <dependency>
-        <groupId>org.postgresql</groupId>
-        <artifactId>postgresql</artifactId>
-        <version>42.5.1</version>
-    </dependency>
-</dependencies>
+runtimeOnly 'org.postgresql:postgresql'
 ```
 
 ##### Data Source

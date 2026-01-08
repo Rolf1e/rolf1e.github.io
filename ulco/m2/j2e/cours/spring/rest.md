@@ -1,5 +1,9 @@
 ## Spring REST
 
+```groovy
+implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+```
+
 ### @Controller, notre endpoint
 
 L'annotation `Controller` permet d'enregistrer en controller auprès de Spring. Il existe une spécification
@@ -55,20 +59,8 @@ public class PlayGround {
 Il est possible de générer un swagger avec Open API. Cela permet de facilement partager les specs de l'API avec d'autres
 équipes.
 
-```xml
-
-<dependencies>
-    <dependency>
-        <groupId>org.springdoc</groupId>
-        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        <version>2.0.2</version>
-    </dependency>
-
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-validation</artifactId>
-    </dependency>
-</dependencies>
+```groovy
+implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1'
 ```
 
 Vous pouvez configurer l'endroit où sera exposé le swagger avec ce paramètre.
@@ -80,6 +72,5 @@ springdoc:
 
 En occurrence, ici : http://localhost:8080/docs
 
-- [La documentation officielle](https://springdoc.org/v2/) il faut utiliser la version `/v2` pour une version `3.x.x` de
-  Spring Boot.
+- [La documentation officielle](https://springdoc.org/v4/index.html)
 - [Tutoriel Baeldung](https://www.baeldung.com/spring-rest-openapi-documentation)
