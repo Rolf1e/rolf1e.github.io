@@ -15,5 +15,5 @@ GET http://localhost:8080/api/articles?authorNames=Arthur
 GET http://localhost:8080/api/articles?authorNames=JohnDoe
 
 ### Article detail
-GET http://localhost:8080/api/articles/1
+GET http://localhost:8080/api/articles/2
 
