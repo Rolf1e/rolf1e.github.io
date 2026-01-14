@@ -1,0 +1,27 @@
+server:
+  port: 8081
+  
+spring:
+  application:
+    name: minijournal-ui
+     
+logging:
+    level:
+        org:
+          springframework:
+            web: DEBUG
+            
+management:
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+  opentelemetry:
+    tracing:
+      export:
+        otlp: 
+          endpoint: http://localhost:4318/v1/traces
+    logging:
+      export: 
+        otlp:
+          endpoint: http://localhost:4318/v1/logs

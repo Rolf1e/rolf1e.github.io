@@ -1,0 +1,42 @@
+server:
+  port: 8080
+  
+spring:
+  application:
+    name: minijournal-api
+    
+  datasource:
+    url: jdbc:postgresql://localhost:5432/default_database
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    show-sql: false # to display SQL queries in the console
+    hibernate:
+      ddl-auto: none # to let Spring create the schema by running migrations
+
+logging:
+    level:
+        org:
+          springframework:
+            web: DEBUG
+            
+springdoc:
+  swagger-ui:
+    path: /docs
+        
+management:
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+  opentelemetry:
+    tracing:
+      export:
+        otlp: 
+          endpoint: http://localhost:4318/v1/traces
+    logging:
+      export: 
+        otlp:
+          endpoint: http://localhost:4318/v1/logs
