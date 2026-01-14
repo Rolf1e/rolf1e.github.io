@@ -12,6 +12,9 @@ logging:
             web: DEBUG
             
 management:
+  tracing:
+    sampling:
+      probability: '1.0'
   otlp:
     metrics:
       export:

@@ -16,3 +16,14 @@ GET http://localhost:8080/api/articles?authorNames=JohnDoe
 
 ### Article detail
 GET http://localhost:8080/api/articles/2
+
+### 
+GET http://localhost:8080/api/articles/
+
+###
+POST http://localhost:8080/api/failure-rate
+Content-Type: application/json
+
+{
+  "rate": 0.5
+}

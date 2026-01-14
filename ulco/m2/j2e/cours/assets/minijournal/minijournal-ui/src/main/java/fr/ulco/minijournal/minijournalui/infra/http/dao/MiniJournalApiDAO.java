@@ -19,7 +19,7 @@ public class MiniJournalApiDAO {
     
     private static class Routes {
         private static final String BASE_PATH = "/api";
-        public static final String GET_ARTICLES_ENDPOINT = BASE_PATH + "/articles";
+        public static final String GET_ARTICLES_ENDPOINT = BASE_PATH + "/articles/errors";
         public static final String GET_ARTICLE_ENDPOINT = BASE_PATH + "/articles/{id}";
     }
     
