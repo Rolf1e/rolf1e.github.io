@@ -1,19 +1,18 @@
 package fr.ulco.minijournal.minijournalapi.controllers;
 
 import fr.ulco.minijournal.minijournalapi.controllers.dto.out.ArticleDTO;
+import fr.ulco.minijournal.minijournalapi.controllers.dto.out.ArticleSummaryDTO;
 import fr.ulco.minijournal.minijournalapi.domain.mappers.ArticleMapper;
 import fr.ulco.minijournal.minijournalapi.domain.models.bo.in.ArticleSearchBO;
-import fr.ulco.minijournal.minijournalapi.controllers.dto.out.ArticleSummaryDTO;
 import fr.ulco.minijournal.minijournalapi.domain.services.FailureService;
 import fr.ulco.minijournal.minijournalapi.domain.services.articles.ArticleService;
+import io.micrometer.core.annotation.Counted;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.jspecify.annotations.NonNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @Slf4j
 @RestController
@@ -41,6 +40,7 @@ public class ArticleController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @Counted(value = "minijournal_api_articles_with_error_fetch_count", description = "Number of times articles with error endpoint was called")
     @GetMapping("/errors")
     public ResponseEntity<Collection<ArticleSummaryDTO>> getArticlesWithError(
             @RequestParam(required = false) Collection<String> authorNames

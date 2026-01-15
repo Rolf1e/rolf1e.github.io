@@ -34,6 +34,7 @@ management:
     metrics:
       export:
         url: http://localhost:4318/v1/metrics
+        step: 10s
   opentelemetry:
     tracing:
       export:
@@ -43,3 +44,6 @@ management:
       export: 
         otlp:
           endpoint: http://localhost:4318/v1/logs
+  observations:
+    annotations:
+      enabled: true
