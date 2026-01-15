@@ -8,8 +8,8 @@ import org.springframework.web.client.RestClient;
 public class MiniJournalApiConfig {
     
     @Bean
-    public RestClient restClient() {
-        return RestClient.builder()
+    public RestClient restClient(RestClient.Builder builder) {
+        return builder
                 .baseUrl("http://localhost:8080")
                 .build();
     }
