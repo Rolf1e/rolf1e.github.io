@@ -21,6 +21,9 @@ GET http://localhost:8080/api/articles/2
 GET http://localhost:8080/api/articles/
 
 ###
+GET http://localhost:8081
+
+###
 POST http://localhost:8080/api/failure-rate
 Content-Type: application/json
 
