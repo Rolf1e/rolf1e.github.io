@@ -28,12 +28,15 @@ services:
 Ensuite, il faut dire à SpringBoot d'utiliser OpenTelemetry. Pour cela, il suffit d'ajouter la dépendance suivante.
 
 Éditer le fichier `build.gradle`, ajouter les dépendances suivantes.
+
 ```groovy
 implementation 'org.springframework.boot:spring-boot-starter-opentelemetry'
 implementation 'io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0:2.21.0-alpha'
+implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
 ```
 
 Dans le fichier `src/main/resources/application.properties`, ajouter la configuration suivante.
+
 ```properties
 management.otlp.metrics.export.url=http://localhost:4318/v1/metrics
 ```
@@ -41,7 +44,7 @@ management.otlp.metrics.export.url=http://localhost:4318/v1/metrics
 Maintenant que tout est en place, il est temps de jouer un peu avec OpenTelemetry.
 Lancez votre application Spring Boot et accédez à Grafana à l'adresse `http://localhost:3000`.
 Utilisez les identifiants par défaut `admin` / `admin` pour vous connecter. Une fois connecté, vous pouvez aller dans
-l'onglet "Drilldown" pour voir les métriques de votre application. 
+l'onglet "Drilldown" pour voir les métriques de votre application.
 
 Vous pouvez voir l'onglet "Metrics" par défaut avec les métriques votre application et de la JVM.
 
@@ -55,7 +58,8 @@ Dans le fichier `src/main/resources/application.properties`, ajouter la configur
 management.opentelemetry.logging.export.otlp.endpoint=http://localhost:4318/v1/logs
 ```
 
-Modifier `src/main/resources/logback-spring.xml`, ajouter la configuration suivante pour envoyer des logs au format JSON à OpenTelemetry.
+Modifier `src/main/resources/logback-spring.xml`, ajouter la configuration suivante pour envoyer des logs au format JSON
+à OpenTelemetry.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -125,16 +129,95 @@ D'abord une vue générale par service
 En appuyant sur "Show logs" vous pouvez voir une vue plus complète
 ![Complete vue](../images/grafana-log-zoomed.png)
 
-### Traces 
+### Traces
+
+#### Mise en place
+
+Pour activer les traces dans OpenTelemetry, ajouter la configuration suivante dans le fichier
+`src/main/resources/application.properties`.
+
 ```properties
 management.opentelemetry.tracing.export.otlp.endpoint=http://localhost:4318/v1/traces
+management.tracing.sampling.probability='1.0'
 ```
 
+![traces dans grafana](../images/grafana-traces.png)
+
+Vous pouvez cliquer sur une trace pour voir les détails. Vous devriez en voir pour chaque service que vous avez
+configuré.
+
+#### Debug avec les traces
+
+Attention, la suite ce base sur le projet `minijournal`.
+
+Nous allons jouer un peu avec ce module, afin de voir comment debug avec les traces.
+Pour cela, nous allons ajouter un endpoint qui retourne de temps en temps une erreur sur un appel HTTP.
+L'ojectif est de la voir apparaître dans notre UI. Puis ensuite, on ajoute un mécanisme de try pour que fix Spring
+l'auto fix.
+
+/!\ Quand vous utilisez des RestClient ou RestTemplate, il faut s'assurer qu'ils proviennent du contexte Spring. En
+effet, celui-ci ajouetera authematiquement les traces ID afin qu'ils soient dans le même contexte et donc tracable dans
+Grafana.
+
+Par exemple, dans `MiniJournalApiConfig.java, on se base sur le `RestClient.Builder` fourni par Spring.
+
+```java
+
+@Configuration
+public class MiniJournalApiConfig {
+
+    @Bean
+    public RestClient restClient(RestClient.Builder builder) {
+        return builder
+                .baseUrl("http://localhost:8080")
+                .build();
+    }
+
+}
+```
+
+On peut ensuite, trouver une trace dans l'UI (en clickant sur le petit bouton "log") et la trouver à travers les
+différentes applications.
+
+Vous pouvez également utiliser `@SpanTag` pour ajouter des tags personnalisés à vos spans.
+
+![trace zoomée](../images/grafana-trace-zoom.png)
+
+Ajouter maintenant un mécanisme de retry dans l'UI endpoint.
+
+### Metrics
+
+Vous pouvez ajouter des métriques personnalisées dans votre application Spring Boot en utilisant l'API OpenTelemetry.
+
+Activer metrics annotations et export dans le fichier `src/main/resources/application.properties`.
+```
+management.observations.annotations.enabled: true
+management.otlp.metrics.export.step: 10s
+```
+
+`@Counted` sur un endpoint pour compter le nombre d'appels.
+
+```java
+@Counted(value = "minijournal_api_articles_with_error_fetch_count", description = "Number of times articles with error endpoint was called")
+@GetMapping("/errors")
+public ResponseEntity<Collection<ArticleSummaryDTO>> getArticlesWithError(
+        @RequestParam(required = false) Collection<String> authorNames
+) {
+    // code
+}
+```
+Lancer quelques appels sur cet endpoint, puis aller dans Grafana pour voir la métrique.
 
 ## Resources
+
+OpenTelemetry
 
 - https://spring.io/blog/2025/11/18/opentelemetry-with-spring-boot
 - https://opentelemetry.io/docs/zero-code/java/agent/getting-started/
 - https://docs.spring.io/spring-boot/reference/actuator/observability.html
-- https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/ 
+- https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/
+
+Spring retry
+
+- https://www.baeldung.com/spring-retry
 
