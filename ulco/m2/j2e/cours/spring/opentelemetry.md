@@ -185,11 +185,32 @@ Vous pouvez également utiliser `@SpanTag` pour ajouter des tags personnalisés 
 
 Ajouter maintenant un mécanisme de retry dans l'UI endpoint.
 
+### Spring retry
+
+Il faut ajouter ceci sur notre class Main `@EnableResilientMethods` afin d'actover la résilience.
+Maintenant, on peut ajouter un mécanisme de retry sur notre appel HTTP.
+
+```java
+
+@Retryable(includes = RestClientException.class, delayString = "300ms", maxRetries = 3, multiplier = 1.5)
+public ResponseEntity<Collection<ArticleSummaryDO>> fetchArticles() {
+    return api.get()
+            .uri(Routes.GET_ARTICLES_ENDPOINT)
+            .retrieve()
+            .toEntity(new ParameterizedTypeReference<>() {
+            });
+}
+```
+
+Maintenant, lorsque vous appelez cet endpoint, vous devriez voir les retries dans les traces Grafana.
+![trace avec retry](../images/grafana-traces-retry.png)
+
 ### Metrics
 
 Vous pouvez ajouter des métriques personnalisées dans votre application Spring Boot en utilisant l'API OpenTelemetry.
 
 Activer metrics annotations et export dans le fichier `src/main/resources/application.properties`.
+
 ```
 management.observations.annotations.enabled: true
 management.otlp.metrics.export.step: 10s
@@ -198,6 +219,7 @@ management.otlp.metrics.export.step: 10s
 `@Counted` sur un endpoint pour compter le nombre d'appels.
 
 ```java
+
 @Counted(value = "minijournal_api_articles_with_error_fetch_count", description = "Number of times articles with error endpoint was called")
 @GetMapping("/errors")
 public ResponseEntity<Collection<ArticleSummaryDTO>> getArticlesWithError(
@@ -206,9 +228,12 @@ public ResponseEntity<Collection<ArticleSummaryDTO>> getArticlesWithError(
     // code
 }
 ```
+
 Lancer quelques appels sur cet endpoint, puis aller dans Grafana pour voir la métrique.
 
 ## Resources
+
+- https://github.com/bclozel/matchmaking/tree/main
 
 OpenTelemetry
 
@@ -219,5 +244,6 @@ OpenTelemetry
 
 Spring retry
 
-- https://www.baeldung.com/spring-retry
+- https://docs.spring.io/spring-framework/reference/core/resilience.html - utile pour ce tutoriel
+- https://www.baeldung.com/spring-retry - utile pour la culture
 
