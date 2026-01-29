@@ -159,7 +159,7 @@ l'auto fix.
 effet, celui-ci ajouetera authematiquement les traces ID afin qu'ils soient dans le même contexte et donc tracable dans
 Grafana.
 
-Par exemple, dans `MiniJournalApiConfig.java, on se base sur le `RestClient.Builder` fourni par Spring.
+Par exemple, dans `MiniJournalApiConfig.java`, on se base sur le `RestClient.Builder` fourni par Spring.
 
 ```java
 
