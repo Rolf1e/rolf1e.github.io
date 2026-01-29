@@ -9,16 +9,17 @@ import java.util.List;
 public class MockedRedditDAO implements RedditDAO {
 
     @Override
-    public Collection<PostEntity> getPosts() {
+    public Collection<PostEntity> getPosts(String subreddit) {
         return List.of(
-                new PostEntity(1, "A post", "A super post about Scala", "Scala")
+                new PostEntity("A super post about Scala", "AAAA", "r/Scala"),
+                new PostEntity("Another post about Scala 2", "BBBB", "r/Scala")
         );
     }
 
     @Override
-    public Collection<SubRedditEntity> getSubReddit() {
+    public Collection<SubRedditEntity> getSubReddit(List<String> subreddits) {
         return List.of(
-                new SubRedditEntity(1, "Scala")
+                new SubRedditEntity("Scala", "Scala", "image")
         );
     }
 }

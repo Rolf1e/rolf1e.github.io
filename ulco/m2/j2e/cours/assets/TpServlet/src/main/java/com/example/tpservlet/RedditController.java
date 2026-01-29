@@ -7,6 +7,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 
 import java.util.Collection;
+import java.util.List;
 
 @Path("/reddit")
 public class RedditController {
@@ -16,9 +17,16 @@ public class RedditController {
         this.redditService = new RedditService();
     }
 
+
+    private static final List<String> SUBREDDITS = List.of(
+            "java",
+            "programming",
+            "Scala"
+    );
+
     @GET
     @Produces("application/json")
     public Collection<RedditDTO> getPosts() {
-        return redditService.getSubReddits();
+        return redditService.getSubReddits(SUBREDDITS);
     }
 }

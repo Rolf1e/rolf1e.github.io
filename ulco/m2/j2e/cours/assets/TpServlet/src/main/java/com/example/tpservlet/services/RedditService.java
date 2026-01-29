@@ -4,13 +4,10 @@ import com.example.tpservlet.model.dao.HttpRedditDAO;
 import com.example.tpservlet.model.dao.RedditDAO;
 import com.example.tpservlet.model.dto.PostDTO;
 import com.example.tpservlet.model.dto.RedditDTO;
-import com.example.tpservlet.model.dao.MockedRedditDAO;
-import com.example.tpservlet.model.entity.PostEntity;
 import com.example.tpservlet.model.entity.SubRedditEntity;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class RedditService {
@@ -22,23 +19,19 @@ public class RedditService {
         this.redditRepo = new HttpRedditDAO();
     }
 
-    public Collection<RedditDTO> getSubReddits() {
-        var subs = redditRepo.getSubReddit();
-        var posts = redditRepo.getPosts()
+    public Collection<RedditDTO> getSubReddits(List<String> subreddits) {
+        return redditRepo.getSubReddit(subreddits)
                 .stream()
-                .collect(Collectors.groupingBy(PostEntity::getSub));
-        return subs.stream()
-                .map(sub -> toDto(posts, sub))
+                .map(this::fetch)
                 .collect(Collectors.toList());
     }
 
-    private static RedditDTO toDto(final Map<String, List<PostEntity>> posts,
-                                   final SubRedditEntity sub) {
-        var subPosts = posts.get(sub.getTitle())
+    private RedditDTO fetch(final SubRedditEntity sub) {
+        final var posts = redditRepo.getPosts(sub.getRedditName())
                 .stream()
-                .map(post -> new PostDTO(post.getName(), post.getContenu()))
+                .map(post -> new PostDTO(post.getAuthor(), post.getName()))
                 .collect(Collectors.toList());
-        return new RedditDTO(sub.getTitle(), "", subPosts);
+        return new RedditDTO(sub.getTitle(), "", posts);
     }
 
 }

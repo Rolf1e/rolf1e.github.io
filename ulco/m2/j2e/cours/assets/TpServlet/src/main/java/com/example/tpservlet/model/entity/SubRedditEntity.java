@@ -1,19 +1,25 @@
 package com.example.tpservlet.model.entity;
 
 public class SubRedditEntity {
-    private Integer id;
-    private String title;
+    private final String title;
+    private final String redditName;
+    private final String headerImage;
 
-    public SubRedditEntity(Integer id, String title) {
-        this.id = id;
+    public SubRedditEntity(String title, String redditName, String headerImage) {
         this.title = title;
+        this.redditName = redditName;
+        this.headerImage = headerImage;
     }
-
-    public Integer getId() {
-        return id;
+    
+    public String getRedditName() {
+        return redditName;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public String getHeaderImage() {
+        return headerImage;
     }
 }

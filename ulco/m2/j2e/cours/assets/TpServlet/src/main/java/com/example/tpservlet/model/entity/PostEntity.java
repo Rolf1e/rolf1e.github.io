@@ -2,31 +2,26 @@ package com.example.tpservlet.model.entity;
 
 public class PostEntity {
 
-    private Integer id;
-    private String name;
-    private String contenu;
-    private String sub;
+    private final String name;
+    private final String author;
+    private final String subreddit;
 
-    public PostEntity(Integer id, String name, String contenu, String sub) {
-        this.id = id;
+    public PostEntity(String name, String author, String subreddit) {
         this.name = name;
-        this.contenu = contenu;
-        this.sub = sub;
-    }
-
-    public Integer getId() {
-        return id;
+        this.author = author;
+        this.subreddit = subreddit;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getContenu() {
-        return contenu;
+    public String getAuthor() {
+        return author;
     }
 
-    public String getSub() {
-        return sub;
+    public String getSubreddit() {
+        return subreddit;
     }
+
 }
