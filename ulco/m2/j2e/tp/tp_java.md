@@ -36,7 +36,7 @@ Transformons maintenant ce code en une archive executable, le `JAR`.
 Pour cela créer un un fichier `manifest.mf` à coté de votre `.class`. Placez-y le contenu 
 
 ```
-Manifest-version: 1.0
+Manifest-Version: 1.0
 Main-Class: ByteCodePlayGround
 ```
 Puis executer `jar cfm playground.jar manifest.mf ByteCodePlayGround.class` pour créer le `JAR`.
