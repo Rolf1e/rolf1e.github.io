@@ -178,7 +178,7 @@ public class PlayGround {
 
 ### L'API de Java
 
-Pour les exemples suivant, on abstrait les methodes `main` pour simplifier la 
+Pour les exemples suivants, on abstrait les methodes `main` pour simplifier la syntaxe.
 
 #### 1. Construire la liste des nombres entre 0 et 15
 
