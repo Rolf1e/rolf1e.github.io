@@ -1,7 +1,7 @@
 package main
 
 import (
-	"encoding/json"
+  "google.golang.org/protobuf/proto"
 	"fmt"
 	"log"
 	"net/http"
@@ -11,6 +11,7 @@ func main() {
 
 	http.HandleFunc("/internal-server-error", internalServerErrorHandler)
 	http.HandleFunc("/articles", articleHandler)
+  http.HandleFunc("/articles-proto", protobufHandler)
 
 	http.Handle("/not-found", http.NotFoundHandler())
 
@@ -19,11 +20,11 @@ func main() {
 
 }
 
-type Article struct {
-	Title   string   `json:"title"`
-	Date    string   `json:"date"`
-	Content []string `json:"content"`
-}
+// type Article struct {
+	// Title   string   `json:"title"`
+	// Date    string   `json:"date"`
+	// Content []string `json:"content"`
+// }
 
 func protobufHandler(w http.ResponseWriter, r *http.Request) {
 
@@ -39,8 +40,8 @@ func articleHandler(w http.ResponseWriter, r *http.Request) {
 		{Title: "Article 1", Date: "2024-10-13", Content: []string{"1st page"}},
 		{Title: "Article 2", Date: "2024-10-13", Content: []string{"1st page", "2nd page"}},
 		{Title: "Article 3", Date: "2024-10-13", Content: []string{"1st page", "2nd page", "3rd Page"}},
-		{},
 	}
 
-	json.NewEncoder(w).Encode(articles)
+  data, err := proto.Marshal(&articles)
+  
 }

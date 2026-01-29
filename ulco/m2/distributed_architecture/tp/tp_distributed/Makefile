@@ -4,7 +4,7 @@ proto:
 	protoc -I=. --go_out=. ./article.proto
 
 local-run: proto
-	go run main.go
+	go run main.go article.pb.go
 
 docker-run: proto
 	docker compuse up -d

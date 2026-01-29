@@ -1,3 +1,9 @@
+syntax = "proto3";
+
+package protobuf;
+
+option go_package = "./;protobuf";
+
 message Article {
   string title = 1;
   string date = 2;
