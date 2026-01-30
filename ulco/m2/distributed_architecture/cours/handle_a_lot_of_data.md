@@ -103,6 +103,10 @@ Par exemple ClickHouse [range ses colonnes et ses lignes dans différents
 fichiers](https://en.wikipedia.org/wiki/ClickHouse#Features)
 [MergeTree Engine chez ClickHouse](https://clickhouse.com/docs/en/engines/table-engines/mergetree-family/mergetree#mergetree-data-storage)
 
+Le cas de MergeTreeEngine dans Clickhouse
+https://clickhouse.com/docs/engines/table-engines/mergetree-family/mergetree
+https://clickhouse.com/docs/optimize/avoidoptimizefinal
+https://clickhouse.com/docs/parts
 
 ## Maintenabilité (Maintenability)
 
