@@ -6,20 +6,9 @@ Spring possède une couche d'authentification. Grâce à SpringBoot, il n'y a qu
 
 Il faut ajouter cette dépendance à notre pom.xml.
 
-// TODO
-```xml
+```groovy
 
-<dependencies>
-    <!-- SPRING SECURITY (REST) -->
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-web</artifactId>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-config</artifactId>
-    </dependency>
-</dependencies>
+implementation 'org.springframework.boot:spring-boot-starter-security'
 ```
 
 En ajoutant ces deux lignes, si on relance l'application Spring, elle démarre avec le message suivant.
@@ -169,5 +158,5 @@ représente l'utilisateur. Il peut être populé, généralement au début de re
 ```java
 final var securityContext=SecurityContextHolder.getContext();
 final var auth=securityContext.getAuthentication();
-        log.info("Hello from {}, {}, {}",auth.getName(),auth.getDetails(),auth.getPrincipal());
+log.info("Hello from {}, {}, {}",auth.getName(),auth.getDetails(),auth.getPrincipal());
 ```
