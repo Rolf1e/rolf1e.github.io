@@ -33,13 +33,16 @@ On réalisera un endpoint qui fail afin de voir les retries dans les traces.
 
 - [ ] schéma n tier
 - DATA LAYER
-    - [ ] dataset volumineux (1M+ lignes)
-    - [ ] script d'import automatique dans la base de données (avec nettoyage si nécessaire)
+  - [ ] base de données Postgres SQL
+  - [ ] dataset volumineux (1M+ lignes)
+  - [ ] script d'import automatique dans la base de données (avec nettoyage si nécessaire)
 - BUSINESS LAYER
     - [ ] une API en Java Spring Boot qui requête le tier de donnée.
     - [ ] une gestion d'utilisateur (basic) avec Spring Sécurité.
+    - [ ] le code métier écrit dans des `@Service`s Spring.
     - [ ] au moins un endpoint pour votre besoin utilisateur (ex: liste des films, recherche par auteur, etc).
     - [ ] un endpoint qui fail aléatoirement pour voir les retries dans les traces (peut être l'endpoint de votre API
+    - [ ] modèle de la base lié grâce à Hibernate et Spring Data (DAO + Entities)
       principale).
     - [ ] un endpoint d'analyses qui requête la base de données pour faire des analyses (trend, histogram, etc).
 - FRONT LAYER
