@@ -142,4 +142,5 @@ des changements. On peut penser aux patrons de conceptions. Des pratiques comme
 le TDD, BDD et autres venant de l'Agile peuvent aider à passer le savoir et
 assurer une évolution plus tranquille.
 
-
+## Sources
+- [Designing Data-Intensive Applications](https://dataintensive.net/)

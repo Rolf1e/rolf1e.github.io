@@ -726,5 +726,6 @@ ajouter le driver JDBC pour postgresql.
 
 ## Source
 
-- La Java doc
-- Effective Java 3rd Edition de J. Bloch
+- [Java doc](https://docs.oracle.com/en/java/)
+- [Java API doc](https://docs.oracle.com/en/java/javase/25/docs/api/index.html)
+- [Effective Java 3rd Edition](https://dn721901.ca.archive.org/0/items/java_20230528/Joshua%20Bloch%20-%20Effective%20Java%20%283rd%29%20-%202018.pdf) de J. Bloch 
