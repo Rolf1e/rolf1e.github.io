@@ -76,14 +76,14 @@ class Config {
 
 class UserService {
     private UserDetailsManager userDetailsManager;
-    
+
     void createUser(UserDTO user) {
-      UserDetails jdbcUser = User.builder()
-              .username(user.username())
-              .password(user.password()) // method should transform password to bcrypt maybe with a Password Manager
-              .roles(user.roles())
-              .build();
-      userDetailsManager.createUser(jdbcUser);
+        UserDetails jdbcUser = User.builder()
+                .username(user.username())
+                .password(user.password()) // method should transform password to bcrypt maybe with a Password Manager
+                .roles(user.roles())
+                .build();
+        userDetailsManager.createUser(jdbcUser);
     }
 }
 
@@ -156,7 +156,9 @@ accessible via `SecurityContextHolder`. Il est le moyen pour obtenir une variabl
 représente l'utilisateur. Il peut être populé, généralement au début de requête dans les `Filter`s.
 
 ```java
-final var securityContext=SecurityContextHolder.getContext();
-final var auth=securityContext.getAuthentication();
-log.info("Hello from {}, {}, {}",auth.getName(),auth.getDetails(),auth.getPrincipal());
+public void f() {
+    final var securityContext = SecurityContextHolder.getContext();
+    final var auth = securityContext.getAuthentication();
+    log.info("Hello from {}, {}, {}", auth.getName(), auth.getDetails(), auth.getPrincipal());
+}
 ```

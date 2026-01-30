@@ -170,6 +170,8 @@ L'API nous permet également de persister notre données facilement. Nous pouvon
 public interface PersonRepository extends JpaRepository<PersonEntity, Integer> {
 }
 
+@Service
+@AllArgsConstructor
 public class PersonService {
     private final PersonRepository personRepository;
 
@@ -258,7 +260,8 @@ public class PersonEntity {
 L'avantage est que par la suite, nous sommes capable d'écrire du code comme suit
 
 ```java
-
+@Service
+@AllArgsConstructor
 public class AddressService {
     private AddressRepository addressRepository;
     private PersonRepository personRepository;
