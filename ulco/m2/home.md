@@ -29,5 +29,5 @@
 
 - [TP Java](j2e/tp/tp_java.md)
 - [Les servlets](j2e/tp/tp_1.md)
-- [TP Clickhouse](distributed_architecture/tp/tp_databases.md)
+- [TP Clickhouse](distributed_architecture/tp/tp_databases/README.md)
 - Projet: votre [n-tier en JEE](projects) !
