@@ -2,13 +2,13 @@
 
 ### Architectures logicielles
 
-- [Architecture multi-tier](j2e/cours/n_tier.md)
+- [Architecture multi-tier](architecture/cours/n_tier.md)
 - Architecture distribuée
-  - [Gérer beaucoup de données](distributed_architecture/cours/handle_a_lot_of_data.md)
-  - [Les soucis des systèmes distribués](distributed_architecture/cours/troubles.md)
-  - [Encodage et sérialisation](distributed_architecture/cours/data_encoding.md)
-  - [Base de données en colonnes](distributed_architecture/cours/row_vs_column_oriented_databases.md)
-  - [Techno](distributed_architecture/cours/technos.md)
+  - [Gérer beaucoup de données](architecture/cours/handle_a_lot_of_data.md)
+  - [Les soucis des systèmes distribués](architecture/cours/troubles.md)
+  - [Encodage et sérialisation](architecture/cours/data_encoding.md)
+  - [Base de données en colonnes](architecture/cours/row_vs_column_oriented_databases.md)
+  - [Techno](architecture/cours/technos.md)
 
 ### Un exemple avec Java
 
@@ -29,5 +29,5 @@
 
 - [TP Java](j2e/tp/tp_java.md)
 - [Les servlets](j2e/tp/tp_1.md)
-- [TP Clickhouse](distributed_architecture/tp/tp_databases/README.md)
+- [TP Clickhouse](architecture/tp/tp_databases/README.md)
 - Projet: votre [n-tier en JEE](projects) !
