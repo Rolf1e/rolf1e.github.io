@@ -15,16 +15,20 @@ métier des détails techniques comme les bases de données, les interfaces util
 
 ### Principes clés
 
-Le code métier ne doit dépendre d'aucune technologie ou framework spécifique. Dans notre exemple de Minijournal, il faut
-enlever Spring de TOUS le package `domain`. En faisant cela, on découple le code métier des détails techniques, il
-devient plus facile de pouvoir enlever Spring si jamais ! Le code métier devient également mieux testable. En effet,
-plus besoin d'avoir Spring pour tester le code métier.
+Le code métier ne doit dépendre d'aucune technologie, framework spécifique dans son implémentation. S'il a besoin de
+communiquer avec l'extérieur, il doit le faire derrière un contrat d'interface qu'il définit. Dans notre exemple de
+Minijournal, il faut enlever Spring de TOUS le package `domain`. En faisant cela, on découple le code métier des détails
+techniques, il devient plus facile de pouvoir enlever Spring si jamais ! Le code métier devient également mieux
+testable. En effet, plus besoin d'avoir Spring pour tester le code métier.
 
 Les `Ports` représentent les points d'entrée pour que le monde communique avec notre application. Par exemple les
 endpoints HTTP, ou bien GRPC, protobuf.
 
 Les `Adapters` sont les points dédiés pour la partie métier pour accéder au monde extérieur. Par exemple les requêtes
 SQL, ou bien HTTP.
+
+`Ports` et `Adapters` n'ont pas le droit de se connaître ou de dépendre entre eux. C'est à l'application de faire le
+lien si besoin.
 
 ### Implementation dans Minijournal
 
@@ -46,11 +50,25 @@ possible de ne pas contaminer le code métier avec Spring ici, ou bien n'importe
   définissent le "data flow" (Qui ? Quoi? Pourquoi?) et les implémentations (Comment?) la partie infrastructure.
 - Les tests de la partie métier sont beaucoup plus simples. En effet, il n'est pas nécessaire de configurer (spring
   ici), l'utilisation d'implémentation est naturelle (limitant les mocks complexes). Cela permet de pouvoir plus
-  facilement les lancer, les maintenir et les réutiliser en cas de migration.
+  facilement les lancer, les maintenir et les réutiliser en cas de migration. Démo client, développement local
+  facilité !
+- Échanger les parties infra devient très facile, changer de SQL vers HTTP revient à implémenter un nouvel `Adapter`
+  pour le besoin. Utile pour des changements externes (e.g: de technologies, de version d'API).
+- Les migrations incrémentales sont possibles en ajoutant ou enlevant des `Ports` / `Adapters`.
+- Dans la théorie (pas de changements de langage), l'architecture hexagonale permet d'éviter des récritures complètes
+  des applications.
 
 ### Inconvénients, critique et dans le monde réel
 
 - Verbeux, ajout de complexité pour les néofytes.
+- Le principe d'ajouter des patterns `Mapper`s (conversion DTO -> BO, BO -> DO, etc) peut introduit beaucoup de
+  boilerplate entraînant du temps de développement voire de complexité.
+- Si l'architecture est faite à moitié, il y a peu de bénéfice !
+- Certaines librarie très flexible OpenTelemetry, Spring, lombok (souvent basées autour des annontations) deviennent
+  plus difficile à implémenter ! Nous restons des ingénieurs et il faut choisir quand sur qui comment implémenter les
+  outils à notre disposition !
+- La scalabilité horizontale est quasiment impossible 
+- L'utilisation des bases de données se retrouve réduit, ce qui peu amener des problèmes de performance
 
 ## Sources
 
