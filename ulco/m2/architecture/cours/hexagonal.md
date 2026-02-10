@@ -60,7 +60,7 @@ possible de ne pas contaminer le code métier avec Spring ici, ou bien n'importe
 
 ### Inconvénients, critique et dans le monde réel
 
-- Verbeux, ajout de complexité pour les néofytes.
+- Verbeux, ajout de complexité pour les néophytes.
 - Le principe d'ajouter des patterns `Mapper`s (conversion DTO -> BO, BO -> DO, etc) peut introduit beaucoup de
   boilerplate entraînant du temps de développement voire de complexité.
 - Si l'architecture est faite à moitié, il y a peu de bénéfice !
