@@ -1,13 +1,12 @@
 package fr.ulco.minijournal.minijournalapiddd.domain.services.articles;
 
 import fr.ulco.minijournal.minijournalapiddd.controllers.dto.out.AuthorDTO;
+import fr.ulco.minijournal.minijournalapiddd.domain.adapters.ArticleAdapter;
 import fr.ulco.minijournal.minijournalapiddd.domain.adapters.LoggingAdapter;
 import fr.ulco.minijournal.minijournalapiddd.domain.mappers.ArticleMapper;
 import fr.ulco.minijournal.minijournalapiddd.domain.models.bo.in.ArticleSearchBO;
 import fr.ulco.minijournal.minijournalapiddd.domain.models.bo.out.ArticleBO;
-import fr.ulco.minijournal.minijournalapiddd.domain.adapters.ArticleAdapter;
 import fr.ulco.minijournal.minijournalapiddd.domain.services.authors.AuthorService;
-import fr.ulco.minijournal.minijournalapiddd.domain.services.authors.DomaineAuthorService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Collection;
