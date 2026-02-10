@@ -2,3 +2,4 @@ rootProject.name = 'minijournal'
 
 include 'minijournal-ui'
 include 'minijournal-api'
+include 'minijournal-api-ddd'

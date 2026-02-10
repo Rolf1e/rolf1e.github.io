@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.SqlArticleAdapter</OriginalElement>
+  <nodes>
+    <node x="1795.3714285714284" y="-2698.897802197803">fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.SqlArticleAdapter</node>
+    <node x="624.5351648351647" y="-2698.897802197803">fr.ulco.minijournal.minijournalapiddd.infra.http.dao.HttpArticleAdapter</node>
+    <node x="1562.769230769231" y="-1716.5943681318686">fr.ulco.minijournal.minijournalapiddd.domain.services.failure.DomainFailureService</node>
+    <node x="1469.1307692307694" y="-2468.1785714285716">fr.ulco.minijournal.minijournalapiddd.domain.adapters.AuthorAdapter</node>
+    <node x="2128.3714285714286" y="-2558.76565934066">fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.SqlAuthorAdapter</node>
+    <node x="1252.1291125088187" y="-2027.6898351648351">fr.ulco.minijournal.minijournalapiddd.domain.services.authors.AuthorService</node>
+    <node x="1204.3390109890108" y="-2356.882554945055">fr.ulco.minijournal.minijournalapiddd.domain.adapters.ArticleAdapter</node>
+    <node x="-43.879670329670375" y="-2698.897802197803">fr.ulco.minijournal.minijournalapiddd.infra.http.dao.spring.MiniJournalApiClient</node>
+    <node x="1377.4825686971255" y="-1461.9050824175824">fr.ulco.minijournal.minijournalapiddd.domain.adapters.LoggingAdapter</node>
+    <node x="467.59615384615336" y="-1440.1813186813185">fr.ulco.minijournal.minijournalapiddd.controllers.FailureRateController</node>
+    <node x="624.5351648351647" y="-2513.890178571429">fr.ulco.minijournal.minijournalapiddd.infra.http.dao.HttpAuthorAdapter</node>
+    <node x="18.147802197802093" y="-1818.2967032967033">fr.ulco.minijournal.minijournalapiddd.controllers.ArticleController</node>
+    <node x="1562.769230769231" y="-1860.0949175824176">fr.ulco.minijournal.minijournalapiddd.domain.services.failure.FailureService</node>
+    <node x="1695.6819321048918" y="-2036.7384615384617">fr.ulco.minijournal.minijournalapiddd.domain.services.articles.ArticleService</node>
+    <node x="423.5626373626377" y="-1613.10989010989">fr.ulco.minijournal.minijournalapiddd.controllers.AuthorController</node>
+    <node x="2011.3714285714286" y="-2172.5959152925425">fr.ulco.minijournal.minijournalapiddd.domain.services.articles.DomainArticleService</node>
+    <node x="1753.9520030602298" y="-1461.9050824175824">fr.ulco.minijournal.minijournalapiddd.infra.Slf4jLoggingAdapter</node>
+    <node x="1217.656043956044" y="-2159.7384615384617">fr.ulco.minijournal.minijournalapiddd.domain.services.authors.DomaineAuthorService</node>
+    <node x="2461.2939560439563" y="-2811.0299450549455">fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.spring.SpringDataArticleRepository</node>
+    <node x="2629.532967032968" y="-2660.6042582417585">fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.spring.SpringDataAuthorRepository</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.articles.DomainArticleService" target="fr.ulco.minijournal.minijournalapiddd.domain.services.articles.ArticleService" relationship="REALIZATION">
+      <point x="-269.0" y="61.5" />
+      <point x="64.68949646653687" y="-47.5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.articles.DomainArticleService" target="fr.ulco.minijournal.minijournalapiddd.domain.services.authors.AuthorService" relationship="TO_ONE">
+      <point x="-276.50042857142853" y="-8.470745751765207E-5" />
+      <point x="1608.156" y="-2111.096" />
+      <point x="1608.156" y="-2064.0" />
+      <point x="1438.629" y="-2064.0" />
+      <point x="-1.125088188018708E-4" y="-33.500164835164924" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.Slf4jLoggingAdapter" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.LoggingAdapter" relationship="REALIZATION">
+      <point x="-159.5" y="0.0" />
+      <point x="159.5" y="0.0" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.authors.DomaineAuthorService" target="fr.ulco.minijournal.minijournalapiddd.domain.services.authors.AuthorService" relationship="REALIZATION">
+      <point x="49.472956043955946" y="33.5" />
+      <point x="14.999887491181198" y="-33.5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.articles.DomainArticleService" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.ArticleAdapter" relationship="TO_ONE">
+      <point x="0.0" y="-61.5" />
+      <point x="2287.8714285714286" y="-2309.382554945055" />
+      <point x="384.5" y="0.0" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.SqlArticleAdapter" target="fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.spring.SpringDataArticleRepository" relationship="TO_ONE">
+      <point x="288.9225274725277" y="-47.5" />
+      <point x="-408.5" y="33.5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.controllers.ArticleController" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.LoggingAdapter" relationship="TO_ONE">
+      <point x="1.9780219793119613E-4" y="-75.50029670329673" />
+      <point x="434.148" y="-1900.0" />
+      <point x="1276.5" y="-1900.0" />
+      <point x="1276.5" y="-1400.405" />
+      <point x="-159.4995686971256" y="8.241758246185782E-5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.controllers.ArticleController" target="fr.ulco.minijournal.minijournalapiddd.domain.services.articles.ArticleService" relationship="TO_ONE">
+      <point x="-29.99980219780207" y="-75.5" />
+      <point x="404.148" y="-2190.0959152925425" />
+      <point x="1954.1819321048918" y="-2190.0959152925425" />
+      <point x="0.0" y="-47.5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.http.dao.HttpArticleAdapter" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.ArticleAdapter" relationship="REALIZATION">
+      <point x="-1.6483516469634196E-4" y="47.49980219780264" />
+      <point x="1009.035" y="-2556.0" />
+      <point x="1351.0" y="-2556.0" />
+      <point x="-237.83901098901083" y="-47.500445054944976" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.http.dao.HttpArticleAdapter" target="fr.ulco.minijournal.minijournalapiddd.infra.http.dao.spring.MiniJournalApiClient" relationship="TO_ONE">
+      <point x="-384.5001648351647" y="-1.9780219736276194E-4" />
+      <point x="298.9996703296704" y="-1.9780219736276194E-4" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.SqlArticleAdapter" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.ArticleAdapter" relationship="REALIZATION">
+      <point x="-79.37142857142862" y="47.49980219780264" />
+      <point x="2100.5" y="-2556.0" />
+      <point x="1351.0" y="-2556.0" />
+      <point x="-237.83901098901083" y="-47.500445054944976" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.SqlAuthorAdapter" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.AuthorAdapter" relationship="REALIZATION">
+      <point x="-218.00042857142853" y="-20.12434065933985" />
+      <point x="1540.5" y="-2531.39" />
+      <point x="1540.5" y="-2511.0" />
+      <point x="1633.131" y="-2511.0" />
+      <point x="2.3076923071130295E-4" y="-33.50042857142853" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.failure.DomainFailureService" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.LoggingAdapter" relationship="TO_ONE">
+      <point x="-159.50023076923094" y="-5.702631868131448" />
+      <point x="1291.5" y="-1674.797" />
+      <point x="1291.5" y="-1900.0" />
+      <point x="1276.5" y="-1900.0" />
+      <point x="1276.5" y="-1400.405" />
+      <point x="-159.4995686971256" y="8.241758246185782E-5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.articles.DomainArticleService" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.LoggingAdapter" relationship="TO_ONE">
+      <point x="-4.2857142852881225E-4" y="61.49991529254248" />
+      <point x="2287.871" y="-1900.0" />
+      <point x="1276.5" y="-1900.0" />
+      <point x="1276.5" y="-1400.405" />
+      <point x="-159.4995686971256" y="8.241758246185782E-5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.http.dao.HttpAuthorAdapter" target="fr.ulco.minijournal.minijournalapiddd.infra.http.dao.spring.MiniJournalApiClient" relationship="TO_ONE">
+      <point x="-164.0001648351647" y="1.785714289326279E-4" />
+      <point x="590.0" y="-2480.39" />
+      <point x="590.0" y="-2651.398" />
+      <point x="298.9996703296704" y="-1.9780219736276194E-4" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.authors.DomaineAuthorService" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.LoggingAdapter" relationship="TO_ONE">
+      <point x="-169.52704395604405" y="33.50046153846188" />
+      <point x="1234.629" y="-1900.0" />
+      <point x="1276.5" y="-1900.0" />
+      <point x="1276.5" y="-1400.405" />
+      <point x="-159.4995686971256" y="8.241758246185782E-5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.authors.DomaineAuthorService" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.AuthorAdapter" relationship="TO_ONE">
+      <point x="186.5" y="0.0" />
+      <point x="1990.8390109890108" y="-2126.2384615384617" />
+      <point x="1990.8390109890108" y="-2434.6785714285716" />
+      <point x="164.0" y="0.0" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.controllers.AuthorController" target="fr.ulco.minijournal.minijournalapiddd.domain.services.authors.AuthorService" relationship="TO_ONE">
+      <point x="190.08536263736232" y="-33.5001098901098" />
+      <point x="867.648" y="-2064.0" />
+      <point x="1438.629" y="-2064.0" />
+      <point x="-1.125088188018708E-4" y="-33.500164835164924" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.http.dao.HttpAuthorAdapter" target="fr.ulco.minijournal.minijournalapiddd.domain.adapters.AuthorAdapter" relationship="REALIZATION">
+      <point x="163.9998351648353" y="-5.288821428571282" />
+      <point x="1336.0" y="-2485.679" />
+      <point x="1336.0" y="-2511.0" />
+      <point x="1633.131" y="-2511.0" />
+      <point x="2.3076923071130295E-4" y="-33.50042857142853" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.controllers.ArticleController" target="fr.ulco.minijournal.minijournalapiddd.domain.services.failure.FailureService" relationship="TO_ONE">
+      <point x="-14.999802197802069" y="-75.50029670329673" />
+      <point x="419.148" y="-1859.0" />
+      <point x="1384.983" y="-1859.0" />
+      <point x="1384.983" y="-1810.797" />
+      <point x="-159.50023076923094" y="1.79791758241754" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.controllers.FailureRateController" target="fr.ulco.minijournal.minijournalapiddd.domain.services.failure.FailureService" relationship="TO_ONE">
+      <point x="240.49984615384665" y="6.276318681318571" />
+      <point x="966.096" y="-1400.405" />
+      <point x="966.096" y="-1859.0" />
+      <point x="1384.983" y="-1859.0" />
+      <point x="1384.983" y="-1810.797" />
+      <point x="-159.50023076923094" y="1.79791758241754" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.domain.services.failure.DomainFailureService" target="fr.ulco.minijournal.minijournalapiddd.domain.services.failure.FailureService" relationship="REALIZATION">
+      <point x="0.0" y="-47.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.SqlAuthorAdapter" target="fr.ulco.minijournal.minijournalapiddd.infra.sql.dao.spring.SpringDataAuthorRepository" relationship="TO_ONE">
+      <point x="218.0" y="0.0" />
+      <point x="2915.032967032968" y="-2511.26565934066" />
+      <point x="0.0" y="47.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.5473496128648004" showDependencies="true" x="1635.0" y="-2065.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
