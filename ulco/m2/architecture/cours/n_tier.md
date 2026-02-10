@@ -38,12 +38,12 @@ Voici un schéma vierge représentant trois couches (Presentation, Business et D
 l'architecture d'un journal (comme Le Monde, La Voix du Nord). Représentez le schéma SQL, les payloads échangés entre
 les couches.
 
-![Image du schéma n-tier vide](../../j2e/cours/images/empty_n_tier.png)
+![Image du schéma n-tier vide](images/empty_n_tier.png)
 
 <details>
 <summary>Réponse possible de l'exercice</summary>
-<img src="../../j2e/cours/images/n_tier.png" alt="Schéma n tier"/>
-<img src="../../j2e/cours/images/business_layer.png" alt="business layer"/>
+<img src="images/n_tier.png" alt="Schéma n tier"/>
+<img src="images/business_layer.png" alt="business layer"/>
 </details>
 
 ## Avantages

@@ -21,7 +21,7 @@ front. Le front doit afficher votre application. Par exemple si vous avez choisi
 effectuez un catalogue de films. Et ensuite il faut un onglet où l'on peut visualiser des analyses sur les films (genre
 le plus populaire par année, etc).
 
-Il faudra réaliser un [schéma N-Tier](../j2e/cours/images/business_layer.png) de votre projet. Détaillez la partie
+Il faudra réaliser un [schéma N-Tier](../architecture/cours/images/business_layer.png) de votre projet. Détaillez la partie
 métier de votre Spring avec un diagramme de classes UML.
 
 Le motoring de votre application doit être visible dans Grafana. Il sera réaliser avec opentelemetry. Il faut être
