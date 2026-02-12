@@ -58,7 +58,7 @@ Dans le fichier `src/main/resources/application.properties`, ajouter la configur
 management.opentelemetry.logging.export.otlp.endpoint=http://localhost:4318/v1/logs
 ```
 
-Modifier `src/main/resources/logback-spring.xml`, ajouter la configuration suivante pour envoyer des logs au format JSON
+Modifier `src/main/resources/logback-spring.xml`, ajouter la configuration suivante pour envoyer des logs
 à OpenTelemetry.
 
 ```xml
@@ -67,34 +67,15 @@ Modifier `src/main/resources/logback-spring.xml`, ajouter la configuration suiva
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
     <appender name="OTEL" class="io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender">
-        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <providers>
-                <timestamp>
-                    <fieldName>timestamp</fieldName>
-                </timestamp>
-                <pattern>
-                    <pattern>
-                        {
-                        "level": "%level",
-                        "logger": "%logger",
-                        "thread": "%thread",
-                        "message": "%message",
-                        "exception": "%exception"
-                        }
-                    </pattern>
-                </pattern>
-            </providers>
-        </encoder>
     </appender>
-
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="OTEL"/>
     </root>
-
 </configuration>
 ```
+Note: Pour rajouter des champs customs, il faut passer par le MDC.
 
 Il faut ensuite ajouter une classe de configuration pour OpenTelemetry.
 
