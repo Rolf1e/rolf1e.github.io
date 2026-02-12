@@ -2,13 +2,16 @@
 
 ### Architectures logicielles
 
+- [Micro-services et Monolithe](architecture/cours/micro_service.md)
 - [Architecture multi-tier](architecture/cours/n_tier.md)
+- [Architecture Hexagonale](architecture/cours/hexagonal.md)
 - Architecture distribuée
-  - [Gérer beaucoup de données](architecture/cours/handle_a_lot_of_data.md)
-  - [Les soucis des systèmes distribués](architecture/cours/troubles.md)
-  - [Encodage et sérialisation](architecture/cours/data_encoding.md)
-  - [Base de données en colonnes](architecture/cours/row_vs_column_oriented_databases.md)
-  - [Techno](architecture/cours/technos.md)
+    - [Gérer beaucoup de données](architecture/cours/handle_a_lot_of_data.md)
+    - [Les soucis des systèmes distribués](architecture/cours/troubles.md)
+    - [Encodage et sérialisation](architecture/cours/data_encoding.md)
+    - [Base de données en colonnes](architecture/cours/row_vs_column_oriented_databases.md)
+    - [Techno](architecture/cours/technos.md)
+    - [Hive pattern](architecture/cours/hive_pattern.md)
 
 ### Un exemple avec Java
 

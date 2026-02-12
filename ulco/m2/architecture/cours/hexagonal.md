@@ -104,8 +104,9 @@ possible de ne pas contaminer le code métier avec Spring ici, ou bien n'importe
 
 ### Dans le monde réel
 
-[Shopify](https://shopify.engineering/shopify-monolith#), [PayPal](https://developer.paypal.com/community/blog/the-next-generation-of-data-platforms-is-the-data-mesh/),
-[WordPress](https://atalupadhyay.wordpress.com/2025/05/29/hexagonal-architecture-what-you-need-to-know-a-simple-explanation/), [Netflix](https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749),
+[Shopify](https://shopify.engineering/shopify-monolith#),
+[PayPal](https://developer.paypal.com/community/blog/the-next-generation-of-data-platforms-is-the-data-mesh/),
+[Netflix](https://netflixtechblog.com/ready-for-changes-with-hexagonal-architecture-b315ec967749),
 utilisent des arhitectures hexagonales.
 
 La question est maintenant, quand utiliser cette architecture. Eh bien, il faut y penser quand votre application vient à
@@ -125,6 +126,8 @@ différents de manière uniforme.
 - https://www.baeldung.com/hexagonal-architecture-ddd-spring
 - https://ivan.canet.dev/blog/2024/08/01/hexagonal-architecture.html#hexagonal-architecture
 - https://wiki.c2.com/?HexagonalArchitecture
+- https://www.youtube.com/watch?v=YPmKHm7G19Q&list=PLuMbC-fWSyk3zf7o0idX1pXD4HSuTqCoY
+- https://atalupadhyay.wordpress.com/2025/05/29/hexagonal-architecture-what-you-need-to-know-a-simple-explanation/
 
 ### Pour aller plus loin ! Vers DDD
 
@@ -133,5 +136,6 @@ On met des hexagones partout quoi !
 
 - https://binout.github.io/#_%EF%B8%8F_jugsummercamp_september_2017
 - https://binout.github.io/ten-tips-gs-ddd/#_pourquoi_ddd
+- Conf JUG Julien Topçu https://www.youtube.com/watch?v=K2FIhIhKufs 
 
 
