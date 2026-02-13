@@ -43,7 +43,7 @@ les couches.
 <details>
 <summary>Réponse possible de l'exercice</summary>
 <img src="images/n_tier.png" alt="Schéma n tier"/>
-<img src="images/business_layer.png" alt="business layer"/>
+<img src="images/n_tier_code.png" alt="N tier dans le code"/>
 </details>
 
 ## Avantages
