@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>fr.ulco.minijournal.minijournalapi.controllers</OriginalElement>
+  <nodes>
+    <node x="751.7515224152617" y="-325.99783078111693">fr.ulco.minijournal.minijournalapi.domain.services.FailureService</node>
+    <node x="589.5342657342654" y="364.2346559955626">fr.ulco.minijournal.minijournalapi.domain.services.AuthorService</node>
+    <node x="1408.395104895105" y="230.08498583569406">fr.ulco.minijournal.minijournalapi.infra.sql.dao.ArticleRepository</node>
+    <node x="-297.5" y="-123.92033518889042">fr.ulco.minijournal.minijournalapi.controllers.ArticleController</node>
+    <node x="589.5342657342654" y="78.15716040333609">fr.ulco.minijournal.minijournalapi.domain.services.articles.SqlArticleService</node>
+    <node x="-253.78671328671328" y="238.77692307692308">fr.ulco.minijournal.minijournalapi.controllers.AuthorController</node>
+    <node x="1464.7867132867134" y="364.23465599556266">fr.ulco.minijournal.minijournalapi.infra.sql.dao.AuthorRepository</node>
+    <node x="-181.0" y="-288.8545454545455">fr.ulco.minijournal.minijournalapi.controllers.FailureRateController</node>
+    <node x="705.7174167301032" y="-123.92033518889042">fr.ulco.minijournal.minijournalapi.domain.services.articles.ArticleService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="fr.ulco.minijournal.minijournalapi.controllers.ArticleController" target="fr.ulco.minijournal.minijournalapi.domain.services.FailureService" relationship="TO_ONE">
+      <point x="0.0" y="-75.4996648111096" />
+      <point x="118.5" y="-172.0" />
+      <point x="911.252" y="-172.0" />
+      <point x="4.775847382916254E-4" y="47.49983078111694" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapi.controllers.FailureRateController" target="fr.ulco.minijournal.minijournalapi.domain.services.FailureService" relationship="TO_ONE">
+      <point x="0.0" y="33.49954545454548" />
+      <point x="59.5" y="-172.0" />
+      <point x="911.252" y="-172.0" />
+      <point x="4.775847382916254E-4" y="47.49983078111694" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapi.controllers.ArticleController" target="fr.ulco.minijournal.minijournalapi.domain.services.articles.ArticleService" relationship="TO_ONE">
+      <point x="416.0" y="-28.0" />
+      <point x="-258.5" y="0.0" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapi.domain.services.articles.SqlArticleService" target="fr.ulco.minijournal.minijournalapi.domain.services.articles.ArticleService" relationship="REALIZATION">
+      <point x="1.1368683772161603E-13" y="-89.5" />
+      <point x="924.5342657342655" y="24.618412607222837" />
+      <point x="964.2174167301032" y="24.618412607222837" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapi.controllers.AuthorController" target="fr.ulco.minijournal.minijournalapi.domain.services.AuthorService" relationship="TO_ONE">
+      <point x="-2.8671328672036367E-4" y="33.500076923076904" />
+      <point x="0.21300000000000008" y="411.7346559955626" />
+      <point x="414.16446418151656" y="411.7346559955626" />
+      <point x="414.16446418151656" y="415.3959348579677" />
+      <point x="-311.4142159633967" y="3.6612788624050836" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapi.domain.services.articles.SqlArticleService" target="fr.ulco.minijournal.minijournalapi.infra.sql.dao.ArticleRepository" relationship="TO_ONE">
+      <point x="334.9999999999999" y="82.0" />
+      <point x="-416.0" y="-13.927825432357963" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapi.domain.services.articles.SqlArticleService" target="fr.ulco.minijournal.minijournalapi.domain.services.AuthorService" relationship="TO_ONE">
+      <point x="-2.657342654401873E-4" y="89.49983959666389" />
+      <point x="924.534" y="336.0" />
+      <point x="902.034" y="336.0" />
+      <point x="-2.657342654401873E-4" y="-47.49965599556259" />
+    </edge>
+    <edge source="fr.ulco.minijournal.minijournalapi.domain.services.AuthorService" target="fr.ulco.minijournal.minijournalapi.infra.sql.dao.AuthorRepository" relationship="TO_ONE">
+      <point x="312.4999999999999" y="5.684341886080802E-14" />
+      <point x="-285.5" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.5551242236024845" showDependencies="true" x="980.0" y="67.5" />
+  <SelectedNodes>
+    <node>fr.ulco.minijournal.minijournalapi.infra.sql.dao.AuthorRepository</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

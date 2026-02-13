@@ -42,9 +42,10 @@ les couches.
 
 <details>
 <summary>Réponse possible de l'exercice</summary>
-<img src="images/n_tier.png" alt="Schéma n tier"/>
 <img src="images/n_tier_code.png" alt="N tier dans le code"/>
 </details>
+
+![Schéma n tier de mini journal](images/n-tier-minijournal.png)
 
 ## Avantages
 
