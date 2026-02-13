@@ -6,6 +6,8 @@ L'architecture monolithique est un style d'architecture logicielle dans lequel u
 déployée en tant qu'unité. Tous les composants de l'application sont regroupés dans un seul code source et sont
 exécutés dans un même processus. Cette approche est souvent utilisée pour les applications simples ou de petite taille.
 
+![Architecture monolithique](./images/monolithe.png)
+
 #### Avantages
 
 - Les développeurs peuvent facilement comprendre et travailler sur l'ensemble de l'application.
@@ -24,13 +26,14 @@ exécutés dans un même processus. Cette approche est souvent utilisée pour le
 ### Exemples
 
 - Stack Overflow
--
 
 ### Architecture micro-service
 
 L'architecture micro-service est un style d'architecture logicielle qui consiste à diviser une application en plusieurs
 services indépendants, chacun étant responsable d'une fonctionnalité spécifique. Chaque service peut être développé,
 déployé et mis à l'échelle de manière autonome, on parle de modularité.
+
+![Architecture micro services](./images/micro-services.png)
 
 #### Avantages
 
@@ -47,6 +50,11 @@ déployé et mis à l'échelle de manière autonome, on parle de modularité.
 - Chaque nouveau micro-service rajoute une couche, donc de la latence.
 - Dans le cas de transactions distribuées, la gestion de la cohérence se conplexifie.
 - La délimitation d'un "Service" n'a aucune définition universelle
+
+### Exemples
+- Amazon 
+- Netflix
+- Société Générale
 
 ## Sources
 
