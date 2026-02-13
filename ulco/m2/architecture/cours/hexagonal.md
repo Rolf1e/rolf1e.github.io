@@ -28,9 +28,9 @@ lien si besoin.
 
 ### Implementation dans Minijournal
 
-Dans le module [minijournal-api-ddd](../../j2e/cours/assets/minijournal/minijournal-api-ddd),
-on peut étudier la différence entre une architecture ddd
-et [non-ddd](../../j2e/cours/assets/minijournal/minijournal-api-ddd).
+Dans le module [minijournal-api-ddd](../../j2e/cours/assets/minijournal),
+on peut étudier la différence entre une architecture [ddd](../../j2e/cours/assets/minijournal/minijournal-api-ddd)
+et [non-ddd](../../j2e/cours/assets/minijournal/minijournal-api).
 
 L'isolation du code métier du code d'infrastructure a été réalisé à l'aide d'`Adapter`. En utilisant ce pattern, il est
 possible de ne pas contaminer le code métier avec Spring ici, ou bien n'importe quelle autre librairie ou framework.
