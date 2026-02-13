@@ -6,8 +6,11 @@ L'architecture hexagonale, aussi connue sous le nom de Ports and Adapters, est u
 vise à créer des applications découplées et facilement testables. Elle a été introduite par Alistair Cockburn dans les
 années 2000.
 
-Elle vise à limiter les fuites de dépendances entres les différentes couches d'une application en isolant le domaine
-métier des détails techniques comme les bases de données, les interfaces utilisateur, ou les services externes.
+Elle vise à **limiter les fuites de dépendances entres les différentes couches d'une application en isolant le domaine
+métier des détails techniques** comme les bases de données, les interfaces utilisateur, ou les services externes.
+
+Elle a pour **objectif de limiter les problèmes de maintenance liés à l'évolution constante du métier**, en **scopant l'impact
+d'un changement de technologie** et les **réécriture totale d'une application**.
 
 ### Principes clés
 
