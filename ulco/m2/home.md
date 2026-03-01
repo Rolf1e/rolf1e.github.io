@@ -11,6 +11,8 @@
     - [Encodage et sérialisation](architecture/cours/data_encoding.md)
     - [Base de données en colonnes](architecture/cours/row_vs_column_oriented_databases.md)
     - [Techno](architecture/cours/technos.md)
+    - [CQRS](architecture/cours/cqrs.md)
+    - [Event Sourcing](architecture/cours/event_sourcing.md)
     - [Hive pattern](architecture/cours/hive_pattern.md)
 
 ### Un exemple avec Java

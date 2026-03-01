@@ -52,9 +52,17 @@ déployé et mis à l'échelle de manière autonome, on parle de modularité.
 - La délimitation d'un "Service" n'a aucune définition universelle
 
 ### Exemples
-- Amazon 
+
+- Amazon
 - Netflix
 - Société Générale
+
+## Un peu plus loin
+
+- [SAGA pattern](./saga.md)
+- [Event sourcing](./event_sourcing.md)
+- [Modular monoliths](./modular_monolith.md)
+- [Hive pattern](./hive_pattern.md)
 
 ## Sources
 
@@ -62,9 +70,11 @@ Monolithique:
 
 - https://en.wikipedia.org/wiki/Monolithic_application
 - https://en.wikipedia.org/wiki/Microservices
+- https://microservices.io/patterns/monolithic.html
 
 Microservices:
 
+- https://microservices.io/patterns/microservices.html
 - https://aws.amazon.com/microservices/
 
 Modular monoliths:
