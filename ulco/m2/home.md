@@ -1,24 +1,29 @@
-## summary
+## Sommaire
 
-### Architectures logicielles
+### Architectures orientées service
 
 - [Micro-services et Monolithe](architecture/cours/micro_service.md)
+
+Distribuée:
+
+- [Gérer beaucoup de données](architecture/cours/handle_a_lot_of_data.md)
+- [Les soucis des systèmes distribués](architecture/cours/troubles.md)
+- [Encodage et sérialisation](architecture/cours/data_encoding.md)
+- [Base de données en colonnes](architecture/cours/row_vs_column_oriented_databases.md)
+- [Techno](architecture/cours/technos.md)
+
+### Architectures orientées logiciel
+
 - [Architecture multi-tier](architecture/cours/n_tier.md)
 - [Architecture Hexagonale](architecture/cours/hexagonal.md)
-- Architecture distribuée
-    - [Gérer beaucoup de données](architecture/cours/handle_a_lot_of_data.md)
-    - [Les soucis des systèmes distribués](architecture/cours/troubles.md)
-    - [Encodage et sérialisation](architecture/cours/data_encoding.md)
-    - [Base de données en colonnes](architecture/cours/row_vs_column_oriented_databases.md)
-    - [Techno](architecture/cours/technos.md)
-    - [CQRS](architecture/cours/cqrs.md)
-    - [Event Sourcing](architecture/cours/event_sourcing.md)
-    - [Hive pattern](architecture/cours/hive_pattern.md)
+- [CQRS](architecture/cours/cqrs.md)
+- [Event Sourcing](architecture/cours/event_sourcing.md)
+- [Event streaming](architecture/cours/event_streaming.md)
+- [Hive pattern](architecture/cours/hive_pattern.md)
 
-### Un exemple avec Java
+### Java et Java EE
 
 - Récap express de [Java](j2e/cours/java.md)
-- [Maven, gérant de projet](j2e/cours/java.md#maven)
 - [Java EE / Jakarta EE](j2e/cours/java.md#java-entreprise-edition--jakarta-ee-)
 - JEE implémentation: [Spring](j2e/cours/spring/spring.md)
     - [IoC](j2e/cours/spring/ioc.md)
@@ -28,6 +33,9 @@
     - [Tests](j2e/cours/spring/test.md)
     - [OpenTelemetry](j2e/cours/spring/opentelemetry.md)
     - [Mustaches](j2e/cours/spring/mustaches.md)
+
+- [Lombok](j2e/cours/lombok.md)
+- [Maven, gérant de projet](j2e/cours/maven.md)
 - Intégration continue avec [Jenkins](j2e/cours/jenkins.md)
 
 ## TPs et Projet
