@@ -21,7 +21,8 @@ front. Le front doit afficher votre application. Par exemple si vous avez choisi
 effectuez un catalogue de films. Et ensuite il faut un onglet où l'on peut visualiser des analyses sur les films (genre
 le plus populaire par année, etc).
 
-Il faudra réaliser un [schéma N-Tier](../architecture/cours/images/business_layer.png) de votre projet. Détaillez la partie
+Il faudra réaliser un [schéma N-Tier](../architecture/cours/images/business_layer.png) de votre projet. Détaillez la
+partie
 métier de votre Spring avec un diagramme de classes UML.
 
 Le motoring de votre application doit être visible dans Grafana. Il sera réaliser avec opentelemetry. Il faut être
@@ -46,6 +47,9 @@ On réalisera un endpoint qui fail afin de voir les retries dans les traces.
       principale).
     - [ ] modèle de la base lié grâce à Hibernate et Spring Data (DAO + Entities)
     - [ ] un endpoint d'analyses qui requête la base de données pour faire des analyses (trend, histogram, etc).
+        - Précision, pour clickhouse, si la configuration JDBC est trop complexe, vous pouvez faire un endpoint qui
+          requête directement la base de données via
+          un [client HTTP](https://clickhouse.com/docs/interfaces/http#querying).
 - FRONT LAYER
     - [ ] un front minimaliste pour visualiser la donnée via l'API
     - [ ] un chart d'analyses (trend, histogram, ...)

@@ -75,7 +75,11 @@ Modifier `src/main/resources/logback-spring.xml`, ajouter la configuration suiva
     </root>
 </configuration>
 ```
+
 Note: Pour rajouter des champs customs, il faut passer par le MDC.
+
+Pour la culture, comment config opentelementry appender plus
+précisement: https://opentelemetry.io/docs/zero-code/java/spring-boot-starter/additional-instrumentations/
 
 Il faut ensuite ajouter une classe de configuration pour OpenTelemetry.
 
