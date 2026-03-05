@@ -80,4 +80,3 @@ Microservices:
 Modular monoliths:
 
 - https://medium.com/@husain.ammar/modular-monoliths-explained-structure-strategy-and-scalability-ba94b103b345
-- Allons plus loin avec le [Hive pattern](./hive_pattern.md)

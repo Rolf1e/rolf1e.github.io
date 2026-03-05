@@ -31,16 +31,21 @@ stockés dans un event store, une base de données qui se comporte comme un mess
 - Courbe d'apprentissage
 - La reconstruction de l'état peut demander du temps, il devient nécessaire d'avoir [CQRS](./cqrs.md) pour facilter les
   lectures.
--
 
 ## Quand l'utiliser
 
 Quand un service effectuer un CRUD et envoyer des messages / événements à un message broker.
 
-
 ## Events Streaming
+
+A ne pas totalement confondre avec l'[event streaming](./event_streaming.md). Event Sourcing utilise les mêmes
+principes, mais pas au même niveau d'abstraction.
+
+Event sourcing admet difficilement les mutations, préférant ajouter un événement modificateur ou correctif.
 
 ## Sources
 
 - https://microservices.io/patterns/data/event-sourcing.html
 - https://en.wikipedia.org/wiki/Event-driven_architecture
+- différence avec event streaming: Designing Data Intensive Applications (M. Kleppemann) Chapitre 11 Streaming Processing - Event
+  Sourcing - page 457.
