@@ -61,7 +61,6 @@ déployé et mis à l'échelle de manière autonome, on parle de modularité.
 
 - [SAGA pattern](./saga.md)
 - [Event sourcing](./event_sourcing.md)
-- [Modular monoliths](./modular_monolith.md)
 - [Hive pattern](./hive_pattern.md)
 
 ## Sources

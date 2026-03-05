@@ -44,3 +44,5 @@ Distribuée:
 - [Les servlets](j2e/tp/tp_1.md)
 - [TP Clickhouse](architecture/tp/tp_databases/README.md)
 - Projet: votre [n-tier en JEE](projects) !
+
+## [Glossaire](./glossary.md)
