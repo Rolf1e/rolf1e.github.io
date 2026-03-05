@@ -27,4 +27,4 @@
 - neetcode: https://neetcode.io/
 - leetcode: https://leetcode.com/
 - coding challenges: https://codingchallenges.fyi/challenges/intro/
-- educative.io: https://www.educative.io/cheatsheets
+- educative.io: https://www.educative.io/cheatsheets => System Design Interview
