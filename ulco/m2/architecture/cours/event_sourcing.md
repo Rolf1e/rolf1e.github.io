@@ -10,7 +10,7 @@ arriver.
 
 Comment faire une mise à jour atomique et envoyer des messages à un message broker de manière fiable ?
 
-[2PC]( https://en.wikipedia.org/wiki/Two-phase_commit_protocol) n'est pas envisageable, car lié la base de données et le
+[2PC](./distributed_transcation.md#2-phase-commit-2pc) n'est pas envisageable, car lié la base de données et le
 message broker n'est pas une option désirable.
 
 ## Solution - Event Sourcing
@@ -47,5 +47,6 @@ Event sourcing admet difficilement les mutations, préférant ajouter un événe
 
 - https://microservices.io/patterns/data/event-sourcing.html
 - https://en.wikipedia.org/wiki/Event-driven_architecture
-- différence avec event streaming: Designing Data Intensive Applications (M. Kleppemann) Chapitre 11 Streaming Processing - Event
-  Sourcing - page 457.
+- difference with event streaming: Designing Data Intensive Applications (M. Kleppemann) Chapitre 11 Streaming
+  Processing - Event Sourcing - page 457.
+- https://learn.microsoft.com/en-us/azure/architecture/patterns/event-sourcing

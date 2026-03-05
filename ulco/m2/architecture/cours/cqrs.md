@@ -48,4 +48,5 @@ CQRS est souvent utilisé avec un patron appelé [**Event Sourcing**](./event_so
 - https://en.wikipedia.org/wiki/Command%E2%80%93query_separation
 - https://microservices.io/patterns/data/cqrs.html
 - https://medium.com/codeshake/le-pattern-cqrs-de-la-performance-sans-micro-optimisations-495d7a19fe8d
+- https://learn.microsoft.com/en-us/azure/architecture/patterns/cqrs
 

@@ -16,6 +16,9 @@ Distribuée:
 
 - [Architecture multi-tier](architecture/cours/n_tier.md)
 - [Architecture Hexagonale](architecture/cours/hexagonal.md)
+- [Transactions distribuées](architecture/cours/distributed_transcation.md)
+  - [2 Phase Commit](architecture/cours/distributed_transcation.md#2-phase-commit-2pc)
+  - [SAGA](architecture/cours/distributed_transcation.md#saga)
 - [CQRS](architecture/cours/cqrs.md)
 - [Event Sourcing](architecture/cours/event_sourcing.md)
 - [Event streaming](architecture/cours/event_streaming.md)
