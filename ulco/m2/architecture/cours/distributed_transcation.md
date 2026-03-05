@@ -37,6 +37,8 @@ une
 transaction. Les deux phases sont **le vote** (commit-request) et **le commit**. En se basant sur le consensus des
 participants (vote) au commit et si la transaction n'est pas abandonnée (abort), le coordinateur decide le commit.
 
+![2PC](./images/2_pc.png)
+
 ## SAGA
 
 ### Problèmes
