@@ -45,7 +45,8 @@ les couches.
 <img src="images/n_tier_code.png" alt="N tier dans le code"/>
 </details>
 
-![Schéma n tier de mini journal](images/n-tier-minijournal.png)
+Un zoom sur la partie métier, avec les différentes classes et leurs relations, est présenté ci-dessous:
+![Zoom business layer](images/n-tier-business-layer-detailed-minijournal.png)
 
 ## Avantages
 
