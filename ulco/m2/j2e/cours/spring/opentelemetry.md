@@ -187,6 +187,9 @@ public ResponseEntity<Collection<ArticleSummaryDO>> fetchArticles() {
 }
 ```
 
+> Attention, dû au fonctionnement de l'AOP de Spring, pour que retry fonctionne, il faut que votre méthode qui est
+> annotée avec `@Retryable` soit appelée depuis une autre classe.
+
 Maintenant, lorsque vous appelez cet endpoint, vous devriez voir les retries dans les traces Grafana.
 ![trace avec retry](../images/grafana-traces-retry.png)
 
